@@ -1,0 +1,692 @@
+{
+  "nodes": [
+    {
+      "id": "N0",
+      "name": "姑咱集结点",
+      "lat": 30.109,
+      "lon": 102.18,
+      "population": 250,
+      "provenance": "simulated_coordinates",
+      "kind": "village"
+    },
+    {
+      "id": "N1",
+      "name": "康定支援基地",
+      "lat": 30.051,
+      "lon": 102.042,
+      "population": 333,
+      "provenance": "simulated_coordinates",
+      "kind": "village"
+    },
+    {
+      "id": "N2",
+      "name": "北侧前置点",
+      "lat": 30.137,
+      "lon": 102.19,
+      "population": 416,
+      "provenance": "simulated_coordinates",
+      "kind": "station"
+    },
+    {
+      "id": "N3",
+      "name": "日地道路节点",
+      "lat": 30.093,
+      "lon": 102.192,
+      "population": 499,
+      "provenance": "simulated_coordinates",
+      "kind": "village"
+    },
+    {
+      "id": "N4",
+      "name": "日地村模拟搜救区",
+      "lat": 30.084,
+      "lon": 102.209,
+      "population": 582,
+      "provenance": "simulated_coordinates",
+      "kind": "village"
+    },
+    {
+      "id": "N5",
+      "name": "下游转移区",
+      "lat": 30.061,
+      "lon": 102.217,
+      "population": 665,
+      "provenance": "simulated_coordinates",
+      "kind": "village"
+    },
+    {
+      "id": "N6",
+      "name": "医疗救护点",
+      "lat": 30.08,
+      "lon": 102.162,
+      "population": 748,
+      "provenance": "simulated_coordinates",
+      "kind": "hospital"
+    },
+    {
+      "id": "N7",
+      "name": "集中安置点",
+      "lat": 30.045,
+      "lon": 102.177,
+      "population": 831,
+      "provenance": "simulated_coordinates",
+      "kind": "shelter"
+    },
+    {
+      "id": "N8",
+      "name": "上游监测区",
+      "lat": 30.111,
+      "lon": 102.234,
+      "population": 914,
+      "provenance": "simulated_coordinates",
+      "kind": "station"
+    },
+    {
+      "id": "N9",
+      "name": "泸定增援点",
+      "lat": 29.973,
+      "lon": 102.229,
+      "population": 997,
+      "provenance": "simulated_coordinates",
+      "kind": "village"
+    }
+  ],
+  "roads": [
+    {
+      "id": "RD00",
+      "u": "N0",
+      "v": "N1",
+      "minutes": 6,
+      "provenance": "simulated",
+      "blocked": false
+    },
+    {
+      "id": "RD01",
+      "u": "N0",
+      "v": "N3",
+      "minutes": 8,
+      "provenance": "simulated",
+      "blocked": false
+    },
+    {
+      "id": "RD02",
+      "u": "N0",
+      "v": "N9",
+      "minutes": 5,
+      "provenance": "simulated",
+      "blocked": false
+    },
+    {
+      "id": "RD03",
+      "u": "N1",
+      "v": "N2",
+      "minutes": 8,
+      "provenance": "simulated",
+      "blocked": false
+    },
+    {
+      "id": "RD04",
+      "u": "N1",
+      "v": "N3",
+      "minutes": 7,
+      "provenance": "simulated",
+      "blocked": false
+    },
+    {
+      "id": "RD05",
+      "u": "N2",
+      "v": "N3",
+      "minutes": 5,
+      "provenance": "simulated",
+      "blocked": false
+    },
+    {
+      "id": "RD06",
+      "u": "N2",
+      "v": "N4",
+      "minutes": 10,
+      "provenance": "simulated",
+      "blocked": false
+    },
+    {
+      "id": "RD07",
+      "u": "N3",
+      "v": "N4",
+      "minutes": 6,
+      "provenance": "simulated",
+      "blocked": false
+    },
+    {
+      "id": "RD08",
+      "u": "N3",
+      "v": "N5",
+      "minutes": 10,
+      "provenance": "simulated",
+      "blocked": false
+    },
+    {
+      "id": "RD09",
+      "u": "N3",
+      "v": "N6",
+      "minutes": 6,
+      "provenance": "simulated",
+      "blocked": false
+    },
+    {
+      "id": "RD10",
+      "u": "N4",
+      "v": "N5",
+      "minutes": 5,
+      "provenance": "simulated",
+      "blocked": false
+    },
+    {
+      "id": "RD11",
+      "u": "N4",
+      "v": "N8",
+      "minutes": 12,
+      "provenance": "simulated",
+      "blocked": false
+    },
+    {
+      "id": "RD12",
+      "u": "N5",
+      "v": "N7",
+      "minutes": 6,
+      "provenance": "simulated",
+      "blocked": false
+    },
+    {
+      "id": "RD13",
+      "u": "N5",
+      "v": "N8",
+      "minutes": 8,
+      "provenance": "simulated",
+      "blocked": false
+    },
+    {
+      "id": "RD14",
+      "u": "N6",
+      "v": "N7",
+      "minutes": 10,
+      "provenance": "simulated",
+      "blocked": false
+    },
+    {
+      "id": "RD15",
+      "u": "N6",
+      "v": "N9",
+      "minutes": 8,
+      "provenance": "simulated",
+      "blocked": false
+    }
+  ],
+  "resources": [
+    {
+      "id": "RES01",
+      "type": "rescue_team",
+      "name": "搜救队 01",
+      "node": "N0",
+      "capacity": 1,
+      "status": "idle",
+      "available_at": 0,
+      "queue": []
+    },
+    {
+      "id": "RES02",
+      "type": "rescue_team",
+      "name": "搜救队 02",
+      "node": "N1",
+      "capacity": 1,
+      "status": "idle",
+      "available_at": 0,
+      "queue": []
+    },
+    {
+      "id": "RES03",
+      "type": "rescue_team",
+      "name": "搜救队 03",
+      "node": "N2",
+      "capacity": 1,
+      "status": "idle",
+      "available_at": 0,
+      "queue": []
+    },
+    {
+      "id": "RES04",
+      "type": "rescue_team",
+      "name": "搜救队 04",
+      "node": "N6",
+      "capacity": 1,
+      "status": "idle",
+      "available_at": 0,
+      "queue": []
+    },
+    {
+      "id": "RES05",
+      "type": "rescue_team",
+      "name": "搜救队 05",
+      "node": "N0",
+      "capacity": 1,
+      "status": "idle",
+      "available_at": 0,
+      "queue": []
+    },
+    {
+      "id": "RES06",
+      "type": "rescue_team",
+      "name": "搜救队 06",
+      "node": "N1",
+      "capacity": 1,
+      "status": "idle",
+      "available_at": 40,
+      "queue": []
+    },
+    {
+      "id": "MED01",
+      "type": "medical_team",
+      "name": "医疗队 01",
+      "node": "N0",
+      "capacity": 1,
+      "status": "idle",
+      "available_at": 0,
+      "queue": []
+    },
+    {
+      "id": "MED02",
+      "type": "medical_team",
+      "name": "医疗队 02",
+      "node": "N1",
+      "capacity": 1,
+      "status": "idle",
+      "available_at": 0,
+      "queue": []
+    },
+    {
+      "id": "MED03",
+      "type": "medical_team",
+      "name": "医疗队 03",
+      "node": "N2",
+      "capacity": 1,
+      "status": "idle",
+      "available_at": 0,
+      "queue": []
+    },
+    {
+      "id": "MED04",
+      "type": "medical_team",
+      "name": "医疗队 04",
+      "node": "N6",
+      "capacity": 1,
+      "status": "idle",
+      "available_at": 40,
+      "queue": []
+    },
+    {
+      "id": "ENG01",
+      "type": "engineering_team",
+      "name": "工程队 01",
+      "node": "N0",
+      "capacity": 1,
+      "status": "idle",
+      "available_at": 0,
+      "queue": []
+    },
+    {
+      "id": "ENG02",
+      "type": "engineering_team",
+      "name": "工程队 02",
+      "node": "N1",
+      "capacity": 1,
+      "status": "idle",
+      "available_at": 0,
+      "queue": []
+    },
+    {
+      "id": "ENG03",
+      "type": "engineering_team",
+      "name": "工程队 03",
+      "node": "N2",
+      "capacity": 1,
+      "status": "idle",
+      "available_at": 40,
+      "queue": []
+    },
+    {
+      "id": "AMB01",
+      "type": "ambulance",
+      "name": "救护车 01",
+      "node": "N0",
+      "capacity": 1,
+      "status": "idle",
+      "available_at": 0,
+      "queue": []
+    },
+    {
+      "id": "AMB02",
+      "type": "ambulance",
+      "name": "救护车 02",
+      "node": "N1",
+      "capacity": 1,
+      "status": "idle",
+      "available_at": 0,
+      "queue": []
+    },
+    {
+      "id": "AMB03",
+      "type": "ambulance",
+      "name": "救护车 03",
+      "node": "N2",
+      "capacity": 1,
+      "status": "idle",
+      "available_at": 0,
+      "queue": []
+    },
+    {
+      "id": "AMB04",
+      "type": "ambulance",
+      "name": "救护车 04",
+      "node": "N6",
+      "capacity": 1,
+      "status": "idle",
+      "available_at": 40,
+      "queue": []
+    },
+    {
+      "id": "EXC01",
+      "type": "excavator",
+      "name": "挖掘机 01",
+      "node": "N0",
+      "capacity": 1,
+      "status": "idle",
+      "available_at": 0,
+      "queue": []
+    },
+    {
+      "id": "EXC02",
+      "type": "excavator",
+      "name": "挖掘机 02",
+      "node": "N1",
+      "capacity": 1,
+      "status": "idle",
+      "available_at": 0,
+      "queue": []
+    },
+    {
+      "id": "EXC03",
+      "type": "excavator",
+      "name": "挖掘机 03",
+      "node": "N2",
+      "capacity": 1,
+      "status": "idle",
+      "available_at": 40,
+      "queue": []
+    },
+    {
+      "id": "DRO01",
+      "type": "drone",
+      "name": "无人机 01",
+      "node": "N0",
+      "capacity": 1,
+      "status": "idle",
+      "available_at": 0,
+      "queue": []
+    },
+    {
+      "id": "DRO02",
+      "type": "drone",
+      "name": "无人机 02",
+      "node": "N1",
+      "capacity": 1,
+      "status": "idle",
+      "available_at": 0,
+      "queue": []
+    },
+    {
+      "id": "DRO03",
+      "type": "drone",
+      "name": "无人机 03",
+      "node": "N2",
+      "capacity": 1,
+      "status": "idle",
+      "available_at": 40,
+      "queue": []
+    },
+    {
+      "id": "SUP01",
+      "type": "supply_vehicle",
+      "name": "物资车 01",
+      "node": "N0",
+      "capacity": 1,
+      "status": "idle",
+      "available_at": 0,
+      "queue": []
+    },
+    {
+      "id": "SUP02",
+      "type": "supply_vehicle",
+      "name": "物资车 02",
+      "node": "N1",
+      "capacity": 1,
+      "status": "idle",
+      "available_at": 0,
+      "queue": []
+    },
+    {
+      "id": "SUP03",
+      "type": "supply_vehicle",
+      "name": "物资车 03",
+      "node": "N2",
+      "capacity": 1,
+      "status": "idle",
+      "available_at": 40,
+      "queue": []
+    }
+  ],
+  "tasks": [
+    {
+      "id": "V01",
+      "name": "人员搜救",
+      "node": "N4",
+      "requirements": {
+        "rescue_team": 2,
+        "drone": 1
+      },
+      "priority": 1,
+      "release": 0,
+      "deadline": 28,
+      "duration": 18,
+      "status": "pending",
+      "actual_start": null,
+      "completed_at": null,
+      "provenance": "simulated"
+    },
+    {
+      "id": "V02",
+      "name": "伤员救治转运",
+      "node": "N5",
+      "requirements": {
+        "medical_team": 1,
+        "ambulance": 2
+      },
+      "priority": 1,
+      "release": 0,
+      "deadline": 32,
+      "duration": 20,
+      "status": "pending",
+      "actual_start": null,
+      "completed_at": null,
+      "provenance": "simulated"
+    },
+    {
+      "id": "V03",
+      "name": "道路抢通",
+      "node": "N3",
+      "requirements": {
+        "engineering_team": 1,
+        "excavator": 1
+      },
+      "priority": 2,
+      "release": 0,
+      "deadline": 40,
+      "duration": 15,
+      "status": "pending",
+      "actual_start": null,
+      "completed_at": null,
+      "provenance": "simulated"
+    },
+    {
+      "id": "V04",
+      "name": "安置物资配送",
+      "node": "N7",
+      "requirements": {
+        "supply_vehicle": 1
+      },
+      "priority": 2,
+      "release": 0,
+      "deadline": 50,
+      "duration": 12,
+      "status": "pending",
+      "actual_start": null,
+      "completed_at": null,
+      "provenance": "simulated"
+    },
+    {
+      "id": "V05",
+      "name": "上游巡查",
+      "node": "N8",
+      "requirements": {
+        "drone": 1,
+        "rescue_team": 1
+      },
+      "priority": 2,
+      "release": 10,
+      "deadline": 45,
+      "duration": 15,
+      "status": "pending",
+      "actual_start": null,
+      "completed_at": null,
+      "provenance": "simulated"
+    },
+    {
+      "id": "V06",
+      "name": "受困群众转移",
+      "node": "N4",
+      "requirements": {
+        "rescue_team": 2,
+        "ambulance": 1
+      },
+      "priority": 1,
+      "release": 20,
+      "deadline": 50,
+      "duration": 20,
+      "status": "pending",
+      "actual_start": null,
+      "completed_at": null,
+      "provenance": "simulated"
+    },
+    {
+      "id": "V07",
+      "name": "下游清障",
+      "node": "N5",
+      "requirements": {
+        "engineering_team": 1,
+        "excavator": 2
+      },
+      "priority": 2,
+      "release": 20,
+      "deadline": 70,
+      "duration": 20,
+      "status": "pending",
+      "actual_start": null,
+      "completed_at": null,
+      "provenance": "simulated"
+    },
+    {
+      "id": "V08",
+      "name": "紧急医疗支援",
+      "node": "N4",
+      "requirements": {
+        "medical_team": 2,
+        "ambulance": 1
+      },
+      "priority": 1,
+      "release": 30,
+      "deadline": 65,
+      "duration": 15,
+      "status": "pending",
+      "actual_start": null,
+      "completed_at": null,
+      "provenance": "simulated"
+    },
+    {
+      "id": "V09",
+      "name": "临时安置保障",
+      "node": "N7",
+      "requirements": {
+        "rescue_team": 1,
+        "supply_vehicle": 1
+      },
+      "priority": 2,
+      "release": 40,
+      "deadline": 85,
+      "duration": 15,
+      "status": "pending",
+      "actual_start": null,
+      "completed_at": null,
+      "provenance": "simulated"
+    },
+    {
+      "id": "V10",
+      "name": "上游应急勘察",
+      "node": "N8",
+      "requirements": {
+        "engineering_team": 1,
+        "drone": 1
+      },
+      "priority": 2,
+      "release": 45,
+      "deadline": 90,
+      "duration": 15,
+      "status": "pending",
+      "actual_start": null,
+      "completed_at": null,
+      "provenance": "simulated"
+    },
+    {
+      "id": "V11",
+      "name": "河谷搜索",
+      "node": "N5",
+      "requirements": {
+        "rescue_team": 2,
+        "drone": 1
+      },
+      "priority": 1,
+      "release": 60,
+      "deadline": 100,
+      "duration": 20,
+      "status": "pending",
+      "actual_start": null,
+      "completed_at": null,
+      "provenance": "simulated"
+    },
+    {
+      "id": "V12",
+      "name": "补给运输",
+      "node": "N6",
+      "requirements": {
+        "supply_vehicle": 2
+      },
+      "priority": 3,
+      "release": 70,
+      "deadline": 120,
+      "duration": 10,
+      "status": "pending",
+      "actual_start": null,
+      "completed_at": null,
+      "provenance": "simulated"
+    }
+  ],
+  "provenance": "模拟传感器、坐标、资源与任务；康定地区仅作为地理背景",
+  "seed": 906
+}
