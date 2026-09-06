@@ -35,8 +35,8 @@ def audit(state):
         if any(r['active']['start']!=t['actual_start'] for r in group):errors.append('synchronization')
     return errors
 
-def run(seeds=20,budget=.25):
-    output=ROOT/'results/v2';output.mkdir(exist_ok=True)
+def run(seeds=20,budget=.25,sensitivity=False):
+    output=ROOT/'results/v21';output.mkdir(exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
         base=Service(Path(tmp)/'seed.sqlite')
         rows=base.db.observations(180,1620)
@@ -50,10 +50,13 @@ def run(seeds=20,budget=.25):
                 for road in scenario['roads']:road['minutes']=max(1,round(road['minutes']*rng.uniform(.75,1.3)))
                 for task in scenario['tasks']:task['duration']=max(5,round(task['duration']*rng.uniform(.8,1.2)))
             blocked=scenario['roads'][rng.randrange(len(scenario['roads']))]['id'] if seed>=0 else 'RD00'
-            for mode in ['greedy','static','dynamic','dynamic_prediction']:
+            modes=['greedy','static','dynamic','dynamic_prediction']
+            if sensitivity:modes+=['stability_0','stability_5','stability_50','stability_100']
+            for mode in modes:
                 s=Service.__new__(Service);s.state=deepcopy(scenario);s.lock=RLock();s.forecaster=base.forecaster
                 s.db=MemoryDatabase(rows);s.view=lambda *args,**kwargs:None
                 s.state['settings']['forecast']=mode=='dynamic_prediction'
+                if mode.startswith('stability_'):s.state['settings']['stability']=int(mode.split('_')[1])
                 calls=[];violations=[];committed=set();travel=0
                 def solve(state,**settings):
                     if mode=='static' and state['minute']>0:
@@ -65,10 +68,10 @@ def run(seeds=20,budget=.25):
                     calls.append(result);return result
                 with patch('disaster.v2.service.plan',solve):
                     s.optimize()
-                    for step in range(13):
+                    for step in range(121):
                         if step:
-                            s.advance(10)
-                            if step==2:
+                            s.advance(1)
+                            if step==20:
                                 s.block(blocked)
                                 if mode=='static':
                                     # Preserve remaining original allocations only; no reassignment.
@@ -85,32 +88,38 @@ def run(seeds=20,budget=.25):
                 served=[t for t in tasks if t['status']=='completed']
                 urgent=[t for t in tasks if t['priority']==1]
                 starts=[t for t in tasks if t.get('actual_start') is not None and t['actual_start']<=120]
+                delays=[t['actual_start']-t['release'] for t in starts]
+                gini=sum(abs(a-b) for a in delays for b in delays)/(2*len(delays)*sum(delays)) if delays and sum(delays)>0 else 0 if delays else None
                 results.append(dict(seed=seed,method=mode,completed=len(served),total_tasks=len(tasks),
                     urgent_satisfaction=sum(t['status']=='completed' for t in urgent)/len(urgent),
                     unmet_resource_units=sum(sum(t['requirements'].values()) for t in tasks if t['status']!='completed'),
                     mean_start_delay=sum(t['actual_start']-t['release'] for t in starts)/len(starts) if starts else None,
                     lateness=sum(max(0,t['actual_start']-t['deadline']) for t in starts),committed_travel=travel,
                     violations=len(violations),solve_seconds=sum(p['seconds'] for p in calls),solver_calls=len(calls),
-                    fallback_calls=sum(p['degraded'] for p in calls),blocked_road=blocked))
-            print(f'seed {seed}: completed four paired methods',flush=True)
-        for name,items in [('dispatch_metrics.csv',results),('forecast_metrics.csv',forecast_metrics)]:
+                    fallback_calls=sum(p['degraded'] for p in calls),blocked_road=blocked,
+                    stability=s.state['settings']['stability'],response_gini_started=gini,started_tasks=len(starts),
+                    plan_changes=sum(p['changes'] for p in calls)))
+            print(f'seed {seed}: completed {len(modes)} paired methods',flush=True)
+        for name,items in [('dispatch_metrics.csv',results),('forecast_metrics.csv',forecast_metrics),('forecast_multistep.csv',base.forecaster.multistep_evaluation)]:
             with (output/name).open('w',encoding='utf-8-sig',newline='') as f:
                 writer=csv.DictWriter(f,fieldnames=list(items[0]));writer.writeheader();writer.writerows(items)
         metadata=dict(seeds=[-1,*range(seeds)],horizon=60,end_minute=120,solver_budget_seconds=budget,
+            stability_sensitivity=[0,5,20,50,100] if sensitivity else [20],audit_interval_minutes=1,
             provenance='All sensors, coordinates, road times, tasks and resources are simulated.',
             methods={'greedy':'same compound requirements; earliest feasible available resources',
                      'static':'initial horizon plan, no new allocations; blocked future tasks removed',
-                     'dynamic':'replan every 10 min and on closure, prediction disabled',
+                     'dynamic':'P1 release, reinforcement, risk jump, closure + 10-minute safety trigger; prediction disabled',
                      'dynamic_prediction':'same dynamic policy plus synthetic risk prepositioning'},
             notes=['Completion measured at minute 120, not projected assignments.',
                    'Mean start delay includes only tasks started by 120; report together with unmet units.',
-                   'Committed travel counts planned paths when commitments first observed at 10-minute boundaries.',
+                   'Committed travel counts planned paths when commitments first observed at 1-minute boundaries.',
                    'Wall-clock solver time and timeout-dependent solutions may vary by machine.',
-                   'Forecast validation is one-step chronological holdout, not 60-minute forecast accuracy.'])
+                   'forecast_multistep.csv uses fixed-train recursive rolling origins at 5/15/30/60 minutes.',
+                   'Response Gini is conditional on started tasks; always report together with unmet demand. Not a fairness optimization objective.'])
         (output/'experiment_config.json').write_text(json.dumps(metadata,ensure_ascii=False,indent=2),encoding='utf-8')
         assert all(r['violations']==0 for r in results), 'Execution invariant violations detected'
         return results
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser();parser.add_argument('--seeds',type=int,default=20);parser.add_argument('--budget',type=float,default=.25)
-    args=parser.parse_args();run(args.seeds,args.budget)
+    parser=argparse.ArgumentParser();parser.add_argument('--seeds',type=int,default=20);parser.add_argument('--budget',type=float,default=.25);parser.add_argument('--sensitivity',action='store_true')
+    args=parser.parse_args();run(args.seeds,args.budget,args.sensitivity)

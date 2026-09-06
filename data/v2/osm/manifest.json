@@ -1,0 +1,11 @@
+{
+  "endpoint": "https://overpass-api.de/api/interpreter",
+  "query": "[out:json][timeout:45];way[\"highway\"~\"^(motorway|trunk|primary|secondary|tertiary|unclassified|residential|service|living_street)(_link)?$\"](29.96,102.02,30.15,102.25);out meta;>;out skel qt;",
+  "retrieved_at": "2026-09-06T12:44:02.891781+00:00",
+  "osm_base": "2026-09-06T12:42:06Z",
+  "sha256": "39166af664f52720b20aadc0560fc2a76e5dd9df67285ed947902710b6aef26e",
+  "attribution": "© OpenStreetMap contributors",
+  "license": "ODbL 1.0",
+  "license_url": "https://www.openstreetmap.org/copyright",
+  "scope": "Current OSM snapshot, NOT historical 2024 roads; no live closures or measured travel times."
+}

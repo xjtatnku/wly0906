@@ -3,7 +3,7 @@ import json
 import time
 from playwright.sync_api import sync_playwright
 ROOT=Path(__file__).resolve().parents[1]
-out=ROOT/'results/v2';out.mkdir(exist_ok=True)
+out=ROOT/'results/v21';out.mkdir(exist_ok=True)
 with sync_playwright() as p:
     browser=p.chromium.launch(headless=True)
     page=browser.new_page(viewport={'width':1680,'height':1050},device_scale_factor=1)
@@ -12,7 +12,7 @@ with sync_playwright() as p:
             if page.request.get('http://127.0.0.1:8800/api/health',timeout=1000).ok:break
         except Exception:pass
         time.sleep(1)
-    assert page.request.post('http://127.0.0.1:8800/api/reset').ok
+    assert page.request.post('http://127.0.0.1:8800/api/reset',data={'routing_mode':'simulated'}).ok
     errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
     page.goto('http://127.0.0.1:8800',wait_until='networkidle')
     page.locator('.cards').wait_for()
@@ -58,6 +58,19 @@ with sync_playwright() as p:
     page.locator('[data-page="overview"]').click();page.wait_for_timeout(500)
     assert page.evaluate('document.documentElement.scrollWidth <= window.innerWidth')
     page.screenshot(path=str(out/'overview-1280.png'),full_page=True)
+    page.set_viewport_size({'width':1680,'height':1050})
+    page.locator('[data-page="dispatch"]').click();page.locator('#routing-mode').wait_for()
+    page.locator('#routing-mode').select_option('osm');page.locator('#switch-routing').click()
+    page.wait_for_function("document.querySelector('#routing-mode')?.value==='osm' && !document.querySelector('#switch-routing').disabled")
+    page.locator('#optimize').click();page.wait_for_function("!document.querySelector('#optimize').disabled")
+    current=page.request.get('http://127.0.0.1:8800/api/state').json()
+    assert current['routing_mode']=='osm' and len(current['roads'])>100
+    assert any(a['geometry'] for a in current['plan']['assignments'])
+    page.locator('#failure-resource').select_option('RES01');page.locator('#fail-resource').click()
+    page.wait_for_function("!document.querySelector('#fail-resource').disabled")
+    page.locator('#advance').click();page.wait_for_function("!document.querySelector('#advance').disabled")
+    page.evaluate('window.scrollTo(0,0)');page.wait_for_timeout(200)
+    page.screenshot(path=str(out/'osm-dispatch.png'),full_page=True)
     print('Browser errors:',errors)
     assert not errors
     browser.close()

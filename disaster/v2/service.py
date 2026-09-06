@@ -28,6 +28,8 @@ class Service:
         self.db=Database(path);self.db.bootstrap();self.lock=RLock();self.forecaster=Forecaster()
         self.forecaster.fit(self.db.observations(-1,1440))
         self.state=self.db.load()
+        if self.state is not None and 'multistep_evaluation' not in self.state.get('forecast',{}):
+            self.refresh();self.event('V2.1 数据时效与多步评估升级，执行承诺保留','migration');self.save()
         if self.state is None:
             seed=read_json(ROOT/'data/v2/scenario.json')
             self.state=dict(seed,minute=0,revision=0,events=[],plan={},forecast={},settings={'horizon':60,'stability':20,'forecast':True},casualties={'missing':0,'injured':0})
@@ -40,20 +42,33 @@ class Service:
         self.state['events'].append(dict(id=str(uuid.uuid4()),minute=self.state['minute'],text=text,kind=kind))
     def refresh(self):
         self.state['forecast']=self.forecaster.predict(self.db.observations(self.state['minute']),self.state['minute'])
+        if hasattr(self.db,'source_health'):self.state['data_health']=self.db.source_health(self.state['minute'])
+    def replan(self,reasons):
+        self.state['plan']=plan(self.state,**self.state['settings'])
+        self.state['plan']['triggers']=list(reasons)
+        self.event('触发重规划：'+'；'.join(reasons)+f"；{self.state['plan'].get('status','UNKNOWN')}",'replan')
+        self.start_due()
     def save(self):
         self.state['revision']+=1;self.db.save(self.state)
     @atomic_action
-    def reset(self):
+    def reset(self,routing_mode=None):
         revision=self.state['revision']
-        self.state=dict(read_json(ROOT/'data/v2/scenario.json'),minute=0,revision=revision,events=[],plan={},forecast={},
+        mode=routing_mode or self.state.get('routing_mode','simulated')
+        if mode not in ('simulated','osm'):raise ValueError('未知路网模式')
+        if mode=='osm':
+            from disaster.v2.osm import load_scenario
+            seed=load_scenario()
+        else:seed=read_json(ROOT/'data/v2/scenario.json')
+        self.state=dict(seed,minute=0,revision=revision,events=[],plan={},forecast={},routing_mode=mode,
             settings={'horizon':60,'stability':20,'forecast':True},casualties={'missing':0,'injured':0})
         self.refresh();self.event('演示重置到初始场景；历史快照保留','system');self.save()
         return self.view()
     def view(self,state=None):
         s=deepcopy(state or self.state);now=s['minute'];visible=[t for t in s['tasks'] if t['release']<=now]
         s['tasks']=visible;s['observations']=self.db.observations(now,180)
+        if 'data_health' not in s:s['data_health']=self.db.source_health(now)
         s['time']=(datetime(2024,8,3,9)+timedelta(minutes=now)).strftime('%Y-%m-%d %H:%M')
-        total=len(s['resources']);idle=sum(not r.get('active') and r['available_at']<=now for r in s['resources'])
+        total=len(s['resources']);idle=sum(not r.get('active') and r['available_at']<=now and r.get('status')!='failed' for r in s['resources'])
         rain=[o['value']*5/60 for o in self.db.observations(now,1440) if o['type']=='rainfall' and o['station_id']=='S01']
         s['metrics']=dict(rainfall=round(sum(rain),1),available=idle,total=total,busy=sum(bool(r.get('active')) for r in s['resources']),
             blocked=sum(e['blocked'] for e in s['roads']),roads=len(s['roads']),pending=sum(t['status']=='pending' for t in visible),
@@ -83,6 +98,7 @@ class Service:
             if any(r.get('active',{}).get('task')==tid for r in resources.values()):continue
             if min(a['depart'] for a in group)>now:continue
             if any(resources[a['resource']].get('active') for a in group):continue
+            if any(resources[a['resource']].get('status')=='failed' for a in group):continue
             for a in group:
                 r=resources[a['resource']];r['active']=deepcopy(a);r['status']='reserved' if a['depart']>now else 'travel'
             if tid in tasks:tasks[tid]['status']='committed';tasks[tid]['actual_start']=group[0]['start']
@@ -94,7 +110,10 @@ class Service:
             if until>180:raise ValueError('当前模拟监测数据截止第180分钟，请在事件复盘页重置演示')
             for _ in range(minutes):
                 self.state['minute']+=1;now=self.state['minute']
+                reasons=[]
                 for r in self.state['resources']:
+                    if r['available_at']==now and r.get('status')!='failed':
+                        reasons.append('增援到达 '+r['id']);self.event('增援到达 '+r['name'],'reinforcement')
                     a=r.get('active')
                     if not a:continue
                     if now>=a['end']:
@@ -104,18 +123,24 @@ class Service:
                         r['status']='travel'
                         # Keep last reached node, never teleport to destination on interruption.
                         elapsed=now-a['depart'];walked=0
-                        for u,v in zip(a['path'],a['path'][1:]):
-                            edge=next(e for e in self.state['roads'] if {e['u'],e['v']}=={u,v})
-                            walked+=edge['minutes']
+                        for i,(u,v) in enumerate(zip(a['path'],a['path'][1:])):
+                            duration=a['segments'][i]['minutes'] if a.get('segments') else next(e['minutes'] for e in self.state['roads'] if {e['u'],e['v']}=={u,v})
+                            walked+=duration
                             if elapsed>=walked:r['node']=v
                             else:break
                 for t in self.state['tasks']:
                     if t['status']=='committed' and t['actual_start'] is not None and now>=t['actual_start']+t['duration']:
                         t['status']='completed';t['completed_at']=now
-                    if t['release']==now:self.event(f"新增任务：{t['name']}",'hazard')
-                self.start_due()
-                if now%10==0:
-                    self.refresh();self.state['plan']=plan(self.state,**self.state['settings']);self.start_due()
+                    if t['release']==now:
+                        self.event(f"新增任务：{t['name']}",'hazard')
+                        if t['priority']==1:reasons.append('新增P1任务 '+t['id'])
+                if now%5==0:
+                    previous=self.state['forecast']['level'];self.refresh()
+                    if self.state['forecast']['level']!=previous and self.state['forecast'].get('eligible_for_decision',True):reasons.append('风险等级变化 '+previous+'→'+self.state['forecast']['level'])
+                if self.state.get('trigger_policy')=='periodic':reasons=[]
+                if now%10==0:reasons.append('10分钟周期兜底')
+                if reasons:self.replan(reasons)
+                else:self.start_due()
             self.refresh();self.event(f'态势推进至第{until}分钟','clock');self.save();return self.view()
     @atomic_action
     def block(self,road_id,replan=True):
@@ -124,6 +149,9 @@ class Service:
             if road is None:raise ValueError('不存在的道路')
             if road['blocked']:return self.view()
             road['blocked']=True
+            if self.state.get('routing_mode')=='osm':
+                for reverse in self.state['roads']:
+                    if reverse.get('osm_node_ids')==list(reversed(road.get('osm_node_ids',[]))):reverse['blocked']=True
             # Lockstep group cancellation before service prevents partially executing a compound task.
             affected=set()
             for r in self.state['resources']:
@@ -140,8 +168,24 @@ class Service:
                 self.event(f'封路导致 {tid} 尚未开始的协同计划撤回，保留已消耗时间并重规划','warning')
             self.event(f"道路 {road_id}（{road['u']}—{road['v']}）中断",'road')
             if replan:
-                self.state['plan']=plan(self.state,**self.state['settings']);self.start_due();self.save()
+                self.replan(['道路中断 '+road_id]);self.save()
             return self.view()
+    @atomic_action
+    def fail_resource(self,resource_id):
+        resource=next((r for r in self.state['resources'] if r['id']==resource_id),None)
+        if resource is None:raise ValueError('未知资源')
+        if resource.get('status')=='failed':return self.view()
+        tid=resource.get('active',{}).get('task')
+        if tid:
+            for r in self.state['resources']:
+                if r.get('active',{}).get('task')==tid:r.pop('active');r['status']='idle'
+            for t in self.state['tasks']:
+                if t['id']==tid:
+                    t['status']='pending';t['actual_start']=None
+                    t['interrupted_at']=self.state['minute']
+        resource['status']='failed'
+        self.event(f'资源故障 {resource_id}；未完成协同作业需重新完整执行，已耗时保留','failure')
+        self.replan(['资源故障 '+resource_id]);self.save();return self.view()
     def retrieve(self,text,mode='hybrid'):
         q=self.vectorizer.transform([text]);s=(self.sparse@q.T).toarray().ravel()
         dq=self.svd.transform(q)[0];d=(self.dense@dq)/(np.linalg.norm(self.dense,axis=1)*np.linalg.norm(dq)+1e-9)
@@ -150,7 +194,7 @@ class Service:
         return [dict(self.clauses[i],score=float(score[i]),retrieval='TF-IDF + LSA latent vectors (not BGE)' if mode=='hybrid' else 'TF-IDF') for i in indexes if self.clauses[i]['published_at']<='2024-08-03T09:00:00+08:00'][:5]
     def extract(self,text,live=False):
         revision=self.state['revision']
-        nodes=self.state['nodes'];found=[n['id'] for n in nodes if n['id'] in text or n['name'] in text]
+        nodes=[n for n in self.state['nodes'] if n['kind']!='road'];found=[n['id'] for n in nodes if n['id'] in text or n['name'] in text]
         needs=[]
         for kind,words in [('rescue',['搜救','失联','被困']),('medical',['医疗','受伤','伤员']),('engineering',['道路','塌方','清障'])]:
             if any(w in text for w in words):needs.append(kind)
@@ -207,7 +251,7 @@ class Service:
                     if type(value)!=int or not 0<=value<=100000:raise ValueError('人数无效')
                     self.state['casualties'][k]=value
             self.state['events'].append(dict(id=ident,minute=now,text=payload['text'],kind='confirmed'))
-            self.state['plan']=plan(self.state,**self.state['settings']);self.start_due();self.save();return self.view()
+            self.replan(['人工确认新灾情 '+ident]);self.save();return self.view()
     def whatif(self,blocked=None,additional=False):
         with self.lock:
             outputs=[]

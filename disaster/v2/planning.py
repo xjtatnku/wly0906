@@ -4,24 +4,25 @@ import networkx as nx
 from ortools.sat.python import cp_model
 
 def graph(state):
-    g=nx.Graph()
+    g=nx.DiGraph() if state.get('routing_mode')=='osm' else nx.Graph()
     g.add_nodes_from(n['id'] for n in state['nodes'])
     for e in state['roads']:
-        if not e['blocked']:g.add_edge(e['u'],e['v'],weight=e['minutes'])
+        if not e['blocked']:g.add_edge(e['u'],e['v'],weight=e['minutes'],road=e)
     return g
 
 def distance(g,a,b):
-    try:return int(nx.shortest_path_length(g,a,b,weight='weight'))
-    except nx.NetworkXNoPath:return None
+    cache=g.graph.setdefault('distance_cache',{})
+    if a not in cache:cache[a]=nx.single_source_dijkstra_path_length(g,a,weight='weight')
+    return int(cache[a][b]) if b in cache[a] else None
 
 def plan(state,horizon=60,stability=20,forecast=True,budget=4):
     now=state['minute'];g=graph(state);deadline=now+horizon
     tasks=[t for t in state['tasks'] if t['release']<=now and t['status']=='pending']
     # Forecast tasks are explicit provisional jobs, never ground-truth future incidents.
-    if forecast and state.get('forecast',{}).get('score',0)>=.7 and not any(r.get('active',{}).get('task')=='PREPOSITION' for r in state['resources']) and not all(any(r['type']==kind and r['node']=='N2' and not r.get('active') for r in state['resources']) for kind in ('rescue_team','drone')):
+    if forecast and state.get('forecast',{}).get('eligible_for_decision',True) and state.get('forecast',{}).get('score',0)>=.7 and not any(r.get('active',{}).get('task')=='PREPOSITION' for r in state['resources']) and not all(any(r['type']==kind and r['node']=='N2' and not r.get('active') for r in state['resources']) for kind in ('rescue_team','drone')):
         tasks=tasks+[dict(id='PREPOSITION',name='高风险区资源前置',node='N2',requirements={'rescue_team':1,'drone':1},
                          priority=3,release=now+5,deadline=deadline,duration=5,status='provisional')]
-    resources=state['resources'];m=cp_model.CpModel();chosen={};starts={};ends={};x={};travel_cost=[];change_cost=[];delays=[]
+    resources=[r for r in state['resources'] if r.get('status')!='failed'];m=cp_model.CpModel();chosen={};starts={};ends={};x={};travel_cost=[];change_cost=[];delays=[]
     previous={(a['resource'],a['task']) for a in state.get('plan',{}).get('assignments',[]) if a['depart']>=now}
     availability={}
     for r in resources:
@@ -107,6 +108,13 @@ def plan(state,horizon=60,stability=20,forecast=True,budget=4):
                 assignments.append(dict(resource=rid,task=t['id'],name=t['name'],type=r['type'],node=t['node'],depart=start-dist,
                     arrival=start,start=start,end=end,path=nx.shortest_path(g,node,t['node'],weight='weight'),travel=dist,provisional=t['id']=='PREPOSITION'))
                 free[rid]=(end,t['node'])
+    for a in assignments:
+        segments=[g[u][v]['road'] for u,v in zip(a['path'],a['path'][1:])]
+        a['segments']=[dict(road_id=e['id'],minutes=e['minutes']) for e in segments]
+        a['geometry']=[]
+        for u,v,e in zip(a['path'],a['path'][1:],segments):
+            coords=e.get('geometry')
+            if coords:a['geometry'].extend(coords if e['u']==u else list(reversed(coords)))
     result=dict(minute=now,horizon=horizon,status=solver.status_name(status),seconds=elapsed,assignments=assignments,
                 objective=solver.objective_value if assignments and not degraded else None,stability_weight=stability,degraded=degraded,
                 forecast_enabled=forecast,unplanned=[t['id'] for t in tasks if t['id'] not in {a['task'] for a in assignments}],
@@ -134,6 +142,7 @@ def validate(state,result):
     for a in result['assignments']:
         if a['resource'] not in resources:raise ValueError('未知资源')
         r=resources[a['resource']]
+        if r.get('status')=='failed':raise ValueError('故障资源不可派遣')
         if a['type']!=r['type'] or not a['depart']<=a['arrival']==a['start']<a['end']:raise ValueError('计划时间或资源类型不一致')
         if any(not g.has_edge(u,v) for u,v in zip(a['path'],a['path'][1:])):raise ValueError('路径已阻断')
         grouped.setdefault(a['resource'],[]).append(a)

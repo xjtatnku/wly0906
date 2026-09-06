@@ -1,0 +1,10 @@
+{
+  "date": "2026-09-06",
+  "baseline_commit": "6a71c41",
+  "unit_integration_tests": {"command": "python -m pytest -q", "passed": 43, "failed": 0},
+  "execution_experiments": {"command": "python -m disaster.v2.evaluation --seeds 20 --budget 0.25 --sensitivity", "rows": 168, "audit_interval_minutes": 1, "constraint_violations": 0, "routing": "simulated baseline"},
+  "forecast_multistep": {"rows": 48, "horizons_minutes": [5, 15, 30, 60], "station": "S01", "protocol": "fixed training; recursive common rolling origins"},
+  "browser": {"command": "python scripts/browser_v2.py", "page_errors": [], "flows": ["six pages", "import deduplication", "road closure", "what-if isolation", "event confirmation", "clock advance", "history", "1280px overflow", "OSM switch and geometry", "resource failure"]},
+  "osm": {"elements": 9115, "graph_nodes": 347, "directed_edges": 776, "manifest": "data/v2/osm/manifest.json"},
+  "not_validated": ["live model provider call", "live sensor source", "CMA/CLDAS ingestion", "real rescue effectiveness", "turn restrictions and operational navigation"]
+}

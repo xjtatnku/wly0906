@@ -1,7 +1,7 @@
 from pathlib import Path
 from datetime import datetime, timedelta, timezone
-import csv, math, random
-from sqlalchemy import create_engine, Column, Integer, String, Float, JSON, UniqueConstraint, select, delete
+import csv, math, random, hashlib, json
+from sqlalchemy import create_engine, Column, Integer, String, Float, JSON, UniqueConstraint, select, delete, inspect, text
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
 from disaster.core import ROOT, read_json, write_json
 
@@ -12,6 +12,9 @@ class Observation(Base):
     station_id=Column(String); minute=Column(Integer); timestamp=Column(String)
     type=Column(String); value=Column(Float); unit=Column(String); quality=Column(String)
     lat=Column(Float); lon=Column(Float); provenance=Column(String,default='simulated')
+    observed_at=Column(String); received_at=Column(String); received_minute=Column(Integer)
+    source_id=Column(String); source_seq=Column(String); quality_code=Column(String)
+    checksum=Column(String); version=Column(Integer,default=1)
     __table_args__=(UniqueConstraint('station_id','minute','type'),)
 class Record(Base):
     __tablename__='state_snapshots'
@@ -37,6 +40,10 @@ class Policy(Base):
 class Log(Base):
     __tablename__='decision_logs'
     id=Column(Integer,primary_key=True); minute=Column(Integer); payload=Column(JSON)
+class Receipt(Base):
+    __tablename__='source_receipts'
+    id=Column(Integer,primary_key=True); source_id=Column(String); minute=Column(Integer)
+    received_at=Column(String); accepted=Column(Integer); rejected=Column(Integer); duplicates=Column(Integer)
 
 KINDS={'rainfall':('降雨强度','mm/h',0,200),'water_level':('河道水位','m',0,30),
        'soil_moisture':('土壤含水率','%',0,100),'displacement':('边坡位移','mm',0,500)}
@@ -91,12 +98,22 @@ class Database:
         self.path=Path(path or ROOT/'data/v2/platform.sqlite')
         self.engine=create_engine(f'sqlite:///{self.path}',connect_args={'check_same_thread':False})
         Base.metadata.create_all(self.engine)
+        # Additive migration: retain existing snapshots/observations and unknown receipt times.
+        columns={c['name'] for c in inspect(self.engine).get_columns('sensor_observations')}
+        with self.engine.begin() as conn:
+            for name,kind in {'observed_at':'TEXT','received_at':'TEXT','received_minute':'INTEGER','source_id':'TEXT',
+                              'source_seq':'TEXT','quality_code':'TEXT','checksum':'TEXT','version':'INTEGER'}.items():
+                if name not in columns:conn.execute(text(f'ALTER TABLE sensor_observations ADD COLUMN {name} {kind}'))
+            conn.execute(text("UPDATE sensor_observations SET observed_at=timestamp, received_minute=minute, source_id='replay:'||station_id||':'||type, source_seq=CAST(minute AS TEXT), quality_code='LEGACY_VALID', version=1 WHERE observed_at IS NULL"))
         self.sessions=sessionmaker(self.engine,expire_on_commit=False)
 
-    def ingest(self, rows):
+    def ingest(self, rows, received_minute=None, replay=False):
         accepted=duplicates=0; errors=[]
+        received_at=datetime.now(timezone.utc).isoformat(); receipts={}
         with self.sessions.begin() as db:
             for index,row in enumerate(rows):
+                source_id=f"{'replay' if replay else 'import'}:{str(row.get('station_id','unknown'))[:64]}:{str(row.get('type','unknown'))[:32]}"
+                stats=receipts.setdefault(source_id,dict(accepted=0,rejected=0,duplicates=0))
                 try:
                     kind=row['type']; spec=KINDS[kind];value=float(row['value']);minute=int(row['minute'])
                     if isinstance(row['minute'],bool) or float(row['minute'])!=minute:raise ValueError('分钟必须为整数')
@@ -110,11 +127,19 @@ class Database:
                     expected=datetime(2024,8,3,9,tzinfo=timezone(timedelta(hours=8)))+timedelta(minutes=minute)
                     if observed_at.tzinfo is None or observed_at!=expected:raise ValueError('时间戳必须含时区并与模拟分钟一致')
                     exists=db.scalar(select(Observation.id).where(Observation.station_id==row['station_id'],Observation.minute==minute,Observation.type==kind))
-                    if exists:duplicates+=1;continue
+                    if exists:duplicates+=1;stats['duplicates']+=1;continue
+                    canonical=dict(station_id=row['station_id'],minute=minute,type=kind,value=value,unit=spec[1],lat=lat,lon=lon)
                     db.add(Observation(station_id=row['station_id'],minute=minute,timestamp=row['timestamp'],type=kind,value=value,unit=spec[1],
-                        quality='valid',lat=lat,lon=lon,provenance=row.get('provenance','user_import')))
-                    db.flush();accepted+=1
-                except (KeyError,ValueError,TypeError) as exc: errors.append({'row':index,'reason':str(exc)})
+                        quality='valid',lat=lat,lon=lon,provenance=row.get('provenance','user_import'),observed_at=observed_at.isoformat(),
+                        received_at=received_at,received_minute=minute if replay else (received_minute if received_minute is not None else 0),
+                        source_id=source_id,source_seq=str(minute),quality_code='VALID',version=1,
+                        checksum=hashlib.sha256(json.dumps(canonical,sort_keys=True).encode()).hexdigest()))
+                    db.flush();accepted+=1;stats['accepted']+=1
+                except (KeyError,ValueError,TypeError,OverflowError) as exc:
+                    stats['rejected']+=1;errors.append({'row':index,'reason':str(exc)})
+            if not replay:
+                for source,stats in receipts.items():
+                    db.add(Receipt(source_id=source,minute=received_minute or 0,received_at=received_at,**stats))
         return dict(accepted=accepted,duplicates=duplicates,rejected=len(errors),errors=errors[:30])
 
     def bootstrap(self):
@@ -122,14 +147,41 @@ class Database:
             exists=db.scalar(select(Observation.id).limit(1))
         if not exists:
             for path in (ROOT/'data/v2/raw').glob('*.csv'):
-                with path.open(encoding='utf-8') as f:self.ingest(list(csv.DictReader(f)))
+                with path.open(encoding='utf-8') as f:self.ingest(list(csv.DictReader(f)),replay=True)
         with self.sessions.begin() as db:
             for clause in read_json(ROOT/'data/policies.json'):db.merge(Policy(id=clause['id'],payload=clause))
 
     def observations(self,minute,limit=1440):
         with self.sessions() as db:
-            rows=db.scalars(select(Observation).where(Observation.minute<=minute,Observation.minute>=minute-limit).order_by(Observation.minute)).all()
+            rows=db.scalars(select(Observation).where(Observation.minute<=minute,Observation.received_minute<=minute,Observation.minute>=minute-limit).order_by(Observation.minute)).all()
             return [{c.name:getattr(r,c.name) for c in Observation.__table__.columns} for r in rows]
+
+    def source_health(self,minute):
+        rows=self.observations(minute,10080);streams={}
+        for station in ('S01','S02','S03'):
+            for kind in KINDS:streams[f'replay:{station}:{kind}']=[]
+        for row in rows:streams.setdefault(row['source_id'],[]).append(row)
+        with self.sessions() as db:
+            receipts=list(db.scalars(select(Receipt).where(Receipt.minute<=minute)))
+        for receipt in receipts:streams.setdefault(receipt.source_id,[])
+        result=[]
+        for source,items in sorted(streams.items()):
+            latest=max(items,key=lambda r:r['minute']) if items else None
+            delivered=[r for r in receipts if r.source_id==source]
+            heartbeat=max([r['received_minute'] for r in items]+[r.minute for r in delivered],default=None)
+            age=(minute-latest['minute'])*60 if latest else None
+            heartbeat_age=(minute-heartbeat)*60 if heartbeat is not None else None
+            status='OFFLINE' if heartbeat_age is None or heartbeat_age>1800 else 'STALE' if age is None or age>900 else 'DELAYED' if age>300 else 'FRESH'
+            rejected=sum(r.rejected for r in delivered);ok=len(items)+sum(r.duplicates for r in delivered)
+            expected=13;start=(minute//5)*5-60
+            present=len({r['minute'] for r in items if start<=r['minute']<=minute and r['minute']%5==0})
+            result.append(dict(source_id=source,observed_at=latest['observed_at'] if latest else None,
+                received_at=max([r['received_at'] for r in items if r['received_at']]+[r.received_at for r in delivered],default=None),
+                freshness_seconds=age,heartbeat_age_seconds=heartbeat_age,source_status=status,
+                quality_rate=ok/(ok+rejected) if ok+rejected else None,rejected=rejected,
+                missing_rate=max(0,1-present/expected),expected_samples=expected,observed_samples=present,
+                clock='simulation',delivery='预生成观测按模拟时刻释放' if source.startswith('replay:') else '人工/API导入，无硬件心跳'))
+        return result
 
     def load(self):
         with self.sessions() as db:
