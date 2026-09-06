@@ -1,0 +1,68 @@
+[
+  {
+    "id": "F01",
+    "event_time": "2024-08-03T03:30:00+08:00",
+    "published_at": "2024-08-04T21:39:21+08:00",
+    "source_id": "xinhua0804",
+    "url": "https://sc.news.cn/20240804/9aa6037c17e649599b9cee3283b7386f/c.html",
+    "summary": "约03:30，日地村发生山洪泥石流，雅康高速桥梁损毁，国道318线中断。",
+    "evidence_excerpt": "国道318线断道",
+    "source_locator": "第2段",
+    "values": {
+      "road_closed": [
+        "雅康高速",
+        "国道318线"
+      ]
+    },
+    "provenance": "public_fact",
+    "annotation": "结构化人工整理；汇总人数不能转换为队伍级调度事实"
+  },
+  {
+    "id": "F02",
+    "event_time": "2024-08-03T23:00:00+08:00",
+    "published_at": "2024-08-04T21:39:21+08:00",
+    "source_id": "xinhua0804",
+    "url": "https://sc.news.cn/20240804/9aa6037c17e649599b9cee3283b7386f/c.html",
+    "summary": "截至3日23时，灾区及周边累计转移安置939人。",
+    "evidence_excerpt": "939人",
+    "source_locator": "安置部分",
+    "values": {
+      "relocated_people": 939
+    },
+    "provenance": "public_fact",
+    "annotation": "结构化人工整理；汇总人数不能转换为队伍级调度事实"
+  },
+  {
+    "id": "F03",
+    "event_time": "2024-08-04T14:30:00+08:00",
+    "published_at": "2024-08-04T21:39:21+08:00",
+    "source_id": "xinhua0804",
+    "url": "https://sc.news.cn/20240804/9aa6037c17e649599b9cee3283b7386f/c.html",
+    "summary": "截至4日14:30，报道分列村庄6人遇难11人失联、坠车2人遇难8人失联，另有1人获救送医。",
+    "evidence_excerpt": "14时30分",
+    "source_locator": "伤亡统计段",
+    "values": {
+      "deaths": 8,
+      "missing": 19,
+      "vehicle_rescued": 1
+    },
+    "provenance": "public_fact",
+    "annotation": "结构化人工整理；汇总人数不能转换为队伍级调度事实"
+  },
+  {
+    "id": "F04",
+    "event_time": null,
+    "published_at": "2024-08-04T21:39:21+08:00",
+    "source_id": "xinhua0804",
+    "url": "https://sc.news.cn/20240804/9aa6037c17e649599b9cee3283b7386f/c.html",
+    "summary": "截至报道所称“目前”，累计投入救援人员1554人、车辆及工程装备311台套。确切统计时刻未披露。",
+    "evidence_excerpt": "1554人",
+    "source_locator": "搜救部分资源统计",
+    "values": {
+      "responders": 1554,
+      "vehicles_and_equipment": 311
+    },
+    "provenance": "public_fact",
+    "annotation": "结构化人工整理；汇总人数不能转换为队伍级调度事实"
+  }
+]

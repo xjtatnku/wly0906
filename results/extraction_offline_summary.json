@@ -1,0 +1,12 @@
+{
+  "mode": "offline",
+  "count": 20,
+  "node_accuracy": 1.0,
+  "capability_accuracy": 1.0,
+  "nonempty_valid_citation_coverage": 1.0,
+  "document_recall_at5": 1.0,
+  "gold_clause_recall_at5": 1.0,
+  "citation_precision_against_authored_gold": 0.675,
+  "semantic_entailment": "Clause IDs compared with agent-authored supporting-clause labels; not independent legal applicability or entailment review.",
+  "limitation": "20 agent-authored simple cases; no external annotator review. Offline scores are NOT model scores."
+}

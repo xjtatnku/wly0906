@@ -1,0 +1,14 @@
+{
+  "slides": 12,
+  "generated_from": [
+    "results/metrics.csv",
+    "results/extraction_offline_summary.json"
+  ],
+  "api_validation": "local fake provider only; real provider untested until credentials supplied",
+  "files": [
+    "技术报告.docx",
+    "技术报告.md",
+    "课题汇报.pptx",
+    "演示讲稿.md"
+  ]
+}

@@ -1,0 +1,640 @@
+{
+  "minute": 180,
+  "teams": [
+    {
+      "id": "R1",
+      "capability": "rescue",
+      "node": "N4",
+      "available_at": 0,
+      "task_id": null,
+      "path": [],
+      "edge_left": 0,
+      "service_end": null,
+      "status": "idle"
+    },
+    {
+      "id": "R2",
+      "capability": "rescue",
+      "node": "N4",
+      "available_at": 0,
+      "task_id": null,
+      "path": [],
+      "edge_left": 0,
+      "service_end": null,
+      "status": "idle"
+    },
+    {
+      "id": "R3",
+      "capability": "rescue",
+      "node": "N8",
+      "available_at": 0,
+      "task_id": null,
+      "path": [],
+      "edge_left": 0,
+      "service_end": null,
+      "status": "idle"
+    },
+    {
+      "id": "R4",
+      "capability": "medical",
+      "node": "N7",
+      "available_at": 0,
+      "task_id": null,
+      "path": [],
+      "edge_left": 0,
+      "service_end": null,
+      "status": "idle"
+    },
+    {
+      "id": "R5",
+      "capability": "medical",
+      "node": "N5",
+      "available_at": 0,
+      "task_id": null,
+      "path": [],
+      "edge_left": 0,
+      "service_end": null,
+      "status": "idle"
+    },
+    {
+      "id": "R6",
+      "capability": "engineering",
+      "node": "N3",
+      "available_at": 0,
+      "task_id": null,
+      "path": [],
+      "edge_left": 0,
+      "service_end": null,
+      "status": "idle"
+    },
+    {
+      "id": "R7",
+      "capability": "rescue",
+      "node": "N9",
+      "available_at": 40,
+      "task_id": null,
+      "path": [],
+      "edge_left": 0,
+      "service_end": null,
+      "status": "idle"
+    },
+    {
+      "id": "R8",
+      "capability": "engineering",
+      "node": "N9",
+      "available_at": 40,
+      "task_id": null,
+      "path": [],
+      "edge_left": 0,
+      "service_end": null,
+      "status": "idle"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T01",
+      "node": "N4",
+      "capability": "rescue",
+      "required": 2,
+      "priority": 1,
+      "deadline": 18,
+      "duration": 32,
+      "release": 0,
+      "description": "村落甲：人员搜救",
+      "completed": 2,
+      "citations": [],
+      "committed": 0,
+      "gap": 0
+    },
+    {
+      "id": "T02",
+      "node": "N5",
+      "capability": "medical",
+      "required": 1,
+      "priority": 1,
+      "deadline": 20,
+      "duration": 25,
+      "release": 0,
+      "description": "村落乙：医疗救治",
+      "completed": 1,
+      "citations": [],
+      "committed": 0,
+      "gap": 0
+    },
+    {
+      "id": "T03",
+      "node": "N8",
+      "capability": "rescue",
+      "required": 1,
+      "priority": 1,
+      "deadline": 25,
+      "duration": 17,
+      "release": 0,
+      "description": "上游点：人员搜救",
+      "completed": 1,
+      "citations": [],
+      "committed": 0,
+      "gap": 0
+    },
+    {
+      "id": "T04",
+      "node": "N3",
+      "capability": "engineering",
+      "required": 1,
+      "priority": 2,
+      "deadline": 35,
+      "duration": 17,
+      "release": 0,
+      "description": "道路交汇点：道路保障",
+      "completed": 1,
+      "citations": [],
+      "committed": 0,
+      "gap": 0
+    },
+    {
+      "id": "T05",
+      "node": "N7",
+      "capability": "medical",
+      "required": 1,
+      "priority": 2,
+      "deadline": 40,
+      "duration": 12,
+      "release": 0,
+      "description": "安置点：医疗救治",
+      "completed": 1,
+      "citations": [],
+      "committed": 0,
+      "gap": 0
+    },
+    {
+      "id": "T06",
+      "node": "N5",
+      "capability": "rescue",
+      "required": 1,
+      "priority": 2,
+      "deadline": 45,
+      "duration": 24,
+      "release": 0,
+      "description": "村落乙：人员搜救",
+      "completed": 0,
+      "citations": [],
+      "committed": 0,
+      "gap": 1
+    },
+    {
+      "id": "T07",
+      "node": "N4",
+      "capability": "engineering",
+      "required": 2,
+      "priority": 1,
+      "deadline": 30,
+      "duration": 17,
+      "release": 5,
+      "description": "村落甲：道路保障",
+      "completed": 0,
+      "citations": [],
+      "committed": 0,
+      "gap": 2
+    },
+    {
+      "id": "T08",
+      "node": "N8",
+      "capability": "medical",
+      "required": 1,
+      "priority": 1,
+      "deadline": 45,
+      "duration": 19,
+      "release": 5,
+      "description": "上游点：医疗救治",
+      "completed": 0,
+      "citations": [],
+      "committed": 0,
+      "gap": 1
+    },
+    {
+      "id": "T09",
+      "node": "N5",
+      "capability": "rescue",
+      "required": 2,
+      "priority": 1,
+      "deadline": 38,
+      "duration": 23,
+      "release": 20,
+      "description": "村落乙：人员搜救",
+      "completed": 0,
+      "citations": [],
+      "committed": 0,
+      "gap": 2
+    },
+    {
+      "id": "T10",
+      "node": "N4",
+      "capability": "medical",
+      "required": 1,
+      "priority": 1,
+      "deadline": 40,
+      "duration": 28,
+      "release": 20,
+      "description": "村落甲：医疗救治",
+      "completed": 0,
+      "citations": [],
+      "committed": 0,
+      "gap": 1
+    },
+    {
+      "id": "T11",
+      "node": "N8",
+      "capability": "engineering",
+      "required": 1,
+      "priority": 2,
+      "deadline": 65,
+      "duration": 26,
+      "release": 20,
+      "description": "上游点：道路保障",
+      "completed": 0,
+      "citations": [],
+      "committed": 0,
+      "gap": 1
+    },
+    {
+      "id": "T12",
+      "node": "N7",
+      "capability": "rescue",
+      "required": 1,
+      "priority": 2,
+      "deadline": 75,
+      "duration": 15,
+      "release": 20,
+      "description": "安置点：人员搜救",
+      "completed": 0,
+      "citations": [],
+      "committed": 0,
+      "gap": 1
+    }
+  ],
+  "logs": [
+    {
+      "minute": 0,
+      "kind": "event",
+      "event_id": "E0",
+      "text": "初始灾情：村落与上游出现搜救及医疗需求。",
+      "new_tasks": [
+        "T01",
+        "T02",
+        "T03",
+        "T04",
+        "T05",
+        "T06"
+      ]
+    },
+    {
+      "minute": 0,
+      "kind": "dispatch",
+      "team": "R1",
+      "task": "T01",
+      "path": [
+        "N0",
+        "N3",
+        "N4"
+      ],
+      "travel": 13,
+      "arrival": 13,
+      "late": 0
+    },
+    {
+      "minute": 0,
+      "kind": "dispatch",
+      "team": "R2",
+      "task": "T01",
+      "path": [
+        "N1",
+        "N3",
+        "N4"
+      ],
+      "travel": 13,
+      "arrival": 13,
+      "late": 0
+    },
+    {
+      "minute": 0,
+      "kind": "dispatch",
+      "team": "R3",
+      "task": "T03",
+      "path": [
+        "N2",
+        "N3",
+        "N4",
+        "N8"
+      ],
+      "travel": 23,
+      "arrival": 23,
+      "late": 0
+    },
+    {
+      "minute": 0,
+      "kind": "dispatch",
+      "team": "R4",
+      "task": "T05",
+      "path": [
+        "N6",
+        "N7"
+      ],
+      "travel": 9,
+      "arrival": 9,
+      "late": 0
+    },
+    {
+      "minute": 0,
+      "kind": "dispatch",
+      "team": "R5",
+      "task": "T02",
+      "path": [
+        "N0",
+        "N3",
+        "N5"
+      ],
+      "travel": 18,
+      "arrival": 18,
+      "late": 0
+    },
+    {
+      "minute": 0,
+      "kind": "dispatch",
+      "team": "R6",
+      "task": "T04",
+      "path": [
+        "N1",
+        "N3"
+      ],
+      "travel": 6,
+      "arrival": 6,
+      "late": 0
+    },
+    {
+      "minute": 5,
+      "kind": "event",
+      "event_id": "E1",
+      "text": "道路交汇点至村落甲道路中断，出现工程与医疗需求。",
+      "new_tasks": [
+        "T07",
+        "T08"
+      ]
+    },
+    {
+      "minute": 5,
+      "kind": "reroute",
+      "team": "R1",
+      "task": "T01",
+      "path": [
+        "N0",
+        "N3",
+        "N5",
+        "N4"
+      ]
+    },
+    {
+      "minute": 5,
+      "kind": "reroute",
+      "team": "R2",
+      "task": "T01",
+      "path": [
+        "N1",
+        "N2",
+        "N4"
+      ]
+    },
+    {
+      "minute": 5,
+      "kind": "reroute",
+      "team": "R3",
+      "task": "T03",
+      "path": [
+        "N3",
+        "N5",
+        "N8"
+      ]
+    },
+    {
+      "minute": 6,
+      "kind": "arrival",
+      "team": "R6",
+      "task": "T04"
+    },
+    {
+      "minute": 9,
+      "kind": "arrival",
+      "team": "R4",
+      "task": "T05"
+    },
+    {
+      "minute": 18,
+      "kind": "arrival",
+      "team": "R5",
+      "task": "T02"
+    },
+    {
+      "minute": 20,
+      "kind": "event",
+      "event_id": "E2",
+      "text": "村落乙新增紧急搜救需求，村落甲需要医疗支援。",
+      "new_tasks": [
+        "T09",
+        "T10",
+        "T11",
+        "T12"
+      ]
+    },
+    {
+      "minute": 21,
+      "kind": "complete",
+      "team": "R4",
+      "task": "T05"
+    },
+    {
+      "minute": 23,
+      "kind": "complete",
+      "team": "R6",
+      "task": "T04"
+    },
+    {
+      "minute": 24,
+      "kind": "arrival",
+      "team": "R3",
+      "task": "T03"
+    },
+    {
+      "minute": 25,
+      "kind": "arrival",
+      "team": "R2",
+      "task": "T01"
+    },
+    {
+      "minute": 28,
+      "kind": "arrival",
+      "team": "R1",
+      "task": "T01"
+    },
+    {
+      "minute": 40,
+      "kind": "event",
+      "event_id": "E3",
+      "text": "增援入口新增一支搜救队、一支工程队。",
+      "new_tasks": []
+    },
+    {
+      "minute": 41,
+      "kind": "complete",
+      "team": "R3",
+      "task": "T03"
+    },
+    {
+      "minute": 43,
+      "kind": "complete",
+      "team": "R5",
+      "task": "T02"
+    },
+    {
+      "minute": 57,
+      "kind": "complete",
+      "team": "R2",
+      "task": "T01"
+    },
+    {
+      "minute": 60,
+      "kind": "complete",
+      "team": "R1",
+      "task": "T01"
+    }
+  ],
+  "arrivals": [
+    {
+      "team": "R6",
+      "task": "T04",
+      "minute": 6,
+      "response": 6,
+      "late": 0
+    },
+    {
+      "team": "R4",
+      "task": "T05",
+      "minute": 9,
+      "response": 9,
+      "late": 0
+    },
+    {
+      "team": "R5",
+      "task": "T02",
+      "minute": 18,
+      "response": 18,
+      "late": 0
+    },
+    {
+      "team": "R3",
+      "task": "T03",
+      "minute": 24,
+      "response": 24,
+      "late": 0
+    },
+    {
+      "team": "R2",
+      "task": "T01",
+      "minute": 25,
+      "response": 25,
+      "late": 7
+    },
+    {
+      "team": "R1",
+      "task": "T01",
+      "minute": 28,
+      "response": 28,
+      "late": 10
+    }
+  ],
+  "decisions": [
+    {
+      "minute": 0,
+      "method": "static",
+      "status": "OPTIMAL",
+      "assignments": [
+        {
+          "team": "R1",
+          "task": "T01",
+          "path": [
+            "N0",
+            "N3",
+            "N4"
+          ],
+          "travel": 13,
+          "arrival": 13,
+          "late": 0
+        },
+        {
+          "team": "R2",
+          "task": "T01",
+          "path": [
+            "N1",
+            "N3",
+            "N4"
+          ],
+          "travel": 13,
+          "arrival": 13,
+          "late": 0
+        },
+        {
+          "team": "R3",
+          "task": "T03",
+          "path": [
+            "N2",
+            "N3",
+            "N4",
+            "N8"
+          ],
+          "travel": 23,
+          "arrival": 23,
+          "late": 0
+        },
+        {
+          "team": "R4",
+          "task": "T05",
+          "path": [
+            "N6",
+            "N7"
+          ],
+          "travel": 9,
+          "arrival": 9,
+          "late": 0
+        },
+        {
+          "team": "R5",
+          "task": "T02",
+          "path": [
+            "N0",
+            "N3",
+            "N5"
+          ],
+          "travel": 18,
+          "arrival": 18,
+          "late": 0
+        },
+        {
+          "team": "R6",
+          "task": "T04",
+          "path": [
+            "N1",
+            "N3"
+          ],
+          "travel": 6,
+          "arrival": 6,
+          "late": 0
+        }
+      ],
+      "optimal_levels": [
+        -4,
+        -2,
+        0,
+        82
+      ],
+      "seconds": 0.030774099999689497
+    }
+  ]
+}

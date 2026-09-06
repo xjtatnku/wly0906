@@ -1,0 +1,48 @@
+[
+  {
+    "id": "national2024",
+    "title": "国家自然灾害救助应急预案",
+    "version": "国办函〔2024〕11号",
+    "published_at": "2024-02-05T18:05:00+08:00",
+    "issued_at": "2024-01-20",
+    "kind": "policy",
+    "url": "https://yjgl.xinjiang.gov.cn/xjyjgl/c112886/202402/c0f2c9158adf492dab74fdcf5f2fc02f.shtml",
+    "retrieved_at": "2026-09-06",
+    "provenance": "public_source",
+    "snapshot_status": "全文下载受网络TLS限制；本地保存已核对节选与来源，不声称完整镜像"
+  },
+  {
+    "id": "sichuan2024",
+    "title": "四川省突发地质灾害应急预案（2024年度修订）",
+    "version": "川地灾指发〔2024〕2号",
+    "published_at": "2024-05-28T23:59:59+08:00",
+    "issued_at": "2024-05-23",
+    "kind": "policy",
+    "url": "https://dnr.sc.gov.cn/scdnr/scgsgg/2024/5/28/0da2f9d9af9d40b6a912749609be74f2/files/《四川省突发地质灾害应急预案（2024年度修订）》.pdf",
+    "retrieved_at": "2026-09-06",
+    "provenance": "public_source",
+    "snapshot_status": "全文下载受网络TLS限制；本地保存已核对节选与来源，不声称完整镜像",
+    "publication_precision": "day; conservatively end-of-day"
+  },
+  {
+    "id": "xinhua0804",
+    "title": "新华视点｜全力以赴抢险——四川康定山洪泥石流灾害救援进行时",
+    "published_at": "2024-08-04T21:39:21+08:00",
+    "publication_precision": "second",
+    "kind": "case",
+    "url": "https://sc.news.cn/20240804/9aa6037c17e649599b9cee3283b7386f/c.html",
+    "retrieved_at": "2026-09-06",
+    "provenance": "public_source",
+    "snapshot_status": "全文下载受网络TLS限制；本地保存已核对节选与来源，不声称完整镜像"
+  },
+  {
+    "id": "kangding0804",
+    "title": "最新！康定姑咱“8·03”特大山洪泥石流灾害抢险救援有序推进",
+    "published_at": "2024-08-04T20:24:51+08:00",
+    "kind": "case",
+    "url": "https://www.kangding.gov.cn/xsl_jyqk/article/599752",
+    "retrieved_at": "2026-09-06",
+    "provenance": "public_source",
+    "snapshot_status": "全文下载受网络TLS限制；本地保存已核对节选与来源，不声称完整镜像"
+  }
+]

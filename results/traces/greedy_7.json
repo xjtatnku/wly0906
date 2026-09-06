@@ -1,0 +1,1296 @@
+{
+  "minute": 180,
+  "teams": [
+    {
+      "id": "R1",
+      "capability": "rescue",
+      "node": "N8",
+      "available_at": 0,
+      "task_id": null,
+      "path": [],
+      "edge_left": 0,
+      "service_end": null,
+      "status": "idle"
+    },
+    {
+      "id": "R2",
+      "capability": "rescue",
+      "node": "N5",
+      "available_at": 0,
+      "task_id": null,
+      "path": [],
+      "edge_left": 0,
+      "service_end": null,
+      "status": "idle"
+    },
+    {
+      "id": "R3",
+      "capability": "rescue",
+      "node": "N7",
+      "available_at": 0,
+      "task_id": null,
+      "path": [],
+      "edge_left": 0,
+      "service_end": null,
+      "status": "idle"
+    },
+    {
+      "id": "R4",
+      "capability": "medical",
+      "node": "N4",
+      "available_at": 0,
+      "task_id": null,
+      "path": [],
+      "edge_left": 0,
+      "service_end": null,
+      "status": "idle"
+    },
+    {
+      "id": "R5",
+      "capability": "medical",
+      "node": "N7",
+      "available_at": 0,
+      "task_id": null,
+      "path": [],
+      "edge_left": 0,
+      "service_end": null,
+      "status": "idle"
+    },
+    {
+      "id": "R6",
+      "capability": "engineering",
+      "node": "N8",
+      "available_at": 0,
+      "task_id": null,
+      "path": [],
+      "edge_left": 0,
+      "service_end": null,
+      "status": "idle"
+    },
+    {
+      "id": "R7",
+      "capability": "rescue",
+      "node": "N7",
+      "available_at": 40,
+      "task_id": null,
+      "path": [],
+      "edge_left": 0,
+      "service_end": null,
+      "status": "idle"
+    },
+    {
+      "id": "R8",
+      "capability": "engineering",
+      "node": "N8",
+      "available_at": 40,
+      "task_id": null,
+      "path": [],
+      "edge_left": 0,
+      "service_end": null,
+      "status": "idle"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T01",
+      "node": "N4",
+      "capability": "rescue",
+      "required": 1,
+      "priority": 1,
+      "deadline": 18,
+      "duration": 29,
+      "release": 0,
+      "description": "村落甲：人员搜救",
+      "completed": 1,
+      "citations": [],
+      "committed": 0,
+      "gap": 0
+    },
+    {
+      "id": "T02",
+      "node": "N5",
+      "capability": "medical",
+      "required": 2,
+      "priority": 1,
+      "deadline": 20,
+      "duration": 23,
+      "release": 0,
+      "description": "村落乙：医疗救治",
+      "completed": 2,
+      "citations": [],
+      "committed": 0,
+      "gap": 0
+    },
+    {
+      "id": "T03",
+      "node": "N8",
+      "capability": "rescue",
+      "required": 1,
+      "priority": 1,
+      "deadline": 25,
+      "duration": 16,
+      "release": 0,
+      "description": "上游点：人员搜救",
+      "completed": 1,
+      "citations": [],
+      "committed": 0,
+      "gap": 0
+    },
+    {
+      "id": "T04",
+      "node": "N3",
+      "capability": "engineering",
+      "required": 1,
+      "priority": 2,
+      "deadline": 35,
+      "duration": 12,
+      "release": 0,
+      "description": "道路交汇点：道路保障",
+      "completed": 1,
+      "citations": [],
+      "committed": 0,
+      "gap": 0
+    },
+    {
+      "id": "T05",
+      "node": "N7",
+      "capability": "medical",
+      "required": 1,
+      "priority": 2,
+      "deadline": 40,
+      "duration": 14,
+      "release": 0,
+      "description": "安置点：医疗救治",
+      "completed": 1,
+      "citations": [],
+      "committed": 0,
+      "gap": 0
+    },
+    {
+      "id": "T06",
+      "node": "N5",
+      "capability": "rescue",
+      "required": 1,
+      "priority": 2,
+      "deadline": 45,
+      "duration": 22,
+      "release": 0,
+      "description": "村落乙：人员搜救",
+      "completed": 1,
+      "citations": [],
+      "committed": 0,
+      "gap": 0
+    },
+    {
+      "id": "T07",
+      "node": "N4",
+      "capability": "engineering",
+      "required": 1,
+      "priority": 1,
+      "deadline": 30,
+      "duration": 22,
+      "release": 5,
+      "description": "村落甲：道路保障",
+      "completed": 1,
+      "citations": [],
+      "committed": 0,
+      "gap": 0
+    },
+    {
+      "id": "T08",
+      "node": "N8",
+      "capability": "medical",
+      "required": 1,
+      "priority": 1,
+      "deadline": 45,
+      "duration": 16,
+      "release": 5,
+      "description": "上游点：医疗救治",
+      "completed": 1,
+      "citations": [],
+      "committed": 0,
+      "gap": 0
+    },
+    {
+      "id": "T09",
+      "node": "N5",
+      "capability": "rescue",
+      "required": 1,
+      "priority": 1,
+      "deadline": 38,
+      "duration": 30,
+      "release": 20,
+      "description": "村落乙：人员搜救",
+      "completed": 1,
+      "citations": [],
+      "committed": 0,
+      "gap": 0
+    },
+    {
+      "id": "T10",
+      "node": "N4",
+      "capability": "medical",
+      "required": 1,
+      "priority": 1,
+      "deadline": 40,
+      "duration": 28,
+      "release": 20,
+      "description": "村落甲：医疗救治",
+      "completed": 1,
+      "citations": [],
+      "committed": 0,
+      "gap": 0
+    },
+    {
+      "id": "T11",
+      "node": "N8",
+      "capability": "engineering",
+      "required": 2,
+      "priority": 2,
+      "deadline": 65,
+      "duration": 21,
+      "release": 20,
+      "description": "上游点：道路保障",
+      "completed": 2,
+      "citations": [],
+      "committed": 0,
+      "gap": 0
+    },
+    {
+      "id": "T12",
+      "node": "N7",
+      "capability": "rescue",
+      "required": 2,
+      "priority": 2,
+      "deadline": 75,
+      "duration": 19,
+      "release": 20,
+      "description": "安置点：人员搜救",
+      "completed": 2,
+      "citations": [],
+      "committed": 0,
+      "gap": 0
+    }
+  ],
+  "logs": [
+    {
+      "minute": 0,
+      "kind": "event",
+      "event_id": "E0",
+      "text": "初始灾情：村落与上游出现搜救及医疗需求。",
+      "new_tasks": [
+        "T01",
+        "T02",
+        "T03",
+        "T04",
+        "T05",
+        "T06"
+      ]
+    },
+    {
+      "minute": 0,
+      "kind": "dispatch",
+      "team": "R3",
+      "task": "T01",
+      "path": [
+        "N2",
+        "N4"
+      ],
+      "travel": 8,
+      "arrival": 8,
+      "late": 0
+    },
+    {
+      "minute": 0,
+      "kind": "dispatch",
+      "team": "R4",
+      "task": "T02",
+      "path": [
+        "N6",
+        "N3",
+        "N5"
+      ],
+      "travel": 14,
+      "arrival": 14,
+      "late": 0
+    },
+    {
+      "minute": 0,
+      "kind": "dispatch",
+      "team": "R5",
+      "task": "T02",
+      "path": [
+        "N0",
+        "N3",
+        "N5"
+      ],
+      "travel": 15,
+      "arrival": 15,
+      "late": 0
+    },
+    {
+      "minute": 0,
+      "kind": "dispatch",
+      "team": "R1",
+      "task": "T03",
+      "path": [
+        "N0",
+        "N3",
+        "N4",
+        "N8"
+      ],
+      "travel": 23,
+      "arrival": 23,
+      "late": 0
+    },
+    {
+      "minute": 0,
+      "kind": "dispatch",
+      "team": "R6",
+      "task": "T04",
+      "path": [
+        "N1",
+        "N3"
+      ],
+      "travel": 8,
+      "arrival": 8,
+      "late": 0
+    },
+    {
+      "minute": 0,
+      "kind": "dispatch",
+      "team": "R2",
+      "task": "T06",
+      "path": [
+        "N1",
+        "N3",
+        "N5"
+      ],
+      "travel": 16,
+      "arrival": 16,
+      "late": 0
+    },
+    {
+      "minute": 5,
+      "kind": "event",
+      "event_id": "E1",
+      "text": "道路交汇点至村落甲道路中断，出现工程与医疗需求。",
+      "new_tasks": [
+        "T07",
+        "T08"
+      ]
+    },
+    {
+      "minute": 5,
+      "kind": "reroute",
+      "team": "R1",
+      "task": "T03",
+      "path": [
+        "N0",
+        "N3",
+        "N5",
+        "N8"
+      ]
+    },
+    {
+      "minute": 8,
+      "kind": "arrival",
+      "team": "R3",
+      "task": "T01"
+    },
+    {
+      "minute": 8,
+      "kind": "arrival",
+      "team": "R6",
+      "task": "T04"
+    },
+    {
+      "minute": 14,
+      "kind": "arrival",
+      "team": "R4",
+      "task": "T02"
+    },
+    {
+      "minute": 15,
+      "kind": "arrival",
+      "team": "R5",
+      "task": "T02"
+    },
+    {
+      "minute": 16,
+      "kind": "arrival",
+      "team": "R2",
+      "task": "T06"
+    },
+    {
+      "minute": 20,
+      "kind": "complete",
+      "team": "R6",
+      "task": "T04"
+    },
+    {
+      "minute": 20,
+      "kind": "event",
+      "event_id": "E2",
+      "text": "村落乙新增紧急搜救需求，村落甲需要医疗支援。",
+      "new_tasks": [
+        "T09",
+        "T10",
+        "T11",
+        "T12"
+      ]
+    },
+    {
+      "minute": 20,
+      "kind": "dispatch",
+      "team": "R6",
+      "task": "T07",
+      "path": [
+        "N3",
+        "N5",
+        "N4"
+      ],
+      "travel": 12,
+      "arrival": 32,
+      "late": 2
+    },
+    {
+      "minute": 30,
+      "kind": "arrival",
+      "team": "R1",
+      "task": "T03"
+    },
+    {
+      "minute": 32,
+      "kind": "arrival",
+      "team": "R6",
+      "task": "T07"
+    },
+    {
+      "minute": 37,
+      "kind": "complete",
+      "team": "R3",
+      "task": "T01"
+    },
+    {
+      "minute": 37,
+      "kind": "complete",
+      "team": "R4",
+      "task": "T02"
+    },
+    {
+      "minute": 38,
+      "kind": "complete",
+      "team": "R2",
+      "task": "T06"
+    },
+    {
+      "minute": 38,
+      "kind": "complete",
+      "team": "R5",
+      "task": "T02"
+    },
+    {
+      "minute": 40,
+      "kind": "event",
+      "event_id": "E3",
+      "text": "增援入口新增一支搜救队、一支工程队。",
+      "new_tasks": []
+    },
+    {
+      "minute": 40,
+      "kind": "dispatch",
+      "team": "R2",
+      "task": "T09",
+      "path": [
+        "N5"
+      ],
+      "travel": 0,
+      "arrival": 40,
+      "late": 2
+    },
+    {
+      "minute": 40,
+      "kind": "arrival",
+      "team": "R2",
+      "task": "T09"
+    },
+    {
+      "minute": 40,
+      "kind": "dispatch",
+      "team": "R4",
+      "task": "T10",
+      "path": [
+        "N5",
+        "N4"
+      ],
+      "travel": 4,
+      "arrival": 44,
+      "late": 4
+    },
+    {
+      "minute": 40,
+      "kind": "dispatch",
+      "team": "R5",
+      "task": "T08",
+      "path": [
+        "N5",
+        "N8"
+      ],
+      "travel": 10,
+      "arrival": 50,
+      "late": 5
+    },
+    {
+      "minute": 40,
+      "kind": "dispatch",
+      "team": "R3",
+      "task": "T12",
+      "path": [
+        "N4",
+        "N5",
+        "N7"
+      ],
+      "travel": 10,
+      "arrival": 50,
+      "late": 0
+    },
+    {
+      "minute": 40,
+      "kind": "dispatch",
+      "team": "R7",
+      "task": "T12",
+      "path": [
+        "N9",
+        "N6",
+        "N7"
+      ],
+      "travel": 15,
+      "arrival": 55,
+      "late": 0
+    },
+    {
+      "minute": 40,
+      "kind": "dispatch",
+      "team": "R8",
+      "task": "T11",
+      "path": [
+        "N9",
+        "N0",
+        "N3",
+        "N5",
+        "N8"
+      ],
+      "travel": 31,
+      "arrival": 71,
+      "late": 6
+    },
+    {
+      "minute": 44,
+      "kind": "arrival",
+      "team": "R4",
+      "task": "T10"
+    },
+    {
+      "minute": 46,
+      "kind": "complete",
+      "team": "R1",
+      "task": "T03"
+    },
+    {
+      "minute": 50,
+      "kind": "arrival",
+      "team": "R3",
+      "task": "T12"
+    },
+    {
+      "minute": 50,
+      "kind": "arrival",
+      "team": "R5",
+      "task": "T08"
+    },
+    {
+      "minute": 54,
+      "kind": "complete",
+      "team": "R6",
+      "task": "T07"
+    },
+    {
+      "minute": 55,
+      "kind": "arrival",
+      "team": "R7",
+      "task": "T12"
+    },
+    {
+      "minute": 55,
+      "kind": "dispatch",
+      "team": "R6",
+      "task": "T11",
+      "path": [
+        "N4",
+        "N8"
+      ],
+      "travel": 10,
+      "arrival": 65,
+      "late": 0
+    },
+    {
+      "minute": 65,
+      "kind": "arrival",
+      "team": "R6",
+      "task": "T11"
+    },
+    {
+      "minute": 66,
+      "kind": "complete",
+      "team": "R5",
+      "task": "T08"
+    },
+    {
+      "minute": 69,
+      "kind": "complete",
+      "team": "R3",
+      "task": "T12"
+    },
+    {
+      "minute": 70,
+      "kind": "complete",
+      "team": "R2",
+      "task": "T09"
+    },
+    {
+      "minute": 70,
+      "kind": "dispatch",
+      "team": "R5",
+      "task": "T05",
+      "path": [
+        "N8",
+        "N5",
+        "N7"
+      ],
+      "travel": 16,
+      "arrival": 86,
+      "late": 46
+    },
+    {
+      "minute": 71,
+      "kind": "arrival",
+      "team": "R8",
+      "task": "T11"
+    },
+    {
+      "minute": 72,
+      "kind": "complete",
+      "team": "R4",
+      "task": "T10"
+    },
+    {
+      "minute": 74,
+      "kind": "complete",
+      "team": "R7",
+      "task": "T12"
+    },
+    {
+      "minute": 86,
+      "kind": "arrival",
+      "team": "R5",
+      "task": "T05"
+    },
+    {
+      "minute": 86,
+      "kind": "complete",
+      "team": "R6",
+      "task": "T11"
+    },
+    {
+      "minute": 92,
+      "kind": "complete",
+      "team": "R8",
+      "task": "T11"
+    },
+    {
+      "minute": 100,
+      "kind": "complete",
+      "team": "R5",
+      "task": "T05"
+    }
+  ],
+  "arrivals": [
+    {
+      "team": "R3",
+      "task": "T01",
+      "minute": 8,
+      "response": 8,
+      "late": 0
+    },
+    {
+      "team": "R6",
+      "task": "T04",
+      "minute": 8,
+      "response": 8,
+      "late": 0
+    },
+    {
+      "team": "R4",
+      "task": "T02",
+      "minute": 14,
+      "response": 14,
+      "late": 0
+    },
+    {
+      "team": "R5",
+      "task": "T02",
+      "minute": 15,
+      "response": 15,
+      "late": 0
+    },
+    {
+      "team": "R2",
+      "task": "T06",
+      "minute": 16,
+      "response": 16,
+      "late": 0
+    },
+    {
+      "team": "R1",
+      "task": "T03",
+      "minute": 30,
+      "response": 30,
+      "late": 5
+    },
+    {
+      "team": "R6",
+      "task": "T07",
+      "minute": 32,
+      "response": 27,
+      "late": 2
+    },
+    {
+      "team": "R2",
+      "task": "T09",
+      "minute": 40,
+      "response": 20,
+      "late": 2
+    },
+    {
+      "team": "R4",
+      "task": "T10",
+      "minute": 44,
+      "response": 24,
+      "late": 4
+    },
+    {
+      "team": "R3",
+      "task": "T12",
+      "minute": 50,
+      "response": 30,
+      "late": 0
+    },
+    {
+      "team": "R5",
+      "task": "T08",
+      "minute": 50,
+      "response": 45,
+      "late": 5
+    },
+    {
+      "team": "R7",
+      "task": "T12",
+      "minute": 55,
+      "response": 35,
+      "late": 0
+    },
+    {
+      "team": "R6",
+      "task": "T11",
+      "minute": 65,
+      "response": 45,
+      "late": 0
+    },
+    {
+      "team": "R8",
+      "task": "T11",
+      "minute": 71,
+      "response": 51,
+      "late": 6
+    },
+    {
+      "team": "R5",
+      "task": "T05",
+      "minute": 86,
+      "response": 86,
+      "late": 46
+    }
+  ],
+  "decisions": [
+    {
+      "minute": 0,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [
+        {
+          "team": "R3",
+          "task": "T01",
+          "path": [
+            "N2",
+            "N4"
+          ],
+          "travel": 8,
+          "arrival": 8,
+          "late": 0
+        },
+        {
+          "team": "R4",
+          "task": "T02",
+          "path": [
+            "N6",
+            "N3",
+            "N5"
+          ],
+          "travel": 14,
+          "arrival": 14,
+          "late": 0
+        },
+        {
+          "team": "R5",
+          "task": "T02",
+          "path": [
+            "N0",
+            "N3",
+            "N5"
+          ],
+          "travel": 15,
+          "arrival": 15,
+          "late": 0
+        },
+        {
+          "team": "R1",
+          "task": "T03",
+          "path": [
+            "N0",
+            "N3",
+            "N4",
+            "N8"
+          ],
+          "travel": 23,
+          "arrival": 23,
+          "late": 0
+        },
+        {
+          "team": "R6",
+          "task": "T04",
+          "path": [
+            "N1",
+            "N3"
+          ],
+          "travel": 8,
+          "arrival": 8,
+          "late": 0
+        },
+        {
+          "team": "R2",
+          "task": "T06",
+          "path": [
+            "N1",
+            "N3",
+            "N5"
+          ],
+          "travel": 16,
+          "arrival": 16,
+          "late": 0
+        }
+      ],
+      "optimal_levels": [],
+      "seconds": 0.0062347000020963605
+    },
+    {
+      "minute": 5,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 1.1099997209385037e-05
+    },
+    {
+      "minute": 10,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 1.729999712551944e-05
+    },
+    {
+      "minute": 15,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 1.7700000171316788e-05
+    },
+    {
+      "minute": 20,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [
+        {
+          "team": "R6",
+          "task": "T07",
+          "path": [
+            "N3",
+            "N5",
+            "N4"
+          ],
+          "travel": 12,
+          "arrival": 32,
+          "late": 2
+        }
+      ],
+      "optimal_levels": [],
+      "seconds": 0.0008011999998416286
+    },
+    {
+      "minute": 25,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 1.7000002117129043e-05
+    },
+    {
+      "minute": 30,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 1.68999977177009e-05
+    },
+    {
+      "minute": 35,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 1.2299999070819467e-05
+    },
+    {
+      "minute": 40,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [
+        {
+          "team": "R2",
+          "task": "T09",
+          "path": [
+            "N5"
+          ],
+          "travel": 0,
+          "arrival": 40,
+          "late": 2
+        },
+        {
+          "team": "R4",
+          "task": "T10",
+          "path": [
+            "N5",
+            "N4"
+          ],
+          "travel": 4,
+          "arrival": 44,
+          "late": 4
+        },
+        {
+          "team": "R5",
+          "task": "T08",
+          "path": [
+            "N5",
+            "N8"
+          ],
+          "travel": 10,
+          "arrival": 50,
+          "late": 5
+        },
+        {
+          "team": "R3",
+          "task": "T12",
+          "path": [
+            "N4",
+            "N5",
+            "N7"
+          ],
+          "travel": 10,
+          "arrival": 50,
+          "late": 0
+        },
+        {
+          "team": "R7",
+          "task": "T12",
+          "path": [
+            "N9",
+            "N6",
+            "N7"
+          ],
+          "travel": 15,
+          "arrival": 55,
+          "late": 0
+        },
+        {
+          "team": "R8",
+          "task": "T11",
+          "path": [
+            "N9",
+            "N0",
+            "N3",
+            "N5",
+            "N8"
+          ],
+          "travel": 31,
+          "arrival": 71,
+          "late": 6
+        }
+      ],
+      "optimal_levels": [],
+      "seconds": 0.002964899998914916
+    },
+    {
+      "minute": 45,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 1.5699999494245276e-05
+    },
+    {
+      "minute": 50,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 5.989999772282317e-05
+    },
+    {
+      "minute": 55,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [
+        {
+          "team": "R6",
+          "task": "T11",
+          "path": [
+            "N4",
+            "N8"
+          ],
+          "travel": 10,
+          "arrival": 65,
+          "late": 0
+        }
+      ],
+      "optimal_levels": [],
+      "seconds": 0.0003462000022409484
+    },
+    {
+      "minute": 60,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 6.500000017695129e-05
+    },
+    {
+      "minute": 65,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 7.120000009308569e-05
+    },
+    {
+      "minute": 70,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [
+        {
+          "team": "R5",
+          "task": "T05",
+          "path": [
+            "N8",
+            "N5",
+            "N7"
+          ],
+          "travel": 16,
+          "arrival": 86,
+          "late": 46
+        }
+      ],
+      "optimal_levels": [],
+      "seconds": 0.0007036999995762017
+    },
+    {
+      "minute": 75,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 0.0002406999992672354
+    },
+    {
+      "minute": 80,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 0.00028000000020256266
+    },
+    {
+      "minute": 85,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 0.0002314000012120232
+    },
+    {
+      "minute": 90,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 0.00027600000248639844
+    },
+    {
+      "minute": 95,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 0.0003132999991066754
+    },
+    {
+      "minute": 100,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 0.00039670000114711
+    },
+    {
+      "minute": 105,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 0.00035769999885815196
+    },
+    {
+      "minute": 110,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 0.00035679999928106554
+    },
+    {
+      "minute": 115,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 0.0003577999996196013
+    },
+    {
+      "minute": 120,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 0.0003656999979284592
+    },
+    {
+      "minute": 125,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 0.0003659999965748284
+    },
+    {
+      "minute": 130,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 0.00036389999877428636
+    },
+    {
+      "minute": 135,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 0.00040470000021741726
+    },
+    {
+      "minute": 140,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 0.0003643000018200837
+    },
+    {
+      "minute": 145,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 0.00036159999945084564
+    },
+    {
+      "minute": 150,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 0.0008841999988362659
+    },
+    {
+      "minute": 155,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 0.00039929999911691993
+    },
+    {
+      "minute": 160,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 0.00035370000114198774
+    },
+    {
+      "minute": 165,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 0.00035289999868837185
+    },
+    {
+      "minute": 170,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 0.00035120000029564835
+    },
+    {
+      "minute": 175,
+      "method": "greedy",
+      "status": "GREEDY",
+      "assignments": [],
+      "optimal_levels": [],
+      "seconds": 0.000354799998603994
+    }
+  ]
+}

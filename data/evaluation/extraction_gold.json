@@ -1,0 +1,316 @@
+[
+  {
+    "id": "Q01",
+    "text": "村落甲发现人员被困，需要搜救。",
+    "minute": 20,
+    "expected": {
+      "node": "N4",
+      "capability": "rescue"
+    },
+    "acceptable_source": "sichuan2024",
+    "acceptable_citations": [
+      "sichuan2024-01",
+      "sichuan2024-02",
+      "national2024-11"
+    ],
+    "provenance": "agent_authored_gold",
+    "review": "作者人工设定，尚未由用户独立复核；非外部基准"
+  },
+  {
+    "id": "Q02",
+    "text": "村落乙有人受伤，请派医疗队。",
+    "minute": 20,
+    "expected": {
+      "node": "N5",
+      "capability": "medical"
+    },
+    "acceptable_source": "national2024",
+    "acceptable_citations": [
+      "national2024-12"
+    ],
+    "provenance": "agent_authored_gold",
+    "review": "作者人工设定，尚未由用户独立复核；非外部基准"
+  },
+  {
+    "id": "Q03",
+    "text": "上游点需要工程队清理塌方。",
+    "minute": 20,
+    "expected": {
+      "node": "N8",
+      "capability": "engineering"
+    },
+    "acceptable_source": "sichuan2024",
+    "acceptable_citations": [
+      "national2024-10"
+    ],
+    "provenance": "agent_authored_gold",
+    "review": "作者人工设定，尚未由用户独立复核；非外部基准"
+  },
+  {
+    "id": "Q04",
+    "text": "安置点有伤员等待救治。",
+    "minute": 20,
+    "expected": {
+      "node": "N7",
+      "capability": "medical"
+    },
+    "acceptable_source": "national2024",
+    "acceptable_citations": [
+      "national2024-12"
+    ],
+    "provenance": "agent_authored_gold",
+    "review": "作者人工设定，尚未由用户独立复核；非外部基准"
+  },
+  {
+    "id": "Q05",
+    "text": "道路交汇点有人员失联，开展搜救。",
+    "minute": 20,
+    "expected": {
+      "node": "N3",
+      "capability": "rescue"
+    },
+    "acceptable_source": "sichuan2024",
+    "acceptable_citations": [
+      "sichuan2024-01",
+      "sichuan2024-02",
+      "national2024-11"
+    ],
+    "provenance": "agent_authored_gold",
+    "review": "作者人工设定，尚未由用户独立复核；非外部基准"
+  },
+  {
+    "id": "Q06",
+    "text": "西侧集结点需要抢修道路。",
+    "minute": 20,
+    "expected": {
+      "node": "N1",
+      "capability": "engineering"
+    },
+    "acceptable_source": "sichuan2024",
+    "acceptable_citations": [
+      "national2024-10"
+    ],
+    "provenance": "agent_authored_gold",
+    "review": "作者人工设定，尚未由用户独立复核；非外部基准"
+  },
+  {
+    "id": "Q07",
+    "text": "北侧集结点发现被困人员。",
+    "minute": 20,
+    "expected": {
+      "node": "N2",
+      "capability": "rescue"
+    },
+    "acceptable_source": "sichuan2024",
+    "acceptable_citations": [
+      "sichuan2024-01",
+      "sichuan2024-02",
+      "national2024-11"
+    ],
+    "provenance": "agent_authored_gold",
+    "review": "作者人工设定，尚未由用户独立复核；非外部基准"
+  },
+  {
+    "id": "Q08",
+    "text": "医疗点有人受伤。",
+    "minute": 20,
+    "expected": {
+      "node": "N6",
+      "capability": "medical"
+    },
+    "acceptable_source": "national2024",
+    "acceptable_citations": [
+      "national2024-12"
+    ],
+    "provenance": "agent_authored_gold",
+    "review": "作者人工设定，尚未由用户独立复核；非外部基准"
+  },
+  {
+    "id": "Q09",
+    "text": "增援入口需要道路抢通。",
+    "minute": 20,
+    "expected": {
+      "node": "N9",
+      "capability": "engineering"
+    },
+    "acceptable_source": "sichuan2024",
+    "acceptable_citations": [
+      "national2024-10"
+    ],
+    "provenance": "agent_authored_gold",
+    "review": "作者人工设定，尚未由用户独立复核；非外部基准"
+  },
+  {
+    "id": "Q10",
+    "text": "指挥点需要医疗支援。",
+    "minute": 20,
+    "expected": {
+      "node": "N0",
+      "capability": "medical"
+    },
+    "acceptable_source": "national2024",
+    "acceptable_citations": [
+      "national2024-12"
+    ],
+    "provenance": "agent_authored_gold",
+    "review": "作者人工设定，尚未由用户独立复核；非外部基准"
+  },
+  {
+    "id": "Q11",
+    "text": "村落甲需要转移受困群众。",
+    "minute": 20,
+    "expected": {
+      "node": "N4",
+      "capability": "rescue"
+    },
+    "acceptable_source": "sichuan2024",
+    "acceptable_citations": [
+      "sichuan2024-01",
+      "sichuan2024-02",
+      "national2024-11"
+    ],
+    "provenance": "agent_authored_gold",
+    "review": "作者人工设定，尚未由用户独立复核；非外部基准"
+  },
+  {
+    "id": "Q12",
+    "text": "村落乙发生塌方，工程队支援。",
+    "minute": 20,
+    "expected": {
+      "node": "N5",
+      "capability": "engineering"
+    },
+    "acceptable_source": "sichuan2024",
+    "acceptable_citations": [
+      "national2024-10"
+    ],
+    "provenance": "agent_authored_gold",
+    "review": "作者人工设定，尚未由用户独立复核；非外部基准"
+  },
+  {
+    "id": "Q13",
+    "text": "上游点多人失联。",
+    "minute": 20,
+    "expected": {
+      "node": "N8",
+      "capability": "rescue"
+    },
+    "acceptable_source": "sichuan2024",
+    "acceptable_citations": [
+      "sichuan2024-01",
+      "sichuan2024-02",
+      "national2024-11"
+    ],
+    "provenance": "agent_authored_gold",
+    "review": "作者人工设定，尚未由用户独立复核；非外部基准"
+  },
+  {
+    "id": "Q14",
+    "text": "安置点需要医疗支援。",
+    "minute": 20,
+    "expected": {
+      "node": "N7",
+      "capability": "medical"
+    },
+    "acceptable_source": "national2024",
+    "acceptable_citations": [
+      "national2024-12"
+    ],
+    "provenance": "agent_authored_gold",
+    "review": "作者人工设定，尚未由用户独立复核；非外部基准"
+  },
+  {
+    "id": "Q15",
+    "text": "道路交汇点需工程队抢修。",
+    "minute": 20,
+    "expected": {
+      "node": "N3",
+      "capability": "engineering"
+    },
+    "acceptable_source": "sichuan2024",
+    "acceptable_citations": [
+      "national2024-10"
+    ],
+    "provenance": "agent_authored_gold",
+    "review": "作者人工设定，尚未由用户独立复核；非外部基准"
+  },
+  {
+    "id": "Q16",
+    "text": "西侧集结点需要搜救支援。",
+    "minute": 20,
+    "expected": {
+      "node": "N1",
+      "capability": "rescue"
+    },
+    "acceptable_source": "sichuan2024",
+    "acceptable_citations": [
+      "sichuan2024-01",
+      "sichuan2024-02",
+      "national2024-11"
+    ],
+    "provenance": "agent_authored_gold",
+    "review": "作者人工设定，尚未由用户独立复核；非外部基准"
+  },
+  {
+    "id": "Q17",
+    "text": "北侧集结点有伤员。",
+    "minute": 20,
+    "expected": {
+      "node": "N2",
+      "capability": "medical"
+    },
+    "acceptable_source": "national2024",
+    "acceptable_citations": [
+      "national2024-12"
+    ],
+    "provenance": "agent_authored_gold",
+    "review": "作者人工设定，尚未由用户独立复核；非外部基准"
+  },
+  {
+    "id": "Q18",
+    "text": "医疗点周边需要道路抢通。",
+    "minute": 20,
+    "expected": {
+      "node": "N6",
+      "capability": "engineering"
+    },
+    "acceptable_source": "sichuan2024",
+    "acceptable_citations": [
+      "national2024-10"
+    ],
+    "provenance": "agent_authored_gold",
+    "review": "作者人工设定，尚未由用户独立复核；非外部基准"
+  },
+  {
+    "id": "Q19",
+    "text": "增援入口发现被困人员。",
+    "minute": 20,
+    "expected": {
+      "node": "N9",
+      "capability": "rescue"
+    },
+    "acceptable_source": "sichuan2024",
+    "acceptable_citations": [
+      "sichuan2024-01",
+      "sichuan2024-02",
+      "national2024-11"
+    ],
+    "provenance": "agent_authored_gold",
+    "review": "作者人工设定，尚未由用户独立复核；非外部基准"
+  },
+  {
+    "id": "Q20",
+    "text": "指挥点旁需要清理塌方。",
+    "minute": 20,
+    "expected": {
+      "node": "N0",
+      "capability": "engineering"
+    },
+    "acceptable_source": "sichuan2024",
+    "acceptable_citations": [
+      "national2024-10"
+    ],
+    "provenance": "agent_authored_gold",
+    "review": "作者人工设定，尚未由用户独立复核；非外部基准"
+  }
+]

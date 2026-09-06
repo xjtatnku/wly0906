@@ -1,0 +1,12 @@
+[
+  {
+    "text": "村落甲发现人员被困，需要搜救。",
+    "review": "逐字段对照此固定示例，代理复核；不是模型实测输出",
+    "candidate": {
+      "node": "N4",
+      "capability": "rescue",
+      "evidence": "村落甲发现人员被困，需要搜救。",
+      "event_time": null
+    }
+  }
+]

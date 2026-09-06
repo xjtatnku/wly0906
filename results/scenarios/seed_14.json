@@ -1,0 +1,413 @@
+{
+  "title": "康定案例背景下的模拟调度场景",
+  "provenance": "simulated",
+  "warning": "节点、队伍、道路权重、任务、分钟与四阶段均为模拟；非真实康定路网或指挥记录。",
+  "horizon": 180,
+  "nodes": [
+    {
+      "id": "N0",
+      "name": "指挥点",
+      "x": 0,
+      "y": 1,
+      "provenance": "simulated"
+    },
+    {
+      "id": "N1",
+      "name": "西侧集结点",
+      "x": 0,
+      "y": 3,
+      "provenance": "simulated"
+    },
+    {
+      "id": "N2",
+      "name": "北侧集结点",
+      "x": 2,
+      "y": 4,
+      "provenance": "simulated"
+    },
+    {
+      "id": "N3",
+      "name": "道路交汇点",
+      "x": 2,
+      "y": 2,
+      "provenance": "simulated"
+    },
+    {
+      "id": "N4",
+      "name": "村落甲",
+      "x": 4,
+      "y": 3,
+      "provenance": "simulated"
+    },
+    {
+      "id": "N5",
+      "name": "村落乙",
+      "x": 5,
+      "y": 1,
+      "provenance": "simulated"
+    },
+    {
+      "id": "N6",
+      "name": "医疗点",
+      "x": 2,
+      "y": 0,
+      "provenance": "simulated"
+    },
+    {
+      "id": "N7",
+      "name": "安置点",
+      "x": 4,
+      "y": 0,
+      "provenance": "simulated"
+    },
+    {
+      "id": "N8",
+      "name": "上游点",
+      "x": 6,
+      "y": 4,
+      "provenance": "simulated"
+    },
+    {
+      "id": "N9",
+      "name": "增援入口",
+      "x": 0,
+      "y": 0,
+      "provenance": "simulated"
+    }
+  ],
+  "roads": [
+    {
+      "u": "N0",
+      "v": "N1",
+      "minutes": 5,
+      "provenance": "simulated"
+    },
+    {
+      "u": "N0",
+      "v": "N3",
+      "minutes": 9,
+      "provenance": "simulated"
+    },
+    {
+      "u": "N0",
+      "v": "N9",
+      "minutes": 6,
+      "provenance": "simulated"
+    },
+    {
+      "u": "N1",
+      "v": "N2",
+      "minutes": 11,
+      "provenance": "simulated"
+    },
+    {
+      "u": "N1",
+      "v": "N3",
+      "minutes": 6,
+      "provenance": "simulated"
+    },
+    {
+      "u": "N2",
+      "v": "N3",
+      "minutes": 5,
+      "provenance": "simulated"
+    },
+    {
+      "u": "N2",
+      "v": "N4",
+      "minutes": 12,
+      "provenance": "simulated"
+    },
+    {
+      "u": "N3",
+      "v": "N4",
+      "minutes": 7,
+      "provenance": "simulated"
+    },
+    {
+      "u": "N3",
+      "v": "N5",
+      "minutes": 9,
+      "provenance": "simulated"
+    },
+    {
+      "u": "N3",
+      "v": "N6",
+      "minutes": 7,
+      "provenance": "simulated"
+    },
+    {
+      "u": "N4",
+      "v": "N5",
+      "minutes": 5,
+      "provenance": "simulated"
+    },
+    {
+      "u": "N4",
+      "v": "N8",
+      "minutes": 15,
+      "provenance": "simulated"
+    },
+    {
+      "u": "N5",
+      "v": "N7",
+      "minutes": 5,
+      "provenance": "simulated"
+    },
+    {
+      "u": "N5",
+      "v": "N8",
+      "minutes": 7,
+      "provenance": "simulated"
+    },
+    {
+      "u": "N6",
+      "v": "N7",
+      "minutes": 13,
+      "provenance": "simulated"
+    },
+    {
+      "u": "N6",
+      "v": "N9",
+      "minutes": 8,
+      "provenance": "simulated"
+    }
+  ],
+  "teams": [
+    {
+      "id": "R1",
+      "capability": "rescue",
+      "node": "N0",
+      "available_at": 0
+    },
+    {
+      "id": "R2",
+      "capability": "rescue",
+      "node": "N1",
+      "available_at": 0
+    },
+    {
+      "id": "R3",
+      "capability": "rescue",
+      "node": "N2",
+      "available_at": 0
+    },
+    {
+      "id": "R4",
+      "capability": "medical",
+      "node": "N6",
+      "available_at": 0
+    },
+    {
+      "id": "R5",
+      "capability": "medical",
+      "node": "N0",
+      "available_at": 0
+    },
+    {
+      "id": "R6",
+      "capability": "engineering",
+      "node": "N1",
+      "available_at": 0
+    },
+    {
+      "id": "R7",
+      "capability": "rescue",
+      "node": "N9",
+      "available_at": 10000
+    },
+    {
+      "id": "R8",
+      "capability": "engineering",
+      "node": "N9",
+      "available_at": 10000
+    }
+  ],
+  "events": [
+    {
+      "id": "E0",
+      "minute": 0,
+      "text": "初始灾情：村落与上游出现搜救及医疗需求。",
+      "tasks": [
+        {
+          "id": "T01",
+          "node": "N4",
+          "capability": "rescue",
+          "required": 2,
+          "priority": 1,
+          "deadline": 18,
+          "duration": 23,
+          "release": 0,
+          "description": "村落甲：人员搜救",
+          "citations": []
+        },
+        {
+          "id": "T02",
+          "node": "N5",
+          "capability": "medical",
+          "required": 1,
+          "priority": 1,
+          "deadline": 20,
+          "duration": 17,
+          "release": 0,
+          "description": "村落乙：医疗救治",
+          "citations": []
+        },
+        {
+          "id": "T03",
+          "node": "N8",
+          "capability": "rescue",
+          "required": 1,
+          "priority": 1,
+          "deadline": 25,
+          "duration": 17,
+          "release": 0,
+          "description": "上游点：人员搜救",
+          "citations": []
+        },
+        {
+          "id": "T04",
+          "node": "N3",
+          "capability": "engineering",
+          "required": 1,
+          "priority": 2,
+          "deadline": 35,
+          "duration": 12,
+          "release": 0,
+          "description": "道路交汇点：道路保障",
+          "citations": []
+        },
+        {
+          "id": "T05",
+          "node": "N7",
+          "capability": "medical",
+          "required": 1,
+          "priority": 2,
+          "deadline": 40,
+          "duration": 12,
+          "release": 0,
+          "description": "安置点：医疗救治",
+          "citations": []
+        },
+        {
+          "id": "T06",
+          "node": "N5",
+          "capability": "rescue",
+          "required": 2,
+          "priority": 2,
+          "deadline": 45,
+          "duration": 18,
+          "release": 0,
+          "description": "村落乙：人员搜救",
+          "citations": []
+        }
+      ],
+      "provenance": "simulated"
+    },
+    {
+      "id": "E1",
+      "minute": 5,
+      "text": "道路交汇点至村落甲道路中断，出现工程与医疗需求。",
+      "blocked_roads": [
+        [
+          "N3",
+          "N4"
+        ]
+      ],
+      "tasks": [
+        {
+          "id": "T07",
+          "node": "N4",
+          "capability": "engineering",
+          "required": 2,
+          "priority": 1,
+          "deadline": 30,
+          "duration": 20,
+          "release": 5,
+          "description": "村落甲：道路保障",
+          "citations": []
+        },
+        {
+          "id": "T08",
+          "node": "N8",
+          "capability": "medical",
+          "required": 1,
+          "priority": 1,
+          "deadline": 45,
+          "duration": 27,
+          "release": 5,
+          "description": "上游点：医疗救治",
+          "citations": []
+        }
+      ],
+      "provenance": "simulated"
+    },
+    {
+      "id": "E2",
+      "minute": 20,
+      "text": "村落乙新增紧急搜救需求，村落甲需要医疗支援。",
+      "tasks": [
+        {
+          "id": "T09",
+          "node": "N5",
+          "capability": "rescue",
+          "required": 1,
+          "priority": 1,
+          "deadline": 38,
+          "duration": 40,
+          "release": 20,
+          "description": "村落乙：人员搜救",
+          "citations": []
+        },
+        {
+          "id": "T10",
+          "node": "N4",
+          "capability": "medical",
+          "required": 1,
+          "priority": 1,
+          "deadline": 40,
+          "duration": 28,
+          "release": 20,
+          "description": "村落甲：医疗救治",
+          "citations": []
+        },
+        {
+          "id": "T11",
+          "node": "N8",
+          "capability": "engineering",
+          "required": 1,
+          "priority": 2,
+          "deadline": 65,
+          "duration": 17,
+          "release": 20,
+          "description": "上游点：道路保障",
+          "citations": []
+        },
+        {
+          "id": "T12",
+          "node": "N7",
+          "capability": "rescue",
+          "required": 2,
+          "priority": 2,
+          "deadline": 75,
+          "duration": 19,
+          "release": 20,
+          "description": "安置点：人员搜救",
+          "citations": []
+        }
+      ],
+      "provenance": "simulated"
+    },
+    {
+      "id": "E3",
+      "minute": 40,
+      "text": "增援入口新增一支搜救队、一支工程队。",
+      "activate_teams": [
+        "R7",
+        "R8"
+      ],
+      "tasks": [],
+      "provenance": "simulated"
+    }
+  ]
+}

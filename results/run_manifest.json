@@ -1,0 +1,37 @@
+{
+  "seeds": [
+    -1,
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "horizon": 180,
+  "python": "3.11.0",
+  "scenario_sha256": "a1d71fe4ed82d04562271917d6404f87984af69ef6f7b8ea6ca96f9bb785ac7f",
+  "decision_interval": 5,
+  "solver_limit_seconds": 5,
+  "solver_workers": 1,
+  "limitations": [
+    "Static sees only initial tasks and cannot allocate reinforcements; deliberately weak no-replanning baseline.",
+    "Dynamic is myopic repeated assignment, not a multi-stage stochastic optimizer.",
+    "Average response excludes unserved demand; read with unmet_units.",
+    "All travel times and task parameters are simulated."
+  ]
+}
