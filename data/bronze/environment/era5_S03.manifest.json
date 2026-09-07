@@ -1,0 +1,19 @@
+{
+  "source": "ERA5-Land via Open-Meteo archive API",
+  "url": "https://archive-api.open-meteo.com/v1/archive",
+  "query": {
+    "latitude": 30.15,
+    "longitude": 102.25,
+    "start_date": "2024-07-20",
+    "end_date": "2024-08-05",
+    "hourly": "soil_moisture_0_to_7cm",
+    "models": "era5_land",
+    "timezone": "UTC",
+    "cell_selection": "nearest",
+    "elevation": "nan"
+  },
+  "download_time": "2026-09-06T16:02:33.743365+00:00",
+  "sha256": "ff91b4aa46ea3c9d3ed94cfae2bce7ae3da06f36f81129c27e64ffd9cbfea1bd",
+  "license": "CC BY 4.0; Copernicus Climate Change Service/ECMWF and Open-Meteo",
+  "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+}

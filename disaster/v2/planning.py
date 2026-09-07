@@ -2,6 +2,7 @@
 import time
 import networkx as nx
 from ortools.sat.python import cp_model
+from disaster.v2.metrics import actionable,disruption
 
 def graph(state):
     g=nx.DiGraph() if state.get('routing_mode')=='osm' else nx.Graph()
@@ -15,15 +16,16 @@ def distance(g,a,b):
     if a not in cache:cache[a]=nx.single_source_dijkstra_path_length(g,a,weight='weight')
     return int(cache[a][b]) if b in cache[a] else None
 
-def plan(state,horizon=60,stability=20,forecast=True,budget=4):
+def plan(state,horizon=60,stability=20,forecast=True,budget=4,response_weight=10,preposition_mode='multizone'):
     now=state['minute'];g=graph(state);deadline=now+horizon
     tasks=[t for t in state['tasks'] if t['release']<=now and t['status']=='pending']
     # Forecast tasks are explicit provisional jobs, never ground-truth future incidents.
-    if forecast and state.get('forecast',{}).get('eligible_for_decision',True) and state.get('forecast',{}).get('score',0)>=.7 and not any(r.get('active',{}).get('task')=='PREPOSITION' for r in state['resources']) and not all(any(r['type']==kind and r['node']=='N2' and not r.get('active') for r in state['resources']) for kind in ('rescue_team','drone')):
+    if forecast and preposition_mode=='legacy' and state.get('forecast',{}).get('eligible_for_decision',True) and state.get('forecast',{}).get('score',0)>=.7 and not any(r.get('active',{}).get('task')=='PREPOSITION' for r in state['resources']) and not all(any(r['type']==kind and r['node']=='N2' and not r.get('active') for r in state['resources']) for kind in ('rescue_team','drone')):
         tasks=tasks+[dict(id='PREPOSITION',name='高风险区资源前置',node='N2',requirements={'rescue_team':1,'drone':1},
                          priority=3,release=now+5,deadline=deadline,duration=5,status='provisional')]
     resources=[r for r in state['resources'] if r.get('status')!='failed'];m=cp_model.CpModel();chosen={};starts={};ends={};x={};travel_cost=[];change_cost=[];delays=[]
-    previous={(a['resource'],a['task']) for a in state.get('plan',{}).get('assignments',[]) if a['depart']>=now}
+    previous={(a['resource'],a['task']) for a in actionable(state)}
+    previous_tasks={tid for _,tid in previous};responses=[];priority_weights={1:5,2:3,3:1}
     availability={}
     for r in resources:
         if r.get('active'):
@@ -38,6 +40,10 @@ def plan(state,horizon=60,stability=20,forecast=True,budget=4):
         late=m.new_int_var(0,horizon+1440,'late_'+tid)
         m.add(late>=starts[tid]-t['deadline']).only_enforce_if(chosen[tid]);m.add(late==0).only_enforce_if(chosen[tid].Not())
         delays.append(late)
+        response=m.new_int_var(0,max(0,deadline-t['release']),'response_'+tid)
+        m.add(response==starts[tid]-t['release']).only_enforce_if(chosen[tid])
+        m.add(response==0).only_enforce_if(chosen[tid].Not())
+        responses.append(priority_weights[t['priority']]*response)
         for kind,required in t['requirements'].items():
             variables=[]
             for r in resources:
@@ -46,7 +52,6 @@ def plan(state,horizon=60,stability=20,forecast=True,budget=4):
                 if dist is None:continue
                 key=(r['id'],tid);v=m.new_bool_var('x_'+r['id']+tid);x[key]=v;variables.append(v)
                 m.add(v<=chosen[tid]);m.add(starts[tid]>=available+dist).only_enforce_if(v)
-                if key not in previous:change_cost.append(v)
             m.add(sum(variables)==required*chosen[tid])
     # Circuit gives a real queue per resource; arc constraints include repositioning time.
     arcs_by_resource={}
@@ -70,9 +75,15 @@ def plan(state,horizon=60,stability=20,forecast=True,budget=4):
         m.add_circuit(arcs);arcs_by_resource[r['id']]=(eligible,arc_vars)
     weights={1:10000,2:2000,3:300}
     unmet=sum(weights[t['priority']]*(1-chosen[t['id']]) for t in tasks)
-    removed=[1-x[pair] for pair in previous if pair in x]
-    m.minimize(unmet+10*sum(delays)+sum(travel_cost)+stability*(sum(change_cost)+sum(removed)))
-    solver=cp_model.CpSolver();solver.parameters.max_time_in_seconds=budget;solver.parameters.num_search_workers=1;solver.parameters.random_seed=906
+    for rid in {r for r,_ in previous}:
+        changed=m.new_bool_var('changed_'+rid);terms=[]
+        for tid in previous_tasks:
+            v=x.get((rid,tid),0)
+            terms.append(1-v if (rid,tid) in previous else v)
+        for term in terms:m.add(changed>=term)
+        m.add(changed<=sum(terms));change_cost.append(changed)
+    m.minimize(unmet+response_weight*sum(responses)+10*sum(delays)+sum(travel_cost)+stability*sum(change_cost))
+    solver=cp_model.CpSolver();solver.parameters.max_time_in_seconds=budget*(.8 if forecast and preposition_mode=='multizone' else 1);solver.parameters.num_search_workers=1;solver.parameters.random_seed=906
     begin=time.perf_counter();status=solver.solve(m);elapsed=time.perf_counter()-begin
     assignments=[]
     if status in (cp_model.OPTIMAL,cp_model.FEASIBLE):
@@ -108,6 +119,11 @@ def plan(state,horizon=60,stability=20,forecast=True,budget=4):
                 assignments.append(dict(resource=rid,task=t['id'],name=t['name'],type=r['type'],node=t['node'],depart=start-dist,
                     arrival=start,start=start,end=end,path=nx.shortest_path(g,node,t['node'],weight='weight'),travel=dist,provisional=t['id']=='PREPOSITION'))
                 free[rid]=(end,t['node'])
+    preposition={}
+    if forecast and preposition_mode=='multizone' and budget>0:
+        from disaster.v2.preposition import preposition_plan
+        extra,preposition=preposition_plan(state,assignments,g,horizon,max(0,budget-elapsed))
+        assignments.extend(extra)
     for a in assignments:
         segments=[g[u][v]['road'] for u,v in zip(a['path'],a['path'][1:])]
         a['segments']=[dict(road_id=e['id'],minutes=e['minutes']) for e in segments]
@@ -116,10 +132,18 @@ def plan(state,horizon=60,stability=20,forecast=True,budget=4):
             coords=e.get('geometry')
             if coords:a['geometry'].extend(coords if e['u']==u else list(reversed(coords)))
     result=dict(minute=now,horizon=horizon,status=solver.status_name(status),seconds=elapsed,assignments=assignments,
-                objective=solver.objective_value if assignments and not degraded else None,stability_weight=stability,degraded=degraded,
+                objective=solver.objective_value if not degraded else None,stability_weight=stability,degraded=degraded,
                 forecast_enabled=forecast,unplanned=[t['id'] for t in tasks if t['id'] not in {a['task'] for a in assignments}],
                 changes=len(previous.symmetric_difference({(a['resource'],a['task']) for a in assignments})),
                 tasks_considered=[t['id'] for t in tasks])
+    selected={a['task']:a for a in assignments if not a['provisional']}
+    result['response_weight']=response_weight;result['preposition']=preposition
+    result['stability']=disruption(state,assignments)
+    result['objective_terms']=dict(unmet=sum(weights[t['priority']] for t in tasks if t['id'] not in selected and t['id']!='PREPOSITION'),
+        response=sum(priority_weights[t['priority']]*(selected[t['id']]['start']-t['release']) for t in tasks if t['id'] in selected),
+        lateness=sum(max(0,selected[t['id']]['start']-t['deadline']) for t in tasks if t['id'] in selected),
+        travel=sum(a['travel'] for a in assignments if not a['provisional']),disruption=result['stability']['disruption'])
+    terms=result['objective_terms'];result['verified_objective']=terms['unmet']+response_weight*terms['response']+10*terms['lateness']+terms['travel']+stability*terms['disruption']
     result['gaps']=[]
     for t in tasks:
         if t['id'] not in result['unplanned']:continue
@@ -154,7 +178,9 @@ def validate(state,result):
             if dist!=a['travel'] or a['arrival']-a['depart']!=dist:raise ValueError('行程时间错误')
             available,node=a['end'],a['node']
     for tid in {a['task'] for a in result['assignments']}:
-        if tid=='PREPOSITION':continue
+        if tid.startswith('PREPOSITION'):
+            if any(not a['provisional'] or a['end']-a['start']!=1 for a in result['assignments'] if a['task']==tid) and tid!='PREPOSITION':raise ValueError('前置任务定义错误')
+            continue
         assigned=[a for a in result['assignments'] if a['task']==tid];task=tasks[tid]
         if task['status']!='pending' or task['release']>state['minute']:raise ValueError('任务未发布或已执行')
         if any(a['node']!=task['node'] or a['end']-a['start']!=task['duration'] or a['start']<task['release'] for a in assigned):raise ValueError('任务地点或作业时间错误')

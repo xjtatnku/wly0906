@@ -1,0 +1,145 @@
+﻿station_id,type,model,horizon_minutes,mae,rmse,test_samples,train_samples,features,cadence_minutes,milliseconds,protocol
+S01,displacement,Persistence,5,0.35206896551724143,0.4648648301870423,58,207,144,5,0.6409000052371994,joint_lags_fixed_train_recursive_common_origins
+S01,rainfall,Persistence,5,1.767706896551724,2.1267755381457567,58,207,144,5,0.716800001100637,joint_lags_fixed_train_recursive_common_origins
+S01,soil_moisture,Persistence,5,0.8249482758620689,1.019827968927552,58,207,144,5,0.785399999585934,joint_lags_fixed_train_recursive_common_origins
+S01,water_level,Persistence,5,0.052534482758620694,0.06612566406680438,58,207,144,5,0.8478999952785671,joint_lags_fixed_train_recursive_common_origins
+S02,displacement,Persistence,5,0.41241379310344817,0.5144580677259089,58,207,144,5,0.9085999918170273,joint_lags_fixed_train_recursive_common_origins
+S02,rainfall,Persistence,5,1.8522586206896552,2.1815586922166927,58,207,144,5,0.9694000036688522,joint_lags_fixed_train_recursive_common_origins
+S02,soil_moisture,Persistence,5,0.724327586206896,0.9149012288879539,58,207,144,5,1.073399995220825,joint_lags_fixed_train_recursive_common_origins
+S02,water_level,Persistence,5,0.05574137931034482,0.06908253434641887,58,207,144,5,1.1580999998841435,joint_lags_fixed_train_recursive_common_origins
+S03,displacement,Persistence,5,0.4363275862068965,0.5745097910392823,58,207,144,5,1.2207999970996752,joint_lags_fixed_train_recursive_common_origins
+S03,rainfall,Persistence,5,1.5120172413793107,1.7988183813174463,58,207,144,5,1.2806000013370067,joint_lags_fixed_train_recursive_common_origins
+S03,soil_moisture,Persistence,5,0.8303793103448277,1.0152056526839177,58,207,144,5,1.3389999949140474,joint_lags_fixed_train_recursive_common_origins
+S03,water_level,Persistence,5,0.044551724137931056,0.056021547578618776,58,207,144,5,1.3986999983899295,joint_lags_fixed_train_recursive_common_origins
+S01,displacement,Persistence,15,0.7566379310344827,0.9803082643247727,58,207,144,5,2.213700005086139,joint_lags_fixed_train_recursive_common_origins
+S01,rainfall,Persistence,15,2.314379310344828,2.768435640673578,58,207,144,5,2.277799998410046,joint_lags_fixed_train_recursive_common_origins
+S01,soil_moisture,Persistence,15,1.4185172413793103,1.8016602018023882,58,207,144,5,2.3382999934256077,joint_lags_fixed_train_recursive_common_origins
+S01,water_level,Persistence,15,0.08325862068965517,0.11513942073371981,58,207,144,5,2.398900003754534,joint_lags_fixed_train_recursive_common_origins
+S02,displacement,Persistence,15,0.7758965517241377,1.0035895747180512,58,207,144,5,2.4556999997003004,joint_lags_fixed_train_recursive_common_origins
+S02,rainfall,Persistence,15,2.471844827586207,2.9810308185893204,58,207,144,5,2.5133000017376617,joint_lags_fixed_train_recursive_common_origins
+S02,soil_moisture,Persistence,15,1.462396551724138,1.8236135546084655,58,207,144,5,2.5710000045364723,joint_lags_fixed_train_recursive_common_origins
+S02,water_level,Persistence,15,0.09491379310344829,0.11828508810904914,58,207,144,5,2.627499998197891,joint_lags_fixed_train_recursive_common_origins
+S03,displacement,Persistence,15,0.7772931034482758,1.0292759507336313,58,207,144,5,2.683800004888326,joint_lags_fixed_train_recursive_common_origins
+S03,rainfall,Persistence,15,2.3431896551724143,2.7665611075971133,58,207,144,5,2.7421999984653667,joint_lags_fixed_train_recursive_common_origins
+S03,soil_moisture,Persistence,15,1.4097241379310341,1.8178155325403145,58,207,144,5,2.7992999966954812,joint_lags_fixed_train_recursive_common_origins
+S03,water_level,Persistence,15,0.0836896551724138,0.113766093973253,58,207,144,5,2.856799997971393,joint_lags_fixed_train_recursive_common_origins
+S01,displacement,Persistence,30,1.4600344827586207,1.9327133776119,58,207,144,5,4.981499994755723,joint_lags_fixed_train_recursive_common_origins
+S01,rainfall,Persistence,30,3.651844827586207,4.648620939368044,58,207,144,5,5.050699997809716,joint_lags_fixed_train_recursive_common_origins
+S01,soil_moisture,Persistence,30,2.6085689655172413,3.384822414228267,58,207,144,5,5.147699994267896,joint_lags_fixed_train_recursive_common_origins
+S01,water_level,Persistence,30,0.15787931034482755,0.21799410779762549,58,207,144,5,5.207399997743778,joint_lags_fixed_train_recursive_common_origins
+S02,displacement,Persistence,30,1.4553965517241378,1.9211275020961898,58,207,144,5,5.2647999982582405,joint_lags_fixed_train_recursive_common_origins
+S02,rainfall,Persistence,30,3.9907241379310348,5.04870421409091,58,207,144,5,5.323599994881079,joint_lags_fixed_train_recursive_common_origins
+S02,soil_moisture,Persistence,30,2.6004655172413793,3.3712445440611503,58,207,144,5,5.389500001911074,joint_lags_fixed_train_recursive_common_origins
+S02,water_level,Persistence,30,0.1743448275862069,0.22364712044369947,58,207,144,5,5.451299992273562,joint_lags_fixed_train_recursive_common_origins
+S03,displacement,Persistence,30,1.4936724137931034,1.9905424966662941,58,207,144,5,5.50929999735672,joint_lags_fixed_train_recursive_common_origins
+S03,rainfall,Persistence,30,4.1306724137931035,5.075825988498545,58,207,144,5,5.568900000071153,joint_lags_fixed_train_recursive_common_origins
+S03,soil_moisture,Persistence,30,2.549913793103448,3.391008935913952,58,207,144,5,5.627099992125295,joint_lags_fixed_train_recursive_common_origins
+S03,water_level,Persistence,30,0.16077586206896555,0.22217665385283258,58,207,144,5,5.684899995685555,joint_lags_fixed_train_recursive_common_origins
+S01,displacement,Persistence,60,3.140189655172414,4.08258487463772,58,207,144,5,7.520300001488067,joint_lags_fixed_train_recursive_common_origins
+S01,rainfall,Persistence,60,7.249724137931034,9.183127047978283,58,207,144,5,7.583800004795194,joint_lags_fixed_train_recursive_common_origins
+S01,soil_moisture,Persistence,60,5.483810344827587,7.024110797816333,58,207,144,5,7.642399999895133,joint_lags_fixed_train_recursive_common_origins
+S01,water_level,Persistence,60,0.33462068965517244,0.4621556313475006,58,207,144,5,7.699699999648146,joint_lags_fixed_train_recursive_common_origins
+S02,displacement,Persistence,60,3.119586206896552,4.0322975054444825,58,207,144,5,7.757400002446957,joint_lags_fixed_train_recursive_common_origins
+S02,rainfall,Persistence,60,7.637086206896552,9.84935622174153,58,207,144,5,7.8178999974625185,joint_lags_fixed_train_recursive_common_origins
+S02,soil_moisture,Persistence,60,5.439965517241379,6.9626634519289805,58,207,144,5,7.881099998485297,joint_lags_fixed_train_recursive_common_origins
+S02,water_level,Persistence,60,0.34249999999999997,0.4604654878677026,58,207,144,5,7.943699994939379,joint_lags_fixed_train_recursive_common_origins
+S03,displacement,Persistence,60,3.146741379310345,4.126595300712449,58,207,144,5,8.00669999443926,joint_lags_fixed_train_recursive_common_origins
+S03,rainfall,Persistence,60,8.003672413793103,9.925857828819181,58,207,144,5,8.069399991654791,joint_lags_fixed_train_recursive_common_origins
+S03,soil_moisture,Persistence,60,5.449620689655173,6.950161858695735,58,207,144,5,8.132699993439019,joint_lags_fixed_train_recursive_common_origins
+S03,water_level,Persistence,60,0.34344827586206894,0.4679422304456852,58,207,144,5,8.194900001399219,joint_lags_fixed_train_recursive_common_origins
+S01,displacement,AR,5,1.3200750317056065,1.9370129067698068,58,207,144,5,3.393299994058907,joint_lags_fixed_train_recursive_common_origins
+S01,rainfall,AR,5,7.2846361961697434,10.636635968156035,58,207,144,5,3.467399990768172,joint_lags_fixed_train_recursive_common_origins
+S01,soil_moisture,AR,5,8.606010914304285,13.702368737787575,58,207,144,5,3.529599998728372,joint_lags_fixed_train_recursive_common_origins
+S01,water_level,AR,5,0.04085002668504631,0.05304279835677497,58,207,144,5,3.589599989936687,joint_lags_fixed_train_recursive_common_origins
+S02,displacement,AR,5,1.5791907463094739,2.545767283054328,58,207,144,5,3.649599995696917,joint_lags_fixed_train_recursive_common_origins
+S02,rainfall,AR,5,3.573684743791362,5.6895920703595655,58,207,144,5,3.708599993842654,joint_lags_fixed_train_recursive_common_origins
+S02,soil_moisture,AR,5,9.427114106139364,14.801962050880183,58,207,144,5,3.7699999957112595,joint_lags_fixed_train_recursive_common_origins
+S02,water_level,AR,5,0.20869106562660575,0.31004926078263445,58,207,144,5,3.8277999992715195,joint_lags_fixed_train_recursive_common_origins
+S03,displacement,AR,5,0.3932239681454751,0.5086629582919862,58,207,144,5,3.8849999982630834,joint_lags_fixed_train_recursive_common_origins
+S03,rainfall,AR,5,6.84211432354031,10.445045580390117,58,207,144,5,3.942099996493198,joint_lags_fixed_train_recursive_common_origins
+S03,soil_moisture,AR,5,4.586145524882293,6.699320875180974,58,207,144,5,3.999099993961863,joint_lags_fixed_train_recursive_common_origins
+S03,water_level,AR,5,0.11282562909738668,0.1647512262577632,58,207,144,5,4.058599995914847,joint_lags_fixed_train_recursive_common_origins
+S01,displacement,AR,15,1.2751643242333488,1.817812956243176,58,207,144,5,7.340700001805089,joint_lags_fixed_train_recursive_common_origins
+S01,rainfall,AR,15,3.5931545260179396,4.517412959744159,58,207,144,5,7.4062999919988215,joint_lags_fixed_train_recursive_common_origins
+S01,soil_moisture,AR,15,9.592898581049711,14.932643506787354,58,207,144,5,7.465499991667457,joint_lags_fixed_train_recursive_common_origins
+S01,water_level,AR,15,0.153223268056264,0.22253822173118631,58,207,144,5,7.524200002080761,joint_lags_fixed_train_recursive_common_origins
+S02,displacement,AR,15,0.8660169283492264,1.4391594689621359,58,207,144,5,7.583799990243278,joint_lags_fixed_train_recursive_common_origins
+S02,rainfall,AR,15,1.594327273568806,1.9613240187329557,58,207,144,5,7.645599995157681,joint_lags_fixed_train_recursive_common_origins
+S02,soil_moisture,AR,15,7.719047727219751,11.857198640898506,58,207,144,5,7.703299997956492,joint_lags_fixed_train_recursive_common_origins
+S02,water_level,AR,15,0.378790894916531,0.5800593924327605,58,207,144,5,7.759799991617911,joint_lags_fixed_train_recursive_common_origins
+S03,displacement,AR,15,0.9398904425095,1.2636078696364794,58,207,144,5,7.816400000592694,joint_lags_fixed_train_recursive_common_origins
+S03,rainfall,AR,15,5.259626173365198,7.737316915423584,58,207,144,5,7.872399990446866,joint_lags_fixed_train_recursive_common_origins
+S03,soil_moisture,AR,15,5.046166484320074,7.345409859476784,58,207,144,5,7.928599996375851,joint_lags_fixed_train_recursive_common_origins
+S03,water_level,AR,15,0.241292354318195,0.3637441863301976,58,207,144,5,7.985499993083067,joint_lags_fixed_train_recursive_common_origins
+S01,displacement,AR,30,1.6840276196653763,2.2894481828332247,58,207,144,5,15.029799993499182,joint_lags_fixed_train_recursive_common_origins
+S01,rainfall,AR,30,4.239703451122643,5.364133924350538,58,207,144,5,15.112699999008328,joint_lags_fixed_train_recursive_common_origins
+S01,soil_moisture,AR,30,9.095540300307016,13.651852257630775,58,207,144,5,15.18059999216348,joint_lags_fixed_train_recursive_common_origins
+S01,water_level,AR,30,0.5203105657771513,0.788665517679975,58,207,144,5,15.256400001817383,joint_lags_fixed_train_recursive_common_origins
+S02,displacement,AR,30,0.9525964653277552,1.1902064446669076,58,207,144,5,15.327499990235083,joint_lags_fixed_train_recursive_common_origins
+S02,rainfall,AR,30,2.452558472487767,3.112890971105714,58,207,144,5,15.39829999092035,joint_lags_fixed_train_recursive_common_origins
+S02,soil_moisture,AR,30,4.514146687262911,6.317003974995044,58,207,144,5,15.461100003449246,joint_lags_fixed_train_recursive_common_origins
+S02,water_level,AR,30,0.3783905288325435,0.5558360431495746,58,207,144,5,15.523699999903329,joint_lags_fixed_train_recursive_common_origins
+S03,displacement,AR,30,0.5458165897830212,0.7070516542248005,58,207,144,5,15.591899995342828,joint_lags_fixed_train_recursive_common_origins
+S03,rainfall,AR,30,6.435704123455312,9.55003550448352,58,207,144,5,15.655800001695752,joint_lags_fixed_train_recursive_common_origins
+S03,soil_moisture,AR,30,7.9808125946514705,11.730633330596019,58,207,144,5,15.721099989605136,joint_lags_fixed_train_recursive_common_origins
+S03,water_level,AR,30,0.5830708095064496,0.904097635545985,58,207,144,5,15.783299997565337,joint_lags_fixed_train_recursive_common_origins
+S01,displacement,AR,60,3.7480163352020206,5.10479761632672,58,207,144,5,26.22059998975601,joint_lags_fixed_train_recursive_common_origins
+S01,rainfall,AR,60,6.02716058413158,7.113893373874917,58,207,144,5,26.308799991966225,joint_lags_fixed_train_recursive_common_origins
+S01,soil_moisture,AR,60,9.392174743753209,12.867179420891544,58,207,144,5,26.375300003564917,joint_lags_fixed_train_recursive_common_origins
+S01,water_level,AR,60,0.7347520908335641,1.0570458189217757,58,207,144,5,26.436999993165955,joint_lags_fixed_train_recursive_common_origins
+S02,displacement,AR,60,3.2622214574743675,4.3188764425568715,58,207,144,5,26.49839999503456,joint_lags_fixed_train_recursive_common_origins
+S02,rainfall,AR,60,7.175751709309006,9.233405459162507,58,207,144,5,26.559699996141717,joint_lags_fixed_train_recursive_common_origins
+S02,soil_moisture,AR,60,11.286390260487975,16.04056694991548,58,207,144,5,26.62170000257902,joint_lags_fixed_train_recursive_common_origins
+S02,water_level,AR,60,0.6765494437301629,0.9732726371041132,58,207,144,5,26.681000003009103,joint_lags_fixed_train_recursive_common_origins
+S03,displacement,AR,60,2.4320178209923817,3.137490543820479,58,207,144,5,26.739699998870492,joint_lags_fixed_train_recursive_common_origins
+S03,rainfall,AR,60,12.916479268945187,18.486796282574613,58,207,144,5,26.804699999047443,joint_lags_fixed_train_recursive_common_origins
+S03,soil_moisture,AR,60,11.812201032585328,16.6510728477143,58,207,144,5,26.862899991101585,joint_lags_fixed_train_recursive_common_origins
+S03,water_level,AR,60,0.8851069718799836,1.321895606136095,58,207,144,5,26.92009999009315,joint_lags_fixed_train_recursive_common_origins
+S01,displacement,Gradient Boosting,5,2.091269256005706,3.6169259116597345,58,207,144,5,27.357400002074428,joint_lags_fixed_train_recursive_common_origins
+S01,rainfall,Gradient Boosting,5,4.80546796751235,7.231346802794428,58,207,144,5,27.42969999962952,joint_lags_fixed_train_recursive_common_origins
+S01,soil_moisture,Gradient Boosting,5,5.340280617522653,8.133664221062274,58,207,144,5,27.489100000821054,joint_lags_fixed_train_recursive_common_origins
+S01,water_level,Gradient Boosting,5,0.2164989314415416,0.37789952321753284,58,207,144,5,27.54830000048969,joint_lags_fixed_train_recursive_common_origins
+S02,displacement,Gradient Boosting,5,2.1285136864624814,3.643753685302911,58,207,144,5,27.6058000017656,joint_lags_fixed_train_recursive_common_origins
+S02,rainfall,Gradient Boosting,5,4.8377901647219215,7.664611371230089,58,207,144,5,27.663200002280064,joint_lags_fixed_train_recursive_common_origins
+S02,soil_moisture,Gradient Boosting,5,5.370926032475569,8.20436901529667,58,207,144,5,27.72030000051018,joint_lags_fixed_train_recursive_common_origins
+S02,water_level,Gradient Boosting,5,0.22006831697742255,0.373966479885778,58,207,144,5,27.776700007962063,joint_lags_fixed_train_recursive_common_origins
+S03,displacement,Gradient Boosting,5,2.050187788620928,3.5330667658804202,58,207,144,5,27.832400010083802,joint_lags_fixed_train_recursive_common_origins
+S03,rainfall,Gradient Boosting,5,7.069395814499024,11.371739405986277,58,207,144,5,27.887600008398294,joint_lags_fixed_train_recursive_common_origins
+S03,soil_moisture,Gradient Boosting,5,5.2889007900060285,8.188217592839148,58,207,144,5,27.943100008997135,joint_lags_fixed_train_recursive_common_origins
+S03,water_level,Gradient Boosting,5,0.2171755475556348,0.3796389867690516,58,207,144,5,27.999700003420003,joint_lags_fixed_train_recursive_common_origins
+S01,displacement,Gradient Boosting,15,2.495847890309842,4.161584644608604,58,207,144,5,88.5578000015812,joint_lags_fixed_train_recursive_common_origins
+S01,rainfall,Gradient Boosting,15,5.501154700356001,8.27899790141464,58,207,144,5,88.6369000072591,joint_lags_fixed_train_recursive_common_origins
+S01,soil_moisture,Gradient Boosting,15,6.152093506428646,9.247236521238877,58,207,144,5,88.6985000106506,joint_lags_fixed_train_recursive_common_origins
+S01,water_level,Gradient Boosting,15,0.26240067082256024,0.44863452592245456,58,207,144,5,88.75819999957457,joint_lags_fixed_train_recursive_common_origins
+S02,displacement,Gradient Boosting,15,2.5530436390439286,4.239373311981274,58,207,144,5,88.81600000313483,joint_lags_fixed_train_recursive_common_origins
+S02,rainfall,Gradient Boosting,15,6.067149644776986,9.45781355337074,58,207,144,5,88.87250001134817,joint_lags_fixed_train_recursive_common_origins
+S02,soil_moisture,Gradient Boosting,15,6.018706327548679,9.113516684218611,58,207,144,5,88.92960000957828,joint_lags_fixed_train_recursive_common_origins
+S02,water_level,Gradient Boosting,15,0.2648558075936289,0.44116380219532425,58,207,144,5,89.02630000375211,joint_lags_fixed_train_recursive_common_origins
+S03,displacement,Gradient Boosting,15,2.478281041843351,4.1217600700069585,58,207,144,5,89.08990000782069,joint_lags_fixed_train_recursive_common_origins
+S03,rainfall,Gradient Boosting,15,8.221533661941377,12.881437590042148,58,207,144,5,89.14770001138095,joint_lags_fixed_train_recursive_common_origins
+S03,soil_moisture,Gradient Boosting,15,6.063713519782293,9.230194735891029,58,207,144,5,89.20450000732671,joint_lags_fixed_train_recursive_common_origins
+S03,water_level,Gradient Boosting,15,0.2683191376939118,0.45722614303099235,58,207,144,5,89.26580000843387,joint_lags_fixed_train_recursive_common_origins
+S01,displacement,Gradient Boosting,30,3.215629259848114,5.082276254435291,58,207,144,5,204.57159999932628,joint_lags_fixed_train_recursive_common_origins
+S01,rainfall,Gradient Boosting,30,6.857670372445385,10.291836373260518,58,207,144,5,204.64300000458024,joint_lags_fixed_train_recursive_common_origins
+S01,soil_moisture,Gradient Boosting,30,7.338513754696757,10.781197895648935,58,207,144,5,204.7045000072103,joint_lags_fixed_train_recursive_common_origins
+S01,water_level,Gradient Boosting,30,0.3317096287607643,0.5502884350264303,58,207,144,5,204.76430001144763,joint_lags_fixed_train_recursive_common_origins
+S02,displacement,Gradient Boosting,30,3.2607003659597344,5.117101668359382,58,207,144,5,204.82250000350177,joint_lags_fixed_train_recursive_common_origins
+S02,rainfall,Gradient Boosting,30,8.031169005594991,12.391625632430777,58,207,144,5,204.88119999936316,joint_lags_fixed_train_recursive_common_origins
+S02,soil_moisture,Gradient Boosting,30,7.061119528184621,10.54744942514817,58,207,144,5,204.94070000131615,joint_lags_fixed_train_recursive_common_origins
+S02,water_level,Gradient Boosting,30,0.3335296972806859,0.5414410718985733,58,207,144,5,205.00100000936072,joint_lags_fixed_train_recursive_common_origins
+S03,displacement,Gradient Boosting,30,3.149114615980003,5.0423143111248985,58,207,144,5,205.05960000446066,joint_lags_fixed_train_recursive_common_origins
+S03,rainfall,Gradient Boosting,30,10.689573735557854,15.973578656930961,58,207,144,5,205.12550001149066,joint_lags_fixed_train_recursive_common_origins
+S03,soil_moisture,Gradient Boosting,30,7.362113533252382,10.861711092399233,58,207,144,5,205.49700000265148,joint_lags_fixed_train_recursive_common_origins
+S03,water_level,Gradient Boosting,30,0.3429619356887781,0.5662249194871075,58,207,144,5,205.72009999887086,joint_lags_fixed_train_recursive_common_origins
+S01,displacement,Gradient Boosting,60,4.92103271411193,7.1174628311815065,58,207,144,5,399.8600000049919,joint_lags_fixed_train_recursive_common_origins
+S01,rainfall,Gradient Boosting,60,11.36295733279214,16.09193967063451,58,207,144,5,399.9321000010241,joint_lags_fixed_train_recursive_common_origins
+S01,soil_moisture,Gradient Boosting,60,10.281398355645099,14.30702259855625,58,207,144,5,399.9956000043312,joint_lags_fixed_train_recursive_common_origins
+S01,water_level,Gradient Boosting,60,0.5056399697605729,0.7832937917308704,58,207,144,5,400.05650000239257,joint_lags_fixed_train_recursive_common_origins
+S02,displacement,Gradient Boosting,60,4.823172518315116,6.971548081320779,58,207,144,5,400.1177000027383,joint_lags_fixed_train_recursive_common_origins
+S02,rainfall,Gradient Boosting,60,13.254331284678436,18.890621175900396,58,207,144,5,400.1762000116287,joint_lags_fixed_train_recursive_common_origins
+S02,soil_moisture,Gradient Boosting,60,10.121573335769375,14.174364072086927,58,207,144,5,400.23300000757445,joint_lags_fixed_train_recursive_common_origins
+S02,water_level,Gradient Boosting,60,0.5123087957431218,0.7833225002765236,58,207,144,5,400.2896000019973,joint_lags_fixed_train_recursive_common_origins
+S03,displacement,Gradient Boosting,60,4.833494578199867,7.046331384923886,58,207,144,5,400.3469000017503,joint_lags_fixed_train_recursive_common_origins
+S03,rainfall,Gradient Boosting,60,14.63170313636316,20.506993933754917,58,207,144,5,400.4033000092022,joint_lags_fixed_train_recursive_common_origins
+S03,soil_moisture,Gradient Boosting,60,10.228245515713878,14.184270317907702,58,207,144,5,400.4599000036251,joint_lags_fixed_train_recursive_common_origins
+S03,water_level,Gradient Boosting,60,0.5196986701591243,0.8045390612714278,58,207,144,5,400.5170000018552,joint_lags_fixed_train_recursive_common_origins

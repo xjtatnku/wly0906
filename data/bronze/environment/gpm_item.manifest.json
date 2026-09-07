@@ -1,0 +1,11 @@
+{
+  "source": "NASA Earthdata EGIS",
+  "url": "https://gis.earthdata.nasa.gov/portal/sharing/rest/content/items/cfa9a890b89b49d884871567844e9080",
+  "query": {
+    "f": "json"
+  },
+  "download_time": "2026-09-06T16:01:07.256057+00:00",
+  "sha256": "b7021f2769a8dc358fd8b464f421d76d8e054e82101f06015d927f4c18b5c89f",
+  "license": "NASA Earthdata",
+  "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+}

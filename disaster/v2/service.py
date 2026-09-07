@@ -2,6 +2,7 @@ from copy import deepcopy
 from datetime import datetime, timedelta
 from threading import RLock
 import hashlib, re, uuid
+import time
 from functools import wraps
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -28,11 +29,11 @@ class Service:
         self.db=Database(path);self.db.bootstrap();self.lock=RLock();self.forecaster=Forecaster()
         self.forecaster.fit(self.db.observations(-1,1440))
         self.state=self.db.load()
-        if self.state is not None and 'multistep_evaluation' not in self.state.get('forecast',{}):
-            self.refresh();self.event('V2.1 数据时效与多步评估升级，执行承诺保留','migration');self.save()
+        if self.state is not None and 'training_sha256' not in self.state.get('forecast',{}):
+            self.refresh();self.event('V2.2 联合预测与决策追踪升级，执行承诺保留','migration');self.save()
         if self.state is None:
             seed=read_json(ROOT/'data/v2/scenario.json')
-            self.state=dict(seed,minute=0,revision=0,events=[],plan={},forecast={},settings={'horizon':60,'stability':20,'forecast':True},casualties={'missing':0,'injured':0})
+            self.state=dict(seed,minute=0,revision=0,events=[],plan={},forecast={},settings={'horizon':60,'stability':20,'forecast':True,'response_weight':10},casualties={'missing':0,'injured':0})
             self.refresh();self.event('系统初始化：模拟监测数据已入库，等待生成首轮计划','system');self.db.save(self.state)
         self.clauses=read_json(ROOT/'data/policies.json')
         self.vectorizer=TfidfVectorizer(analyzer='char',ngram_range=(2,4));self.sparse=self.vectorizer.fit_transform([c['text'] for c in self.clauses])
@@ -41,17 +42,66 @@ class Service:
     def event(self,text,kind='info'):
         self.state['events'].append(dict(id=str(uuid.uuid4()),minute=self.state['minute'],text=text,kind=kind))
     def refresh(self):
-        self.state['forecast']=self.forecaster.predict(self.db.observations(self.state['minute']),self.state['minute'])
-        if hasattr(self.db,'source_health'):self.state['data_health']=self.db.source_health(self.state['minute'])
+        self.state['forecast']=self.forecast_result()
+        if self.state.get('environment_mode')=='historical':self.state['data_health']=self.environment_feed().health(self.state['minute'])
+        elif hasattr(self.db,'source_health'):self.state['data_health']=self.db.source_health(self.state['minute'])
+    def environment_feed(self):
+        from disaster.v2.environment import HistoricalFeed
+        if not hasattr(self,'_historical_feed'):self._historical_feed=HistoricalFeed()
+        return self._historical_feed
+    def observations(self,minute,limit=1440):
+        feed=self.environment_feed() if self.state.get('environment_mode')=='historical' else self.db
+        return feed.observations(minute,limit)
+    def forecast_result(self,model='AR'):
+        from disaster.v2.joint_forecast import JointForecaster
+        mode=self.state.get('environment_mode','synthetic');cadence=60 if mode=='historical' else 5
+        rows=[r for r in self.observations(self.state['minute'],1440) if r['station_id'] in ('S01','S02','S03')]
+        training=[r for r in self.observations(-1,999999) if r['station_id'] in ('S01','S02','S03')]
+        engine=JointForecaster(training,cadence)
+        result=engine.predict(rows,self.state['minute'],model,self.state.get('risk_mode','rule'))
+        result['environment_mode']=mode
+        return result
     def replan(self,reasons):
+        before=deepcopy(self.state.get('plan',{}));started=time.perf_counter()
         self.state['plan']=plan(self.state,**self.state['settings'])
         self.state['plan']['triggers']=list(reasons)
+        self.record_trace(before,reasons,time.perf_counter()-started)
         self.event('触发重规划：'+'；'.join(reasons)+f"；{self.state['plan'].get('status','UNKNOWN')}",'replan')
         self.start_due()
+    def record_trace(self,before,reasons,seconds):
+        from disaster.v2.metrics import actionable
+        result=self.state['plan'];forecast=self.state['forecast'];old={a['resource']+':'+a['task']:a for a in before.get('assignments',[])}
+        promises=actionable(dict(self.state,plan=before))
+        current={a['resource']+':'+a['task']:a for a in result.get('assignments',[])}
+        added=[dict(resource=a['resource'],task=a['task'],node=a['node'],arrival=a['arrival'],provisional=a['provisional']) for k,a in current.items() if k not in old]
+        same=[(old[k],a) for k,a in current.items() if k in old]
+        traces=self.state.setdefault('decision_traces',[])
+        trace=dict(id=str(uuid.uuid4()),minute=self.state['minute'],revision=self.state['revision']+1,triggers=list(reasons),
+            environment_mode=self.state.get('environment_mode','synthetic'),observations={k:dict(value=v['history'][-1]['value'],minute=v['history'][-1]['minute'],unit=v['unit']) for k,v in forecast['series'].items()},
+            station_observations={k:dict(value=v['history'][-1]['value'],minute=v['history'][-1]['minute'],unit=v['unit']) for k,v in forecast.get('station_series',{}).items()},
+            risk_before=traces[-1]['risk_after'] if traces else None,risk_after=forecast['score'],zones=forecast.get('zones',[]),
+            status=result.get('status'),solve_seconds=result.get('seconds'),replan_latency_seconds=seconds,
+            objective_terms=result.get('objective_terms',{}),verified_objective=result.get('verified_objective'),
+            previous_objective=before.get('verified_objective'),objective_delta=None,
+            objective_note='Changed tasks/resources/graph or time: objectives are not directly comparable; delta intentionally omitted',
+            added=added,withdrawn=[dict(resource=a['resource'],task=a['task']) for a in promises if a['resource']+':'+a['task'] not in current],
+            matched_arrival_changes=[dict(resource=a['resource'],task=a['task'],before=b['arrival'],after=a['arrival']) for b,a in same if b['arrival']!=a['arrival']],
+            stability=result.get('stability',{}),preposition=result.get('preposition',{}),
+            impact_note='Arrival changes are planned estimates for matched assignments, not measured rescue benefits')
+        traces.append(trace)
+        self.state['decision_traces']=traces[-100:]
+    @atomic_action
+    def reject(self,payload):
+        if payload.get('revision')!=self.state['revision']:raise ValueError('态势已变化，请重新提取候选')
+        text=payload.get('text')
+        if not isinstance(text,str) or not 1<=len(text)<=3000:raise ValueError('候选原文无效')
+        self.event('人工拒绝候选：'+text,'rejected')
+        self.save()
+        return self.view()
     def save(self):
         self.state['revision']+=1;self.db.save(self.state)
     @atomic_action
-    def reset(self,routing_mode=None):
+    def reset(self,routing_mode=None,environment_mode=None,risk_mode=None):
         revision=self.state['revision']
         mode=routing_mode or self.state.get('routing_mode','simulated')
         if mode not in ('simulated','osm'):raise ValueError('未知路网模式')
@@ -60,22 +110,25 @@ class Service:
             seed=load_scenario()
         else:seed=read_json(ROOT/'data/v2/scenario.json')
         self.state=dict(seed,minute=0,revision=revision,events=[],plan={},forecast={},routing_mode=mode,
-            settings={'horizon':60,'stability':20,'forecast':True},casualties={'missing':0,'injured':0})
+            environment_mode=environment_mode or self.state.get('environment_mode','synthetic'),risk_mode=risk_mode or self.state.get('risk_mode','rule'),
+            settings={'horizon':60,'stability':20,'forecast':True,'response_weight':10},casualties={'missing':0,'injured':0})
         self.refresh();self.event('演示重置到初始场景；历史快照保留','system');self.save()
         return self.view()
     def view(self,state=None):
         s=deepcopy(state or self.state);now=s['minute'];visible=[t for t in s['tasks'] if t['release']<=now]
-        s['tasks']=visible;s['observations']=self.db.observations(now,180)
+        s['tasks']=visible
+        feed=self.environment_feed() if s.get('environment_mode')=='historical' else self.db
+        s['observations']=feed.observations(now,180)
         if 'data_health' not in s:s['data_health']=self.db.source_health(now)
         s['time']=(datetime(2024,8,3,9)+timedelta(minutes=now)).strftime('%Y-%m-%d %H:%M')
         total=len(s['resources']);idle=sum(not r.get('active') and r['available_at']<=now and r.get('status')!='failed' for r in s['resources'])
-        rain=[o['value']*5/60 for o in self.db.observations(now,1440) if o['type']=='rainfall' and o['station_id']=='S01']
+        rain=[o['value']*o.get('cadence_minutes',5)/60 for o in feed.observations(now,1440) if o['type']=='rainfall' and o['station_id']=='S01' and o['minute']>now-1440]
         s['metrics']=dict(rainfall=round(sum(rain),1),available=idle,total=total,busy=sum(bool(r.get('active')) for r in s['resources']),
             blocked=sum(e['blocked'] for e in s['roads']),roads=len(s['roads']),pending=sum(t['status']=='pending' for t in visible),
             completed=sum(t['status']=='completed' for t in visible),affected_population=sum(n['population'] for n in s['nodes'] if n['kind']=='village'),
-            observations=len(self.db.observations(now)),missing=s['casualties']['missing'],injured=s['casualties']['injured'])
+            observations=len(feed.observations(now)),missing=s['casualties']['missing'],injured=s['casualties']['injured'])
         s['api']=dict(configured=provider_configured(),model=__import__('os').getenv('DISASTER_MODEL','未配置'),mode='实时模型可用' if provider_configured() else '离线规则 / 等待配置')
-        s['resource_names']=RESOURCE_NAMES;s['sensor_types']={k:{'label':v[0],'unit':v[1]} for k,v in KINDS.items()}
+        s['resource_names']=RESOURCE_NAMES;s['sensor_types']={k:{'label':v[0],'unit':v[1]} for k,v in KINDS.items() if k in s['forecast']['series']}
         with self.db.engine.connect() as conn:
             s['database']=dict(tables=list(self.db.engine.dialect.get_table_names(conn)),file=self.db.path.name)
         return s
@@ -83,9 +136,10 @@ class Service:
     def optimize(self,settings=None,commit=True):
         with self.lock:
             if settings:self.state['settings'].update(settings)
-            result=plan(self.state,**self.state['settings'])
+            before=deepcopy(self.state.get('plan',{}));started=time.perf_counter();result=plan(self.state,**self.state['settings'])
             if commit:
                 self.state['plan']=result;self.event(f"滚动规划完成：{len(result['assignments'])}项资源安排，窗口{result['horizon']}分钟，{result['status']}",'plan')
+                self.record_trace(before,['人工重新优化'],time.perf_counter()-started)
                 self.start_due();self.save()
             return result
     def start_due(self):
@@ -94,7 +148,7 @@ class Service:
         for tid in sorted({a['task'] for a in assignments},key=lambda tid:min(a['depart'] for a in assignments if a['task']==tid)):
             group=[a for a in assignments if a['task']==tid]
             if min(a['end'] for a in group)<=now:continue
-            if tid!='PREPOSITION' and tasks[tid]['status']!='pending':continue
+            if not tid.startswith('PREPOSITION') and tasks[tid]['status']!='pending':continue
             if any(r.get('active',{}).get('task')==tid for r in resources.values()):continue
             if min(a['depart'] for a in group)>now:continue
             if any(resources[a['resource']].get('active') for a in group):continue
@@ -262,7 +316,7 @@ class Service:
                         if e['id']==blocked:e['blocked']=True
                 if additional:
                     s['resources'].append(dict(id='EXTRA01',name='推演增援搜救队',type='rescue_team',node='N0',capacity=1,status='idle',available_at=s['minute'],queue=[]))
-                p=plan(s,horizon=s['settings']['horizon'],stability=stability,forecast=forecast,budget=2)
+                p=plan(s,horizon=s['settings']['horizon'],stability=stability,forecast=forecast,budget=2,response_weight=s['settings'].get('response_weight',10))
                 outputs.append(dict(name=name,plan=p,scheduled=len({a['task'] for a in p['assignments']}),
                     mean_response=round(np.mean([a['arrival']-s['minute'] for a in p['assignments']]),1) if p['assignments'] else None))
             return outputs

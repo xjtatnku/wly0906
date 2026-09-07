@@ -1,0 +1,1296 @@
+{
+  "native_rows": 3672,
+  "hourly_rows": 2442,
+  "sources": [
+    {
+      "file": "data/bronze/environment/era5_S01.json",
+      "source": "ERA5-Land via Open-Meteo archive API",
+      "url": "https://archive-api.open-meteo.com/v1/archive",
+      "query": {
+        "latitude": 30.15,
+        "longitude": 102.15,
+        "start_date": "2024-07-20",
+        "end_date": "2024-08-05",
+        "hourly": "soil_moisture_0_to_7cm",
+        "models": "era5_land",
+        "timezone": "UTC",
+        "cell_selection": "nearest",
+        "elevation": "nan"
+      },
+      "download_time": "2026-09-06T16:02:33.408868+00:00",
+      "sha256": "9de73be8b3bcb2f207f3e9300c7ff08309b70bc5290ce050c165693f998ffabf",
+      "license": "CC BY 4.0; Copernicus Climate Change Service/ECMWF and Open-Meteo",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/era5_S02.json",
+      "source": "ERA5-Land via Open-Meteo archive API",
+      "url": "https://archive-api.open-meteo.com/v1/archive",
+      "query": {
+        "latitude": 30.05,
+        "longitude": 102.25,
+        "start_date": "2024-07-20",
+        "end_date": "2024-08-05",
+        "hourly": "soil_moisture_0_to_7cm",
+        "models": "era5_land",
+        "timezone": "UTC",
+        "cell_selection": "nearest",
+        "elevation": "nan"
+      },
+      "download_time": "2026-09-06T16:02:33.580015+00:00",
+      "sha256": "5faf6d2b4fabad5366ae5d164de7a381b76aa9cce4fcf591168f29f068dc7318",
+      "license": "CC BY 4.0; Copernicus Climate Change Service/ECMWF and Open-Meteo",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/era5_S03.json",
+      "source": "ERA5-Land via Open-Meteo archive API",
+      "url": "https://archive-api.open-meteo.com/v1/archive",
+      "query": {
+        "latitude": 30.15,
+        "longitude": 102.25,
+        "start_date": "2024-07-20",
+        "end_date": "2024-08-05",
+        "hourly": "soil_moisture_0_to_7cm",
+        "models": "era5_land",
+        "timezone": "UTC",
+        "cell_selection": "nearest",
+        "elevation": "nan"
+      },
+      "download_time": "2026-09-06T16:02:33.743365+00:00",
+      "sha256": "ff91b4aa46ea3c9d3ed94cfae2bce7ae3da06f36f81129c27e64ffd9cbfea1bd",
+      "license": "CC BY 4.0; Copernicus Climate Change Service/ECMWF and Open-Meteo",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240720_00.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-20 00:00:00' AND StdTime < timestamp '2024-07-20 06:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:04:16.098346+00:00",
+      "sha256": "6762048655c4610f8be14cdf32d519b7394a6c56193435a4821f4c8e5eae0995",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240720_06.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-20 06:00:00' AND StdTime < timestamp '2024-07-20 12:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:04:18.159218+00:00",
+      "sha256": "7747d73731d51fa14f1612861cc92919d58f78a239ae239f612bd08a97b0f44c",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240720_12.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-20 12:00:00' AND StdTime < timestamp '2024-07-20 18:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:04:20.875038+00:00",
+      "sha256": "bbe79a72e73afeda5b322aebd7fd7f1c108e2542199c8af408f2b60a8c300aa0",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240720_18.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-20 18:00:00' AND StdTime < timestamp '2024-07-21 00:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:04:22.674336+00:00",
+      "sha256": "98187197493b7011e339d7a3527f6d85b0d5e9efd61e20a5ace8890010621c1a",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240721_00.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-21 00:00:00' AND StdTime < timestamp '2024-07-21 06:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:04:24.556905+00:00",
+      "sha256": "af32571853c79341ffa5b1a97f025a7e3436c736682f3207f856eba2137aa3cd",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240721_06.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-21 06:00:00' AND StdTime < timestamp '2024-07-21 12:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:04:26.822446+00:00",
+      "sha256": "4964bcc025783813e17ea7f6d9953d1a54d0e38cb838564efae88746482c1e49",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240721_12.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-21 12:00:00' AND StdTime < timestamp '2024-07-21 18:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:04:28.825403+00:00",
+      "sha256": "0d88e02e9f897dfc34f37f8d9b121041ad75f87413156af0f6f013845ed990fd",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240721_18.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-21 18:00:00' AND StdTime < timestamp '2024-07-22 00:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:04:31.029670+00:00",
+      "sha256": "4074a067589ee0d913ce31675a9b8adabe71fb11213d5ea0868c6ab0cce47e12",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240722_00.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-22 00:00:00' AND StdTime < timestamp '2024-07-22 06:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:04:33.553002+00:00",
+      "sha256": "3048147177cc647e3a0cad001ef2f3056eaf8132b155ee0c14eb046316584be7",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240722_06.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-22 06:00:00' AND StdTime < timestamp '2024-07-22 12:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:04:35.453189+00:00",
+      "sha256": "8a3f6b8a4a9e4aa10b0de0fe22eb9dc0db99dc1cdf5b784f78bc4ba0c942ce7f",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240722_12.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-22 12:00:00' AND StdTime < timestamp '2024-07-22 18:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:04:37.837279+00:00",
+      "sha256": "cb441aca4fb96d6d980f36077d2a889b95bd65796ed388c5d952d8414cd6d773",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240722_18.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-22 18:00:00' AND StdTime < timestamp '2024-07-23 00:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:04:39.841291+00:00",
+      "sha256": "9e167488e11b3e64714a6b2f01ffb435d65dd60000dc028e44108e8222a00193",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240723_00.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-23 00:00:00' AND StdTime < timestamp '2024-07-23 06:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:04:42.224861+00:00",
+      "sha256": "cbf3c8a9f6f89cebb146919fd392346398d5174b1d27b099ced6899973a4c3ab",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240723_06.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-23 06:00:00' AND StdTime < timestamp '2024-07-23 12:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:04:44.570173+00:00",
+      "sha256": "97b54c8daa47fb8eb9d18ad5d5c7c97e0a15fa2ff980326cafd65a0e1fbf073f",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240723_12.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-23 12:00:00' AND StdTime < timestamp '2024-07-23 18:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:04:46.654716+00:00",
+      "sha256": "0ecc0bbde13fc8fa620365b72fae7e579d1fddee2e6dff63f6474ea97f5f6f8a",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240723_18.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-23 18:00:00' AND StdTime < timestamp '2024-07-24 00:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:04:49.647105+00:00",
+      "sha256": "854685bd55d5ded3527173dee617674faae157441a9432deafde77f76b650109",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240724_00.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-24 00:00:00' AND StdTime < timestamp '2024-07-24 06:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:04:52.480440+00:00",
+      "sha256": "6cc66f12e1583cb65be6861284b23c8456988b890f0b2c7fc53c8b705c2a4e00",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240724_06.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-24 06:00:00' AND StdTime < timestamp '2024-07-24 12:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:04:54.587644+00:00",
+      "sha256": "d7ef8a2b72e8e75963f63cd1f5521390186e689e44993b9e3691753a468c0a57",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240724_12.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-24 12:00:00' AND StdTime < timestamp '2024-07-24 18:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:04:57.197799+00:00",
+      "sha256": "b5c2bf5f70a34b064ab7a4af1b41fa230d4002948fb42411afe6d38f842a1c65",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240724_18.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-24 18:00:00' AND StdTime < timestamp '2024-07-25 00:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:04:59.680638+00:00",
+      "sha256": "fbadc849771a92f04ddbbb95c846071b988bbd39fefa4f79c16417d55ed62ccc",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240725_00.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-25 00:00:00' AND StdTime < timestamp '2024-07-25 06:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:05:02.153012+00:00",
+      "sha256": "aab92b48d835395cda322846dbe16251304a631bd98df151a71074240dac3bec",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240725_06.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-25 06:00:00' AND StdTime < timestamp '2024-07-25 12:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:05:05.053258+00:00",
+      "sha256": "6d4b335a19569f966730cb7486cc25989363dbabdfd2cb53c3f0e49ebf32410d",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240725_12.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-25 12:00:00' AND StdTime < timestamp '2024-07-25 18:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:05:07.320614+00:00",
+      "sha256": "fa885b1bb049c230fc328917585b7230c9d4acf5cf4254cd8def0928874748e9",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240725_18.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-25 18:00:00' AND StdTime < timestamp '2024-07-26 00:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:05:10.082422+00:00",
+      "sha256": "7a75677cdf22295a6981f2b715ab10b0e8994a195b8d4bec737afc6b7adc3b9c",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240726_00.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-26 00:00:00' AND StdTime < timestamp '2024-07-26 06:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:05:12.996156+00:00",
+      "sha256": "856838e3c59718ad7a1aafd50540faaab803c1306621d14e874ed072564bcb99",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240726_06.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-26 06:00:00' AND StdTime < timestamp '2024-07-26 12:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:05:15.552732+00:00",
+      "sha256": "1bc0210768b05becd6ae2f9f8b1baa5e9efeeb84a6eef84f0ae7d76bd8e887f0",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240726_12.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-26 12:00:00' AND StdTime < timestamp '2024-07-26 18:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:05:18.119994+00:00",
+      "sha256": "7b171975b9ebc59093598e301281d9b21263f85bbac69c73470f255805975e0d",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240726_18.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-26 18:00:00' AND StdTime < timestamp '2024-07-27 00:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:05:20.796475+00:00",
+      "sha256": "1825bd86fdbba8ffc014237ee788442a6dfbb1fd6bd6595d5d409479bc8a266f",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240727_00.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-27 00:00:00' AND StdTime < timestamp '2024-07-27 06:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:05:23.074208+00:00",
+      "sha256": "02abcea587a475cd63e898bb13110a384a10f7178a458c6df2cedd24615b8374",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240727_06.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-27 06:00:00' AND StdTime < timestamp '2024-07-27 12:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:05:25.609296+00:00",
+      "sha256": "3be801c4322306a62a5f4362b0bc8229d22a8d39feb90794be893bcfa661cee8",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240727_12.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-27 12:00:00' AND StdTime < timestamp '2024-07-27 18:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:05:28.104730+00:00",
+      "sha256": "9d0173b62dc616fd34e8a3205da92446fb15381b2e012021979192177fac62fa",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240727_18.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-27 18:00:00' AND StdTime < timestamp '2024-07-28 00:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:05:30.617890+00:00",
+      "sha256": "77ad625c5674b0a12a1e37fe2bcac48b064ef165f662ca2de601231b6befe3c4",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240728_00.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-28 00:00:00' AND StdTime < timestamp '2024-07-28 06:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:05:33.267268+00:00",
+      "sha256": "8f09a4ef3ad74d2112d1c3e7024db1890cd5e2c842392434f8a87413a2c54b02",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240728_06.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-28 06:00:00' AND StdTime < timestamp '2024-07-28 12:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:05:35.522522+00:00",
+      "sha256": "76b4c19828be2e8bc2bfc79cac96ca9a4d83d9bc0748c7aa8199a98a00d76913",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240728_12.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-28 12:00:00' AND StdTime < timestamp '2024-07-28 18:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:05:37.774791+00:00",
+      "sha256": "8563ab9a51cc369aca5cb525c3240f683e12ebaa809b77252c0364846063311b",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240728_18.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-28 18:00:00' AND StdTime < timestamp '2024-07-29 00:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:05:39.782313+00:00",
+      "sha256": "eef4723abfa0b2a7ec3a7bb55331f1e9d8fdaeeb03a080ca01a0d56ed12e5663",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240729_00.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-29 00:00:00' AND StdTime < timestamp '2024-07-29 06:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:05:42.652760+00:00",
+      "sha256": "dccb5e51e7e8de75325de30706b5da21f3ec9cd5f986eafa2a7e75a64440d992",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240729_06.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-29 06:00:00' AND StdTime < timestamp '2024-07-29 12:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:05:45.333129+00:00",
+      "sha256": "3aa0b6509e15fac0ca671b9ffda81574eab6666d2112952cf764d10f591bca0f",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240729_12.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-29 12:00:00' AND StdTime < timestamp '2024-07-29 18:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:05:47.336008+00:00",
+      "sha256": "2a659843f86ebc07352b3cffd780668ddcd559aee5fd4e9f734d779f4b1e6f85",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240729_18.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-29 18:00:00' AND StdTime < timestamp '2024-07-30 00:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:05:50.170607+00:00",
+      "sha256": "30b35fc54ed9cd6e8e7828b3b6b6528d54e745e31e7ff3dea3806df9fb23a860",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240730_00.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-30 00:00:00' AND StdTime < timestamp '2024-07-30 06:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:05:52.623224+00:00",
+      "sha256": "826a05d96d635ab04300c4cbeb0f5df5b74662c465ef864d6b0b463ce882f33d",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240730_06.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-30 06:00:00' AND StdTime < timestamp '2024-07-30 12:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:05:54.874305+00:00",
+      "sha256": "d9c9393830ffbc462b95a87986723ea1fb80ef8bf72d4d1e48797027c9d55504",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240730_12.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-30 12:00:00' AND StdTime < timestamp '2024-07-30 18:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:05:57.686299+00:00",
+      "sha256": "5cf239ef8505e3428b7b5fdbc9a01dc24f7187ed4d5c8221763b60b29cd55ae1",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240730_18.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-30 18:00:00' AND StdTime < timestamp '2024-07-31 00:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:05:59.756563+00:00",
+      "sha256": "224642542cd85d4c0a019abd1632216916744e250723e41062488461de086f19",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240731_00.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-31 00:00:00' AND StdTime < timestamp '2024-07-31 06:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:06:01.873240+00:00",
+      "sha256": "8c995e197e137ba440d24244a219f37d9aa3d4a2ed7373dfeab1a7c72c555c2d",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240731_06.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-31 06:00:00' AND StdTime < timestamp '2024-07-31 12:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:06:04.651674+00:00",
+      "sha256": "5461f1ceb8c111adbf0196a6d9c1bc7fe5af4fd2eda365d2b1f105de2aaf6ffe",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240731_12.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-31 12:00:00' AND StdTime < timestamp '2024-07-31 18:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:06:06.744226+00:00",
+      "sha256": "91c29bdcbab4e642e83a0c69dbb1ddbdad556d11fdeb47912d9ebdca781484db",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240731_18.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-31 18:00:00' AND StdTime < timestamp '2024-08-01 00:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:06:09.786100+00:00",
+      "sha256": "a71328e96e0af08eeeb2e685aeb42dee51a8a1ff33c4da59cad15b8d2f4f75d6",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240801_00.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-08-01 00:00:00' AND StdTime < timestamp '2024-08-01 06:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:06:12.651834+00:00",
+      "sha256": "ea5a6cca814f0515b4137310328d8528ea5c1d383f0b070f6c2507cc5b8e8da1",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240801_06.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-08-01 06:00:00' AND StdTime < timestamp '2024-08-01 12:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:06:14.855759+00:00",
+      "sha256": "47bc2480bf7a9f1b57bf7bd4deb6f645850dc37bc40f9e7c65a92283683d2be2",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240801_12.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-08-01 12:00:00' AND StdTime < timestamp '2024-08-01 18:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:06:17.882478+00:00",
+      "sha256": "b30a4e4ee1bc01c459042730319e7096dc1a9343ccb167854d33d789395a5d43",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240801_18.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-08-01 18:00:00' AND StdTime < timestamp '2024-08-02 00:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:06:19.796297+00:00",
+      "sha256": "7cfae3e2d905ee49c1e12a8789311ef33e1c07a28d323d4a5eb6d0b6e9c5dac7",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240802_00.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-08-02 00:00:00' AND StdTime < timestamp '2024-08-02 06:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:06:22.023955+00:00",
+      "sha256": "aed2d43f2a8f01930fdc9a8306d07f26d5a73ff3f023e5d80c4efee6aed8cb2d",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240802_06.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-08-02 06:00:00' AND StdTime < timestamp '2024-08-02 12:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:06:24.748426+00:00",
+      "sha256": "57568b2e7e61c1dbfd7d9dff10de0bc7c9e56ee7a4dd0a1adeed8937cebf1258",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240802_12.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-08-02 12:00:00' AND StdTime < timestamp '2024-08-02 18:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:06:26.784966+00:00",
+      "sha256": "f391dbd849eae11d9e8ef8d33e3fc6fafe8992ae10538adea614a0916a00e4be",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240802_18.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-08-02 18:00:00' AND StdTime < timestamp '2024-08-03 00:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:06:29.367147+00:00",
+      "sha256": "29870adff9a1559e4cedcb21074b29cff0d45f653c3c68d808049bedfcc22e8c",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240803_00.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-08-03 00:00:00' AND StdTime < timestamp '2024-08-03 06:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:06:32.265456+00:00",
+      "sha256": "dc667d130ebc562ae6da03a02ab60a50ebcc414c7d52607fc51835ab33cba669",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240803_06.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-08-03 06:00:00' AND StdTime < timestamp '2024-08-03 12:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:06:34.349721+00:00",
+      "sha256": "5d51d0ae99b62a4e9996cb37ddd2cf225671e57ab49f01d84080f58718037ad7",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240803_12.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-08-03 12:00:00' AND StdTime < timestamp '2024-08-03 18:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:06:37.006971+00:00",
+      "sha256": "f4dfdb5aa01904851026d730cdfb4bfc7e16f3c2db904d68e6d56eb3eea3e727",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240803_18.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-08-03 18:00:00' AND StdTime < timestamp '2024-08-04 00:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:06:39.419410+00:00",
+      "sha256": "b9832b9495f1ad2ab8392fbcc8eca1e532b6328c335192054aaf57cd6e179912",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240804_00.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-08-04 00:00:00' AND StdTime < timestamp '2024-08-04 06:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:06:41.935569+00:00",
+      "sha256": "da1c9cf1f429c3d6cdb8d09cc0e5ab558b2534d32dbc10fc47601811c1d2cfc2",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240804_06.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-08-04 06:00:00' AND StdTime < timestamp '2024-08-04 12:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:06:45.035986+00:00",
+      "sha256": "58dce2a2c42923b1a84bde42552a3a1538825cbb24d3b6d5386b7ebe58a4ac47",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240804_12.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-08-04 12:00:00' AND StdTime < timestamp '2024-08-04 18:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:06:47.341449+00:00",
+      "sha256": "215231dac19ac0024798b1dda228905158b0ad40dca3a354d068a52099882709",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240804_18.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-08-04 18:00:00' AND StdTime < timestamp '2024-08-05 00:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:06:50.468491+00:00",
+      "sha256": "f0b463524ae68305854b437366703762b84f0a3af82fc39394ffdbfc92bd54de",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240805_00.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-08-05 00:00:00' AND StdTime < timestamp '2024-08-05 06:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:06:53.285501+00:00",
+      "sha256": "384f75cf35fb58cf8a70225a615d2f667b89597e1811b697c0e130279445a424",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240805_06.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-08-05 06:00:00' AND StdTime < timestamp '2024-08-05 12:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:06:55.554707+00:00",
+      "sha256": "42b38a2e67b8a0d2801208096372fbbc12903f56b3fdbb77902ab7d352eea87d",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240805_12.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-08-05 12:00:00' AND StdTime < timestamp '2024-08-05 18:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:06:57.993345+00:00",
+      "sha256": "a9537230e340d17e6df1126fccb9fff2809a428297cd89599344cfcbdee04ef5",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    },
+    {
+      "file": "data/bronze/environment/gpm_20240805_18.json",
+      "source": "NASA GES DISC IMERG Final V07",
+      "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+      "query": {
+        "f": "json",
+        "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+        "geometryType": "esriGeometryMultipoint",
+        "returnFirstValueOnly": "false",
+        "outFields": "*",
+        "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-08-05 18:00:00' AND StdTime < timestamp '2024-08-06 00:00:00'\"}",
+        "interpolation": "RSP_NearestNeighbor"
+      },
+      "download_time": "2026-09-06T16:07:00.285041+00:00",
+      "sha256": "ae025faf2d04630b48ddca361ba4e659c37f959eb268b5a654edfeb21ede6b2e",
+      "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+      "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+    }
+  ],
+  "water_level": "not available; excluded",
+  "displacement": "not available; excluded",
+  "mode": "retrospective environmental forcing",
+  "clock": "observation-clock replay, NOT original publication availability",
+  "warning": "IMERG Final and ERA5-Land use retrospective information; cannot claim historical operational forecast skill",
+  "alignment": "No interpolation to 5 minutes. Hourly gold uses only intervals completed at or before the row time."
+}

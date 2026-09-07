@@ -11,3 +11,5 @@ frontend/node_modules/
 frontend/vendor/
 results/v2/runtime/
 data/cache/live*
+results/v22/tests.xml
+results/v22/*.partial

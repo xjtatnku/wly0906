@@ -1,0 +1,10 @@
+{
+  "tests": 58,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "seconds": 94.998,
+  "command": "python -m pytest -q",
+  "browser": "scripts/browser_v2.py and scripts/browser_v22.py; no page errors",
+  "pip_check": "No broken requirements found"
+}

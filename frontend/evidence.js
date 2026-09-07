@@ -1,7 +1,7 @@
 function renderHealth(){
  const rows=state.data_health||[];
  const statusType=s=>s==='FRESH'?'good':s==='DELAYED'?'warn':'danger';
- $('#content').insertAdjacentHTML('afterbegin',panel('数据时效与接收质量',`<div class="panel-body"><p class="notice">在线仿真模式：新鲜度与接收间隔使用模拟时钟；received_at 是本机实际入库时间。预生成数据按时刻释放，没有接入真实传感器或硬件心跳。时效阈值为实验设定：5 / 15 / 30 分钟。</p>${table(['数据流','最新观测时间','实际接收时间','观测年龄 / 接收间隔','源状态','通过率','近1小时缺失率'],rows.map(r=>[esc(r.source_id),esc(r.observed_at||'无'),esc(r.received_at||'旧数据未记录'),`${r.freshness_seconds??'—'} / ${r.heartbeat_age_seconds??'—'} 秒`,badge(r.source_status,statusType(r.source_status)),r.quality_rate===null?'—':(100*r.quality_rate).toFixed(1)+'%',(100*r.missing_rate).toFixed(1)+'%']))}</div>`,'FRESH / DELAYED / STALE / OFFLINE','full'));
+ $('#content').insertAdjacentHTML('afterbegin',panel('数据时效与接收质量',`<div class="panel-body"><p class="notice">在线仿真模式：新鲜度与接收间隔使用模拟时钟；received_at 是本机实际入库时间。预生成数据按时刻释放，没有接入真实传感器或硬件心跳。模拟源阈值5/15/30分钟；历史小时回放的FRESH阈值60分钟。历史产品的真实发布延迟不由模拟时钟推断。</p>${table(['数据流','最新观测时间','实际接收时间','观测年龄 / 接收间隔','源状态','通过率','采样窗口缺失率'],rows.map(r=>[esc(r.source_id),esc(r.observed_at||'无'),esc(r.received_at||'旧数据未记录'),`${r.freshness_seconds??'—'} / ${r.heartbeat_age_seconds??'—'} 秒`,badge(r.source_status,statusType(r.source_status)),r.quality_rate===null?'—':(100*r.quality_rate).toFixed(1)+'%',(100*r.missing_rate).toFixed(1)+'%']))}</div>`,'FRESH / DELAYED / STALE / OFFLINE','full'));
 }
 function displayAssignments(){
  const active=state.resources.flatMap(r=>r.active?[{...r.active,locked:true}]:[]);
@@ -17,7 +17,9 @@ async function renderExperiments(){
 }
 async function renderMultistep(){
  const f=await api('forecast');
- $('#content').insertAdjacentHTML('beforeend',panel('递归多步预测 · 同一组滚动起点',`<div class="panel-body"><p class="notice">S01 的四个变量独立建模。模型固定在历史训练段；每个验证起点只能读取当时已有观测，之后递归反馈预测值。各时距使用相同起点，不用真实中间值填充预测窗口。当前数据有效性：${f.eligible_for_decision?'可用于实验前置判断':'存在过期或缺口，暂停预测前置'}</p>${table(['要素','模型','预测时距','MAE','RMSE','共同验证起点数'],(f.multistep_evaluation||[]).map(e=>[esc(state.sensor_types[e.type].label),esc(e.model),e.horizon_minutes+'分钟',e.mae.toFixed(3),e.rmse.toFixed(3),e.test_samples]))}</div>`,'5 / 15 / 30 / 60 分钟，模拟数据上的实测误差','full'));
+ $('#content').insertAdjacentHTML('beforeend',panel('A · 联合递归预测验证',`<div class="panel-body"><p class="notice">三个站点联合构造12阶滞后特征。固定训练段，每个验证起点只读取当时已有观测，之后递归反馈预测值；各时距使用相同起点。当前数据：${f.eligible_for_decision?'可用于实验前置':'过期或缺口，暂停预测前置'}。</p><div class="toolbar"><span>当前查看 ${forecastStation}</span><select id="eval-kind">${Object.entries(state.sensor_types).map(([k,v])=>`<option value="${k}">${v.label} / ${v.unit}</option>`).join('')}</select><a href="/api/research/export/forecast_${f.environment_mode==='historical'?'historical':'synthetic'}">下载完整预测误差 CSV</a></div><div id="eval-table"></div></div>`,`${f.cadence_minutes===60?'历史小时数据：60 / 180 / 360 / 720':'模拟数据：5 / 15 / 30 / 60'} 分钟`,'full'));
+ const update=()=>{$('#eval-table').innerHTML=table(['模型','预测时距','MAE','RMSE','共同验证起点数','联合特征数'],f.multistep_evaluation.filter(e=>e.station_id===forecastStation&&e.type===$('#eval-kind').value).map(e=>[esc(e.model),e.horizon_minutes+'分钟',e.mae.toFixed(3),e.rmse.toFixed(3),e.test_samples,e.features]))};
+ $('#eval-kind').onchange=update;update();
 }
 function renderRoutingControls(){
  const osm=state.routing_mode==='osm',m=state.routing_manifest;

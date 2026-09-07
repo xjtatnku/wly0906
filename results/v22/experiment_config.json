@@ -1,0 +1,86 @@
+{
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "resource_scales": [
+    1,
+    0.75,
+    0.5,
+    0.35
+  ],
+  "event_rates": {
+    "low": 12,
+    "medium": 24,
+    "high": 36
+  },
+  "methods": [
+    "greedy",
+    "static",
+    "rolling",
+    "rolling_forecast"
+  ],
+  "horizon": 60,
+  "end_minute": 120,
+  "solver_budget_seconds": 0.2,
+  "workers": 8,
+  "response_weight": 10,
+  "scarcity": "Per-type nested prefix floor(n*scale), minimum one; actual resource count exported.",
+  "input_sha256": "ab45335d80eece5fd6d6ad07e0a66aa457c7ac614ce866bc78abf108a08e6391",
+  "protocol": "Shared synthetic input / exogenous joint forecasts / execution simulator; one-minute invariant audit.",
+  "notes": [
+    "Static only allocates at time zero, cancels blocked/failed future tasks, never reallocates.",
+    "Travel is occupied execution minutes before minute 120, including interrupted legs.",
+    "Response and regional Gini condition on started tasks. Unmet, started counts and unserved regions must accompany them.",
+    "Closure RD00 at minute 20 for all factorial methods. Stress events occur off-period at minute 17.",
+    "Beta-zero ablation uses 50% resources / high event rate, matched seeds and other settings.",
+    "Wall-clock time and timeout-dependent feasible solutions may vary. Fallback counts are exported.",
+    "Forecast tables separate synthetic 5/15/30/60 min and real historical 60/180/360/720 min.",
+    "Real IMERG Final/ERA5-Land are retrospective forcing, not historically available operational data."
+  ],
+  "input_hash_scope": "Initial nodes/roads/resources/tasks/settings/environment/risk/routing; excludes UUIDs, receipt timestamps and measured model runtime",
+  "resumed_seeds": [
+    0,
+    1
+  ],
+  "seed_workers": {
+    "0": 4,
+    "1": 4,
+    "2": 8,
+    "3": 8,
+    "4": 8,
+    "5": 8,
+    "6": 8,
+    "7": 8,
+    "8": 8,
+    "9": 8,
+    "10": 8,
+    "11": 8,
+    "12": 8,
+    "13": 8,
+    "14": 8,
+    "15": 8,
+    "16": 8,
+    "17": 8,
+    "18": 8,
+    "19": 8
+  }
+}

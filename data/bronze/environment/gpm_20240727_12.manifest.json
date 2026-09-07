@@ -1,0 +1,17 @@
+{
+  "source": "NASA GES DISC IMERG Final V07",
+  "url": "https://gis.earthdata.nasa.gov/portal/rest/services/GESDISC/GPM_3IMERGHH/ImageServer/getSamples",
+  "query": {
+    "f": "json",
+    "geometry": "{\"points\": [[102.15, 30.15], [102.25, 30.05], [102.25, 30.15]], \"spatialReference\": {\"wkid\": 4326}}",
+    "geometryType": "esriGeometryMultipoint",
+    "returnFirstValueOnly": "false",
+    "outFields": "*",
+    "mosaicRule": "{\"where\": \"StdTime >= timestamp '2024-07-27 12:00:00' AND StdTime < timestamp '2024-07-27 18:00:00'\"}",
+    "interpolation": "RSP_NearestNeighbor"
+  },
+  "download_time": "2026-09-06T16:05:28.104730+00:00",
+  "sha256": "9d0173b62dc616fd34e8a3205da92446fb15381b2e012021979192177fac62fa",
+  "license": "NASA Earthdata open data; cite GPM_3IMERGHH_07",
+  "scope": "Retrospective final/reanalysis product, not available in real time at the 2024 event"
+}

@@ -3,7 +3,7 @@ import json
 import time
 from playwright.sync_api import sync_playwright
 ROOT=Path(__file__).resolve().parents[1]
-out=ROOT/'results/v21';out.mkdir(exist_ok=True)
+out=ROOT/'results/v22';out.mkdir(exist_ok=True)
 with sync_playwright() as p:
     browser=p.chromium.launch(headless=True)
     page=browser.new_page(viewport={'width':1680,'height':1050},device_scale_factor=1)
@@ -12,7 +12,7 @@ with sync_playwright() as p:
             if page.request.get('http://127.0.0.1:8800/api/health',timeout=1000).ok:break
         except Exception:pass
         time.sleep(1)
-    assert page.request.post('http://127.0.0.1:8800/api/reset',data={'routing_mode':'simulated'}).ok
+    assert page.request.post('http://127.0.0.1:8800/api/reset',data={'routing_mode':'simulated','environment_mode':'synthetic','risk_mode':'rule'}).ok
     errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
     page.goto('http://127.0.0.1:8800',wait_until='networkidle')
     page.locator('.cards').wait_for()
