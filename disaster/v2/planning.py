@@ -16,7 +16,8 @@ def distance(g,a,b):
     if a not in cache:cache[a]=nx.single_source_dijkstra_path_length(g,a,weight='weight')
     return int(cache[a][b]) if b in cache[a] else None
 
-def plan(state,horizon=60,stability=20,forecast=True,budget=4,response_weight=10,preposition_mode='multizone'):
+def plan(state,horizon=60,stability=20,forecast=True,budget=4,response_weight=10,preposition_mode='multizone',objective_mode='weighted'):
+    if objective_mode not in ('weighted','lexicographic'):raise ValueError('未知目标模式')
     now=state['minute'];g=graph(state);deadline=now+horizon
     tasks=[t for t in state['tasks'] if t['release']<=now and t['status']=='pending']
     # Forecast tasks are explicit provisional jobs, never ground-truth future incidents.
@@ -25,7 +26,7 @@ def plan(state,horizon=60,stability=20,forecast=True,budget=4,response_weight=10
                          priority=3,release=now+5,deadline=deadline,duration=5,status='provisional')]
     resources=[r for r in state['resources'] if r.get('status')!='failed'];m=cp_model.CpModel();chosen={};starts={};ends={};x={};travel_cost=[];change_cost=[];delays=[]
     previous={(a['resource'],a['task']) for a in actionable(state)}
-    previous_tasks={tid for _,tid in previous};responses=[];priority_weights={1:5,2:3,3:1}
+    previous_tasks={tid for _,tid in previous};responses=[];response_by_task={};priority_weights={1:5,2:3,3:1}
     availability={}
     for r in resources:
         if r.get('active'):
@@ -44,6 +45,7 @@ def plan(state,horizon=60,stability=20,forecast=True,budget=4,response_weight=10
         m.add(response==starts[tid]-t['release']).only_enforce_if(chosen[tid])
         m.add(response==0).only_enforce_if(chosen[tid].Not())
         responses.append(priority_weights[t['priority']]*response)
+        response_by_task[tid]=response
         for kind,required in t['requirements'].items():
             variables=[]
             for r in resources:
@@ -84,7 +86,32 @@ def plan(state,horizon=60,stability=20,forecast=True,budget=4,response_weight=10
         m.add(changed<=sum(terms));change_cost.append(changed)
     m.minimize(unmet+response_weight*sum(responses)+10*sum(delays)+sum(travel_cost)+stability*sum(change_cost))
     solver=cp_model.CpSolver();solver.parameters.max_time_in_seconds=budget*(.8 if forecast and preposition_mode=='multizone' else 1);solver.parameters.num_search_workers=1;solver.parameters.random_seed=906
-    begin=time.perf_counter();status=solver.solve(m);elapsed=time.perf_counter()-begin
+    begin=time.perf_counter();levels=[];complete=False
+    if objective_mode=='lexicographic' and budget>0:
+        objectives=[('p1_unserved',sum(1-chosen[t['id']] for t in tasks if t['priority']==1)),
+                    ('p1_response',sum(response_by_task[t['id']] for t in tasks if t['priority']==1)),
+                    ('other_unserved',sum(1-chosen[t['id']] for t in tasks if t['priority']!=1)),
+                    ('travel_disruption',sum(travel_cost)+stability*sum(change_cost))]
+        status=cp_model.UNKNOWN;best=None
+        total_budget=solver.parameters.max_time_in_seconds
+        for i,(label,objective) in enumerate(objectives):
+            remaining=total_budget-(time.perf_counter()-begin)
+            if remaining<=0:break
+            stage=cp_model.CpSolver();stage.parameters.num_search_workers=1;stage.parameters.random_seed=906
+            stage.parameters.max_time_in_seconds=remaining/(len(objectives)-i)
+            m.minimize(objective);stage_status=stage.solve(m)
+            feasible=stage_status in (cp_model.OPTIMAL,cp_model.FEASIBLE)
+            levels.append(dict(level=label,status=stage.status_name(stage_status),value=stage.value(objective) if feasible else None,
+                               proven=stage_status==cp_model.OPTIMAL,seconds=stage.wall_time))
+            if not feasible:break
+            best=stage;status=cp_model.FEASIBLE
+            # A feasible incumbent is NOT an optimum and must not be fixed as one.
+            if stage_status!=cp_model.OPTIMAL:break
+            m.add(objective==stage.value(objective))
+            if i==len(objectives)-1:complete=True;status=cp_model.OPTIMAL
+        if best is not None:solver=best
+    else:status=solver.solve(m)
+    elapsed=time.perf_counter()-begin
     assignments=[]
     if status in (cp_model.OPTIMAL,cp_model.FEASIBLE):
         for r in resources:
@@ -138,12 +165,16 @@ def plan(state,horizon=60,stability=20,forecast=True,budget=4,response_weight=10
                 tasks_considered=[t['id'] for t in tasks])
     selected={a['task']:a for a in assignments if not a['provisional']}
     result['response_weight']=response_weight;result['preposition']=preposition
+    result['objective_mode']=objective_mode;result['lexicographic_levels']=levels;result['lexicographic_complete']=complete
     result['stability']=disruption(state,assignments)
     result['objective_terms']=dict(unmet=sum(weights[t['priority']] for t in tasks if t['id'] not in selected and t['id']!='PREPOSITION'),
         response=sum(priority_weights[t['priority']]*(selected[t['id']]['start']-t['release']) for t in tasks if t['id'] in selected),
         lateness=sum(max(0,selected[t['id']]['start']-t['deadline']) for t in tasks if t['id'] in selected),
         travel=sum(a['travel'] for a in assignments if not a['provisional']),disruption=result['stability']['disruption'])
     terms=result['objective_terms'];result['verified_objective']=terms['unmet']+response_weight*terms['response']+10*terms['lateness']+terms['travel']+stability*terms['disruption']
+    result['verified_lexicographic']=[sum(t['priority']==1 and t['id'] not in selected for t in tasks),
+        sum(selected[t['id']]['start']-t['release'] for t in tasks if t['priority']==1 and t['id'] in selected),
+        sum(t['priority']!=1 and t['id'] not in selected for t in tasks),terms['travel']+stability*terms['disruption']]
     result['gaps']=[]
     for t in tasks:
         if t['id'] not in result['unplanned']:continue

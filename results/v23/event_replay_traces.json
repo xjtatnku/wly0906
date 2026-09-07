@@ -1,0 +1,2132 @@
+[
+  {
+    "stage": 0,
+    "minute": 0,
+    "casualties": {
+      "missing": 0,
+      "injured": 0
+    },
+    "trace": {
+      "id": "98eb361a-9816-4bd9-81f7-842796a088d8",
+      "minute": 0,
+      "revision": 70,
+      "triggers": [
+        "risk_change N4"
+      ],
+      "environment_mode": "synthetic",
+      "observations": {
+        "displacement": {
+          "value": 22.532,
+          "minute": 0,
+          "unit": "mm"
+        },
+        "rainfall": {
+          "value": 44.719,
+          "minute": 0,
+          "unit": "mm/h"
+        },
+        "soil_moisture": {
+          "value": 75.97,
+          "minute": 0,
+          "unit": "%"
+        },
+        "water_level": {
+          "value": 4.112,
+          "minute": 0,
+          "unit": "m"
+        }
+      },
+      "station_observations": {
+        "S01:displacement": {
+          "value": 22.532,
+          "minute": 0,
+          "unit": "mm"
+        },
+        "S01:rainfall": {
+          "value": 44.719,
+          "minute": 0,
+          "unit": "mm/h"
+        },
+        "S01:soil_moisture": {
+          "value": 75.97,
+          "minute": 0,
+          "unit": "%"
+        },
+        "S01:water_level": {
+          "value": 4.112,
+          "minute": 0,
+          "unit": "m"
+        },
+        "S02:displacement": {
+          "value": 21.638,
+          "minute": 0,
+          "unit": "mm"
+        },
+        "S02:rainfall": {
+          "value": 45.46,
+          "minute": 0,
+          "unit": "mm/h"
+        },
+        "S02:soil_moisture": {
+          "value": 76.374,
+          "minute": 0,
+          "unit": "%"
+        },
+        "S02:water_level": {
+          "value": 3.963,
+          "minute": 0,
+          "unit": "m"
+        },
+        "S03:displacement": {
+          "value": 22.301,
+          "minute": 0,
+          "unit": "mm"
+        },
+        "S03:rainfall": {
+          "value": 43.138,
+          "minute": 0,
+          "unit": "mm/h"
+        },
+        "S03:soil_moisture": {
+          "value": 76.831,
+          "minute": 0,
+          "unit": "%"
+        },
+        "S03:water_level": {
+          "value": 4.018,
+          "minute": 0,
+          "unit": "m"
+        }
+      },
+      "risk_before": null,
+      "risk_after": 0.959133025582723,
+      "zones": [
+        {
+          "station_id": "S01",
+          "node": "N4",
+          "score": 0.95,
+          "eligible": true,
+          "forecast_scores": [
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95
+          ],
+          "score_source": "人工确认的情景排序覆盖，非环境模型预测"
+        },
+        {
+          "station_id": "S02",
+          "node": "N5",
+          "score": 0.9567,
+          "eligible": true,
+          "forecast_scores": [
+            0.8635167474809246,
+            0.870597981158848,
+            0.8814932042000444,
+            0.8977131473421869,
+            0.9117637700844853,
+            0.9162207248320547,
+            0.9277089215057279,
+            0.9333303480085108,
+            0.9398281247350536,
+            0.9437140317168764,
+            0.9511434885735959,
+            0.9566519025568104
+          ]
+        },
+        {
+          "station_id": "S03",
+          "node": "N8",
+          "score": 0.9591,
+          "eligible": true,
+          "forecast_scores": [
+            0.8505723041960715,
+            0.862107894951456,
+            0.8727007386986645,
+            0.8837633484789011,
+            0.8949107716051676,
+            0.9046213701446075,
+            0.9137852542457295,
+            0.9236101806131899,
+            0.9358209506001656,
+            0.9461367039261386,
+            0.9531127413300952,
+            0.959133025582723
+          ]
+        }
+      ],
+      "status": "OPTIMAL",
+      "solve_seconds": 0.0006857999978819862,
+      "replan_latency_seconds": 0.03675439998914953,
+      "objective_terms": {
+        "unmet": 0,
+        "response": 0,
+        "lateness": 0,
+        "travel": 0,
+        "disruption": 0
+      },
+      "verified_objective": 0,
+      "objective_mode": "weighted",
+      "lexicographic_levels": [],
+      "risk_overrides": {
+        "N4": {
+          "score": 0.95,
+          "expires": 30,
+          "event": "0c112b834d076c06-0",
+          "provenance": "human_confirmed_scenario_risk"
+        }
+      },
+      "previous_objective": null,
+      "objective_delta": null,
+      "objective_note": "Changed tasks/resources/graph or time: objectives are not directly comparable; delta intentionally omitted",
+      "added": [
+        {
+          "resource": "RES03",
+          "task": "PREPOSITION:RES03:0",
+          "node": "N4",
+          "arrival": 10,
+          "provisional": true
+        },
+        {
+          "resource": "DRO02",
+          "task": "PREPOSITION:DRO02:0",
+          "node": "N4",
+          "arrival": 13,
+          "provisional": true
+        }
+      ],
+      "withdrawn": [],
+      "matched_arrival_changes": [],
+      "stability": {
+        "reassignments": 0,
+        "withdrawals": 0,
+        "disruption": 0,
+        "details": [],
+        "scope": "Only previous actionable pending task promises; new tasks/completed/locked actions excluded"
+      },
+      "preposition": {
+        "status": "OPTIMAL",
+        "seconds": 0.025171999994199723,
+        "scenarios": [
+          {
+            "name": "low",
+            "probability": 0.4,
+            "demand_weight": 0,
+            "blocked_roads": []
+          },
+          {
+            "name": "medium",
+            "probability": 0.4,
+            "demand_weight": 1,
+            "blocked_roads": []
+          },
+          {
+            "name": "high",
+            "probability": 0.2,
+            "demand_weight": 2,
+            "blocked_roads": [
+              "RD11"
+            ]
+          }
+        ],
+        "baseline_cost": 4213.6,
+        "score_kind": "normalized risk weights, not probabilities",
+        "opportunity_rule": "Only resources unused by all current horizon tasks; travel penalty 50 per minute",
+        "hypothesis": "Independent candidate-zone compound demand needs one rescue team and one drone; medium weight 1, high P1 weight 2 plus closure; no simultaneous zone capacity recourse; positioning limit 30 minutes",
+        "optimized_cost": 2494.0,
+        "estimated_cost_reduction": 1719.6,
+        "scenario_costs": {
+          "low": 1150,
+          "medium": 2782,
+          "high": 4606
+        },
+        "assignments": 2
+      },
+      "impact_note": "Arrival changes are planned estimates for matched assignments, not measured rescue benefits"
+    }
+  },
+  {
+    "stage": 1,
+    "minute": 5,
+    "casualties": {
+      "missing": 8,
+      "injured": 3
+    },
+    "trace": {
+      "id": "fd630220-d070-4b1b-8b06-5786c60bc465",
+      "minute": 5,
+      "revision": 72,
+      "triggers": [
+        "disaster_report N4"
+      ],
+      "environment_mode": "synthetic",
+      "observations": {
+        "displacement": {
+          "value": 22.316,
+          "minute": 5,
+          "unit": "mm"
+        },
+        "rainfall": {
+          "value": 44.891,
+          "minute": 5,
+          "unit": "mm/h"
+        },
+        "soil_moisture": {
+          "value": 78.18,
+          "minute": 5,
+          "unit": "%"
+        },
+        "water_level": {
+          "value": 3.974,
+          "minute": 5,
+          "unit": "m"
+        }
+      },
+      "station_observations": {
+        "S01:displacement": {
+          "value": 22.316,
+          "minute": 5,
+          "unit": "mm"
+        },
+        "S01:rainfall": {
+          "value": 44.891,
+          "minute": 5,
+          "unit": "mm/h"
+        },
+        "S01:soil_moisture": {
+          "value": 78.18,
+          "minute": 5,
+          "unit": "%"
+        },
+        "S01:water_level": {
+          "value": 3.974,
+          "minute": 5,
+          "unit": "m"
+        },
+        "S02:displacement": {
+          "value": 21.935,
+          "minute": 5,
+          "unit": "mm"
+        },
+        "S02:rainfall": {
+          "value": 44.132,
+          "minute": 5,
+          "unit": "mm/h"
+        },
+        "S02:soil_moisture": {
+          "value": 77.464,
+          "minute": 5,
+          "unit": "%"
+        },
+        "S02:water_level": {
+          "value": 4.128,
+          "minute": 5,
+          "unit": "m"
+        },
+        "S03:displacement": {
+          "value": 22.187,
+          "minute": 5,
+          "unit": "mm"
+        },
+        "S03:rainfall": {
+          "value": 44.955,
+          "minute": 5,
+          "unit": "mm/h"
+        },
+        "S03:soil_moisture": {
+          "value": 76.844,
+          "minute": 5,
+          "unit": "%"
+        },
+        "S03:water_level": {
+          "value": 4.053,
+          "minute": 5,
+          "unit": "m"
+        }
+      },
+      "risk_before": 0.959133025582723,
+      "risk_after": 0.9618437951335392,
+      "zones": [
+        {
+          "station_id": "S01",
+          "node": "N4",
+          "score": 0.95,
+          "eligible": true,
+          "forecast_scores": [
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95
+          ],
+          "score_source": "人工确认的情景排序覆盖，非环境模型预测"
+        },
+        {
+          "station_id": "S02",
+          "node": "N5",
+          "score": 0.9556,
+          "eligible": true,
+          "forecast_scores": [
+            0.8690872989089931,
+            0.8776636763348661,
+            0.893257361486598,
+            0.9069199274360159,
+            0.9122544604218878,
+            0.9249422122567925,
+            0.9298686333226521,
+            0.9367683483969848,
+            0.9398364032424189,
+            0.9471907431286964,
+            0.9522749632095352,
+            0.9556386414332425
+          ]
+        },
+        {
+          "station_id": "S03",
+          "node": "N8",
+          "score": 0.9618,
+          "eligible": true,
+          "forecast_scores": [
+            0.8601594177597074,
+            0.8689990646102999,
+            0.8805462874210798,
+            0.8924572775120194,
+            0.9022252067331072,
+            0.9095453451404358,
+            0.9219632466775443,
+            0.9303014524953054,
+            0.9417985933596867,
+            0.9485503160295581,
+            0.9561870160531849,
+            0.9618437951335392
+          ]
+        }
+      ],
+      "status": "OPTIMAL",
+      "solve_seconds": 0.008267099998192862,
+      "replan_latency_seconds": 0.029281900002388284,
+      "objective_terms": {
+        "unmet": 0,
+        "response": 95,
+        "lateness": 0,
+        "travel": 20,
+        "disruption": 0
+      },
+      "verified_objective": 970,
+      "objective_mode": "weighted",
+      "lexicographic_levels": [],
+      "risk_overrides": {
+        "N4": {
+          "score": 0.95,
+          "expires": 30,
+          "event": "0c112b834d076c06-0",
+          "provenance": "human_confirmed_scenario_risk"
+        }
+      },
+      "previous_objective": 0,
+      "objective_delta": null,
+      "objective_note": "Changed tasks/resources/graph or time: objectives are not directly comparable; delta intentionally omitted",
+      "added": [
+        {
+          "resource": "RES03",
+          "task": "EV93c4830b5f47f8dd-0-0",
+          "node": "N4",
+          "arrival": 14,
+          "provisional": false
+        },
+        {
+          "resource": "MED03",
+          "task": "EV93c4830b5f47f8dd-0-1",
+          "node": "N4",
+          "arrival": 15,
+          "provisional": false
+        },
+        {
+          "resource": "AMB03",
+          "task": "EV93c4830b5f47f8dd-0-1",
+          "node": "N4",
+          "arrival": 15,
+          "provisional": false
+        },
+        {
+          "resource": "DRO02",
+          "task": "EV93c4830b5f47f8dd-0-0",
+          "node": "N4",
+          "arrival": 14,
+          "provisional": false
+        },
+        {
+          "resource": "RES04",
+          "task": "PREPOSITION:RES04:5",
+          "node": "N4",
+          "arrival": 17,
+          "provisional": true
+        },
+        {
+          "resource": "DRO01",
+          "task": "PREPOSITION:DRO01:5",
+          "node": "N4",
+          "arrival": 19,
+          "provisional": true
+        }
+      ],
+      "withdrawn": [],
+      "matched_arrival_changes": [],
+      "stability": {
+        "reassignments": 0,
+        "withdrawals": 0,
+        "disruption": 0,
+        "details": [],
+        "scope": "Only previous actionable pending task promises; new tasks/completed/locked actions excluded"
+      },
+      "preposition": {
+        "status": "OPTIMAL",
+        "seconds": 0.013808799994876608,
+        "scenarios": [
+          {
+            "name": "low",
+            "probability": 0.4,
+            "demand_weight": 0,
+            "blocked_roads": []
+          },
+          {
+            "name": "medium",
+            "probability": 0.4,
+            "demand_weight": 1,
+            "blocked_roads": []
+          },
+          {
+            "name": "high",
+            "probability": 0.2,
+            "demand_weight": 2,
+            "blocked_roads": [
+              "RD11"
+            ]
+          }
+        ],
+        "baseline_cost": 4443.2,
+        "score_kind": "normalized risk weights, not probabilities",
+        "opportunity_rule": "Only resources unused by all current horizon tasks; travel penalty 50 per minute",
+        "hypothesis": "Independent candidate-zone compound demand needs one rescue team and one drone; medium weight 1, high P1 weight 2 plus closure; no simultaneous zone capacity recourse; positioning limit 30 minutes",
+        "optimized_cost": 2605.6,
+        "estimated_cost_reduction": 1837.6,
+        "scenario_costs": {
+          "low": 1300,
+          "medium": 2932,
+          "high": 4564
+        },
+        "assignments": 2
+      },
+      "impact_note": "Arrival changes are planned estimates for matched assignments, not measured rescue benefits"
+    }
+  },
+  {
+    "stage": 2,
+    "minute": 12,
+    "casualties": {
+      "missing": 13,
+      "injured": 3
+    },
+    "trace": {
+      "id": "3f056caa-b4c3-4af0-a246-06e7ab73257c",
+      "minute": 12,
+      "revision": 74,
+      "triggers": [
+        "casualty_update N4"
+      ],
+      "environment_mode": "synthetic",
+      "observations": {
+        "displacement": {
+          "value": 22.203,
+          "minute": 10,
+          "unit": "mm"
+        },
+        "rainfall": {
+          "value": 45.381,
+          "minute": 10,
+          "unit": "mm/h"
+        },
+        "soil_moisture": {
+          "value": 75.954,
+          "minute": 10,
+          "unit": "%"
+        },
+        "water_level": {
+          "value": 4.128,
+          "minute": 10,
+          "unit": "m"
+        }
+      },
+      "station_observations": {
+        "S01:displacement": {
+          "value": 22.203,
+          "minute": 10,
+          "unit": "mm"
+        },
+        "S01:rainfall": {
+          "value": 45.381,
+          "minute": 10,
+          "unit": "mm/h"
+        },
+        "S01:soil_moisture": {
+          "value": 75.954,
+          "minute": 10,
+          "unit": "%"
+        },
+        "S01:water_level": {
+          "value": 4.128,
+          "minute": 10,
+          "unit": "m"
+        },
+        "S02:displacement": {
+          "value": 22.181,
+          "minute": 10,
+          "unit": "mm"
+        },
+        "S02:rainfall": {
+          "value": 45.304,
+          "minute": 10,
+          "unit": "mm/h"
+        },
+        "S02:soil_moisture": {
+          "value": 76.904,
+          "minute": 10,
+          "unit": "%"
+        },
+        "S02:water_level": {
+          "value": 4.141,
+          "minute": 10,
+          "unit": "m"
+        },
+        "S03:displacement": {
+          "value": 22.507,
+          "minute": 10,
+          "unit": "mm"
+        },
+        "S03:rainfall": {
+          "value": 45.612,
+          "minute": 10,
+          "unit": "mm/h"
+        },
+        "S03:soil_moisture": {
+          "value": 76.971,
+          "minute": 10,
+          "unit": "%"
+        },
+        "S03:water_level": {
+          "value": 4.137,
+          "minute": 10,
+          "unit": "m"
+        }
+      },
+      "risk_before": 0.95,
+      "risk_after": 0.95,
+      "zones": [
+        {
+          "station_id": "S01",
+          "node": "N4",
+          "score": 0.95,
+          "eligible": true,
+          "forecast_scores": [
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95
+          ],
+          "score_source": "人工确认的情景排序覆盖，非环境模型预测"
+        },
+        {
+          "station_id": "S02",
+          "node": "N5",
+          "score": 0.9481,
+          "eligible": true,
+          "forecast_scores": [
+            0.8732025007439989,
+            0.8867223996818829,
+            0.8986066483691,
+            0.9028767382156864,
+            0.918366938212714,
+            0.921841872382625,
+            0.9280625193494413,
+            0.9315562850309337,
+            0.9378882703514173,
+            0.9421153109393843,
+            0.9456578021534703,
+            0.94806965626486
+          ]
+        },
+        {
+          "station_id": "S03",
+          "node": "N8",
+          "score": 0.9452,
+          "eligible": true,
+          "forecast_scores": [
+            0.8648093895342334,
+            0.8731906035459321,
+            0.8858618226886921,
+            0.8918595340644884,
+            0.8975412919817948,
+            0.9084241052999206,
+            0.914457059415346,
+            0.9224577234801952,
+            0.9294035803653162,
+            0.936408138122147,
+            0.9407583727869251,
+            0.9452453930965736
+          ]
+        }
+      ],
+      "status": "OPTIMAL",
+      "solve_seconds": 0.019861099994159304,
+      "replan_latency_seconds": 0.029937200000858866,
+      "objective_terms": {
+        "unmet": 0,
+        "response": 85,
+        "lateness": 0,
+        "travel": 0,
+        "disruption": 0
+      },
+      "verified_objective": 850,
+      "objective_mode": "weighted",
+      "lexicographic_levels": [],
+      "risk_overrides": {
+        "N4": {
+          "score": 0.95,
+          "expires": 30,
+          "event": "0c112b834d076c06-0",
+          "provenance": "human_confirmed_scenario_risk"
+        }
+      },
+      "previous_objective": 450,
+      "objective_delta": null,
+      "objective_note": "Changed tasks/resources/graph or time: objectives are not directly comparable; delta intentionally omitted",
+      "added": [
+        {
+          "resource": "RES04",
+          "task": "EV8f7d04b8fd273881-0-0",
+          "node": "N4",
+          "arrival": 20,
+          "provisional": false
+        },
+        {
+          "resource": "DRO01",
+          "task": "EV8f7d04b8fd273881-0-0",
+          "node": "N4",
+          "arrival": 20,
+          "provisional": false
+        }
+      ],
+      "withdrawn": [],
+      "matched_arrival_changes": [],
+      "stability": {
+        "reassignments": 0,
+        "withdrawals": 0,
+        "disruption": 0,
+        "details": [],
+        "scope": "Only previous actionable pending task promises; new tasks/completed/locked actions excluded"
+      },
+      "preposition": {
+        "status": "OPTIMAL",
+        "seconds": 0.002823499991791323,
+        "scenarios": [
+          {
+            "name": "low",
+            "probability": 0.4,
+            "demand_weight": 0,
+            "blocked_roads": []
+          },
+          {
+            "name": "medium",
+            "probability": 0.4,
+            "demand_weight": 1,
+            "blocked_roads": []
+          },
+          {
+            "name": "high",
+            "probability": 0.2,
+            "demand_weight": 2,
+            "blocked_roads": [
+              "RD06"
+            ]
+          }
+        ],
+        "baseline_cost": 228000.0,
+        "score_kind": "normalized risk weights, not probabilities",
+        "opportunity_rule": "Only resources unused by all current horizon tasks; travel penalty 50 per minute",
+        "hypothesis": "Independent candidate-zone compound demand needs one rescue team and one drone; medium weight 1, high P1 weight 2 plus closure; no simultaneous zone capacity recourse; positioning limit 30 minutes",
+        "optimized_cost": 228000.0,
+        "estimated_cost_reduction": 0.0,
+        "scenario_costs": {
+          "low": 0,
+          "medium": 285000,
+          "high": 570000
+        }
+      },
+      "impact_note": "Arrival changes are planned estimates for matched assignments, not measured rescue benefits"
+    }
+  },
+  {
+    "stage": 3,
+    "minute": 20,
+    "casualties": {
+      "missing": 13,
+      "injured": 3
+    },
+    "trace": {
+      "id": "c87b1e08-ae0c-4540-8630-7696c63ec8f8",
+      "minute": 20,
+      "revision": 76,
+      "triggers": [
+        "road_closure RD00",
+        "sensor_delay S02"
+      ],
+      "environment_mode": "synthetic",
+      "observations": {
+        "displacement": {
+          "value": 22.532,
+          "minute": 0,
+          "unit": "mm"
+        },
+        "rainfall": {
+          "value": 44.719,
+          "minute": 0,
+          "unit": "mm/h"
+        },
+        "soil_moisture": {
+          "value": 75.97,
+          "minute": 0,
+          "unit": "%"
+        },
+        "water_level": {
+          "value": 4.112,
+          "minute": 0,
+          "unit": "m"
+        }
+      },
+      "station_observations": {
+        "S01:displacement": {
+          "value": 22.532,
+          "minute": 0,
+          "unit": "mm"
+        },
+        "S01:rainfall": {
+          "value": 44.719,
+          "minute": 0,
+          "unit": "mm/h"
+        },
+        "S01:soil_moisture": {
+          "value": 75.97,
+          "minute": 0,
+          "unit": "%"
+        },
+        "S01:water_level": {
+          "value": 4.112,
+          "minute": 0,
+          "unit": "m"
+        },
+        "S02:displacement": {
+          "value": 21.638,
+          "minute": 0,
+          "unit": "mm"
+        },
+        "S02:rainfall": {
+          "value": 45.46,
+          "minute": 0,
+          "unit": "mm/h"
+        },
+        "S02:soil_moisture": {
+          "value": 76.374,
+          "minute": 0,
+          "unit": "%"
+        },
+        "S02:water_level": {
+          "value": 3.963,
+          "minute": 0,
+          "unit": "m"
+        },
+        "S03:displacement": {
+          "value": 22.301,
+          "minute": 0,
+          "unit": "mm"
+        },
+        "S03:rainfall": {
+          "value": 43.138,
+          "minute": 0,
+          "unit": "mm/h"
+        },
+        "S03:soil_moisture": {
+          "value": 76.831,
+          "minute": 0,
+          "unit": "%"
+        },
+        "S03:water_level": {
+          "value": 4.018,
+          "minute": 0,
+          "unit": "m"
+        }
+      },
+      "risk_before": 0.95,
+      "risk_after": 0.959133025582723,
+      "zones": [
+        {
+          "station_id": "S01",
+          "node": "N4",
+          "score": 0.95,
+          "eligible": false,
+          "forecast_scores": [
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95
+          ],
+          "score_source": "人工确认的情景排序覆盖，非环境模型预测"
+        },
+        {
+          "station_id": "S02",
+          "node": "N5",
+          "score": 0.9567,
+          "eligible": false,
+          "forecast_scores": [
+            0.8635167474809246,
+            0.870597981158848,
+            0.8814932042000444,
+            0.8977131473421869,
+            0.9117637700844853,
+            0.9162207248320547,
+            0.9277089215057279,
+            0.9333303480085108,
+            0.9398281247350536,
+            0.9437140317168764,
+            0.9511434885735959,
+            0.9566519025568104
+          ]
+        },
+        {
+          "station_id": "S03",
+          "node": "N8",
+          "score": 0.9591,
+          "eligible": false,
+          "forecast_scores": [
+            0.8505723041960715,
+            0.862107894951456,
+            0.8727007386986645,
+            0.8837633484789011,
+            0.8949107716051676,
+            0.9046213701446075,
+            0.9137852542457295,
+            0.9236101806131899,
+            0.9358209506001656,
+            0.9461367039261386,
+            0.9531127413300952,
+            0.959133025582723
+          ]
+        }
+      ],
+      "status": "OPTIMAL",
+      "solve_seconds": 0.0006111999973654747,
+      "replan_latency_seconds": 0.0016062000067904592,
+      "objective_terms": {
+        "unmet": 0,
+        "response": 0,
+        "lateness": 0,
+        "travel": 0,
+        "disruption": 0
+      },
+      "verified_objective": 0,
+      "objective_mode": "weighted",
+      "lexicographic_levels": [],
+      "risk_overrides": {
+        "N4": {
+          "score": 0.95,
+          "expires": 30,
+          "event": "0c112b834d076c06-0",
+          "provenance": "human_confirmed_scenario_risk"
+        }
+      },
+      "previous_objective": 400,
+      "objective_delta": null,
+      "objective_note": "Changed tasks/resources/graph or time: objectives are not directly comparable; delta intentionally omitted",
+      "added": [],
+      "withdrawn": [],
+      "matched_arrival_changes": [],
+      "stability": {
+        "reassignments": 0,
+        "withdrawals": 0,
+        "disruption": 0,
+        "details": [],
+        "scope": "Only previous actionable pending task promises; new tasks/completed/locked actions excluded"
+      },
+      "preposition": {
+        "status": "NOT_RUN",
+        "reason": "No valid zone forecast or residual capacity",
+        "assignments": 0
+      },
+      "impact_note": "Arrival changes are planned estimates for matched assignments, not measured rescue benefits"
+    }
+  },
+  {
+    "stage": 4,
+    "minute": 27,
+    "casualties": {
+      "missing": 13,
+      "injured": 3
+    },
+    "trace": {
+      "id": "b3b02bb0-26fb-4ac4-9bc4-59b7a4ea8fc9",
+      "minute": 27,
+      "revision": 78,
+      "triggers": [
+        "resource_failure RES03"
+      ],
+      "environment_mode": "synthetic",
+      "observations": {
+        "displacement": {
+          "value": 22.532,
+          "minute": 0,
+          "unit": "mm"
+        },
+        "rainfall": {
+          "value": 44.719,
+          "minute": 0,
+          "unit": "mm/h"
+        },
+        "soil_moisture": {
+          "value": 75.97,
+          "minute": 0,
+          "unit": "%"
+        },
+        "water_level": {
+          "value": 4.112,
+          "minute": 0,
+          "unit": "m"
+        }
+      },
+      "station_observations": {
+        "S01:displacement": {
+          "value": 22.532,
+          "minute": 0,
+          "unit": "mm"
+        },
+        "S01:rainfall": {
+          "value": 44.719,
+          "minute": 0,
+          "unit": "mm/h"
+        },
+        "S01:soil_moisture": {
+          "value": 75.97,
+          "minute": 0,
+          "unit": "%"
+        },
+        "S01:water_level": {
+          "value": 4.112,
+          "minute": 0,
+          "unit": "m"
+        },
+        "S02:displacement": {
+          "value": 21.638,
+          "minute": 0,
+          "unit": "mm"
+        },
+        "S02:rainfall": {
+          "value": 45.46,
+          "minute": 0,
+          "unit": "mm/h"
+        },
+        "S02:soil_moisture": {
+          "value": 76.374,
+          "minute": 0,
+          "unit": "%"
+        },
+        "S02:water_level": {
+          "value": 3.963,
+          "minute": 0,
+          "unit": "m"
+        },
+        "S03:displacement": {
+          "value": 22.301,
+          "minute": 0,
+          "unit": "mm"
+        },
+        "S03:rainfall": {
+          "value": 43.138,
+          "minute": 0,
+          "unit": "mm/h"
+        },
+        "S03:soil_moisture": {
+          "value": 76.831,
+          "minute": 0,
+          "unit": "%"
+        },
+        "S03:water_level": {
+          "value": 4.018,
+          "minute": 0,
+          "unit": "m"
+        }
+      },
+      "risk_before": 0.959133025582723,
+      "risk_after": 0.959133025582723,
+      "zones": [
+        {
+          "station_id": "S01",
+          "node": "N4",
+          "score": 0.95,
+          "eligible": false,
+          "forecast_scores": [
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95
+          ],
+          "score_source": "人工确认的情景排序覆盖，非环境模型预测"
+        },
+        {
+          "station_id": "S02",
+          "node": "N5",
+          "score": 0.9567,
+          "eligible": false,
+          "forecast_scores": [
+            0.8635167474809246,
+            0.870597981158848,
+            0.8814932042000444,
+            0.8977131473421869,
+            0.9117637700844853,
+            0.9162207248320547,
+            0.9277089215057279,
+            0.9333303480085108,
+            0.9398281247350536,
+            0.9437140317168764,
+            0.9511434885735959,
+            0.9566519025568104
+          ]
+        },
+        {
+          "station_id": "S03",
+          "node": "N8",
+          "score": 0.9591,
+          "eligible": false,
+          "forecast_scores": [
+            0.8505723041960715,
+            0.862107894951456,
+            0.8727007386986645,
+            0.8837633484789011,
+            0.8949107716051676,
+            0.9046213701446075,
+            0.9137852542457295,
+            0.9236101806131899,
+            0.9358209506001656,
+            0.9461367039261386,
+            0.9531127413300952,
+            0.959133025582723
+          ]
+        }
+      ],
+      "status": "OPTIMAL",
+      "solve_seconds": 0.0056330000079469755,
+      "replan_latency_seconds": 0.006981200000154786,
+      "objective_terms": {
+        "unmet": 0,
+        "response": 150,
+        "lateness": 0,
+        "travel": 0,
+        "disruption": 0
+      },
+      "verified_objective": 1500,
+      "objective_mode": "weighted",
+      "lexicographic_levels": [],
+      "risk_overrides": {
+        "N4": {
+          "score": 0.95,
+          "expires": 30,
+          "event": "0c112b834d076c06-0",
+          "provenance": "human_confirmed_scenario_risk"
+        }
+      },
+      "previous_objective": 0,
+      "objective_delta": null,
+      "objective_note": "Changed tasks/resources/graph or time: objectives are not directly comparable; delta intentionally omitted",
+      "added": [
+        {
+          "resource": "RES04",
+          "task": "EV93c4830b5f47f8dd-0-0",
+          "node": "N4",
+          "arrival": 35,
+          "provisional": false
+        },
+        {
+          "resource": "DRO02",
+          "task": "EV93c4830b5f47f8dd-0-0",
+          "node": "N4",
+          "arrival": 35,
+          "provisional": false
+        }
+      ],
+      "withdrawn": [],
+      "matched_arrival_changes": [],
+      "stability": {
+        "reassignments": 0,
+        "withdrawals": 0,
+        "disruption": 0,
+        "details": [],
+        "scope": "Only previous actionable pending task promises; new tasks/completed/locked actions excluded"
+      },
+      "preposition": {
+        "status": "NOT_RUN",
+        "reason": "No valid zone forecast or residual capacity",
+        "assignments": 0
+      },
+      "impact_note": "Arrival changes are planned estimates for matched assignments, not measured rescue benefits"
+    }
+  },
+  {
+    "stage": 5,
+    "minute": 35,
+    "casualties": {
+      "missing": 13,
+      "injured": 3
+    },
+    "trace": {
+      "id": "e1bf428d-ab77-4f1a-82fe-bdd0b3e62001",
+      "minute": 35,
+      "revision": 80,
+      "triggers": [
+        "reinforcement RES06,MED04,DRO03"
+      ],
+      "environment_mode": "synthetic",
+      "observations": {
+        "displacement": {
+          "value": 22.532,
+          "minute": 0,
+          "unit": "mm"
+        },
+        "rainfall": {
+          "value": 44.719,
+          "minute": 0,
+          "unit": "mm/h"
+        },
+        "soil_moisture": {
+          "value": 75.97,
+          "minute": 0,
+          "unit": "%"
+        },
+        "water_level": {
+          "value": 4.112,
+          "minute": 0,
+          "unit": "m"
+        }
+      },
+      "station_observations": {
+        "S01:displacement": {
+          "value": 22.532,
+          "minute": 0,
+          "unit": "mm"
+        },
+        "S01:rainfall": {
+          "value": 44.719,
+          "minute": 0,
+          "unit": "mm/h"
+        },
+        "S01:soil_moisture": {
+          "value": 75.97,
+          "minute": 0,
+          "unit": "%"
+        },
+        "S01:water_level": {
+          "value": 4.112,
+          "minute": 0,
+          "unit": "m"
+        },
+        "S02:displacement": {
+          "value": 21.638,
+          "minute": 0,
+          "unit": "mm"
+        },
+        "S02:rainfall": {
+          "value": 45.46,
+          "minute": 0,
+          "unit": "mm/h"
+        },
+        "S02:soil_moisture": {
+          "value": 76.374,
+          "minute": 0,
+          "unit": "%"
+        },
+        "S02:water_level": {
+          "value": 3.963,
+          "minute": 0,
+          "unit": "m"
+        },
+        "S03:displacement": {
+          "value": 22.301,
+          "minute": 0,
+          "unit": "mm"
+        },
+        "S03:rainfall": {
+          "value": 43.138,
+          "minute": 0,
+          "unit": "mm/h"
+        },
+        "S03:soil_moisture": {
+          "value": 76.831,
+          "minute": 0,
+          "unit": "%"
+        },
+        "S03:water_level": {
+          "value": 4.018,
+          "minute": 0,
+          "unit": "m"
+        }
+      },
+      "risk_before": 0.9591,
+      "risk_after": 0.9591,
+      "zones": [
+        {
+          "station_id": "S01",
+          "node": "N4",
+          "score": 0.9571,
+          "eligible": false,
+          "forecast_scores": [
+            0.8591022008568647,
+            0.8673694833676172,
+            0.8858011120990871,
+            0.8991051849912961,
+            0.9098365584849788,
+            0.9236473464092522,
+            0.9288015137835564,
+            0.9346624663989752,
+            0.9428732032275116,
+            0.9473323063990815,
+            0.9530653974360114,
+            0.957104322790661
+          ]
+        },
+        {
+          "station_id": "S02",
+          "node": "N5",
+          "score": 0.9567,
+          "eligible": false,
+          "forecast_scores": [
+            0.8635167474809246,
+            0.870597981158848,
+            0.8814932042000444,
+            0.8977131473421869,
+            0.9117637700844853,
+            0.9162207248320547,
+            0.9277089215057279,
+            0.9333303480085108,
+            0.9398281247350536,
+            0.9437140317168764,
+            0.9511434885735959,
+            0.9566519025568104
+          ]
+        },
+        {
+          "station_id": "S03",
+          "node": "N8",
+          "score": 0.9591,
+          "eligible": false,
+          "forecast_scores": [
+            0.8505723041960715,
+            0.862107894951456,
+            0.8727007386986645,
+            0.8837633484789011,
+            0.8949107716051676,
+            0.9046213701446075,
+            0.9137852542457295,
+            0.9236101806131899,
+            0.9358209506001656,
+            0.9461367039261386,
+            0.9531127413300952,
+            0.959133025582723
+          ]
+        }
+      ],
+      "status": "OPTIMAL",
+      "solve_seconds": 0.0004023000074084848,
+      "replan_latency_seconds": 0.0011756000021705404,
+      "objective_terms": {
+        "unmet": 0,
+        "response": 0,
+        "lateness": 0,
+        "travel": 0,
+        "disruption": 0
+      },
+      "verified_objective": 0,
+      "objective_mode": "weighted",
+      "lexicographic_levels": [],
+      "risk_overrides": {},
+      "previous_objective": 1500,
+      "objective_delta": null,
+      "objective_note": "Changed tasks/resources/graph or time: objectives are not directly comparable; delta intentionally omitted",
+      "added": [],
+      "withdrawn": [],
+      "matched_arrival_changes": [],
+      "stability": {
+        "reassignments": 0,
+        "withdrawals": 0,
+        "disruption": 0,
+        "details": [],
+        "scope": "Only previous actionable pending task promises; new tasks/completed/locked actions excluded"
+      },
+      "preposition": {
+        "status": "NOT_RUN",
+        "reason": "No valid zone forecast or residual capacity",
+        "assignments": 0
+      },
+      "impact_note": "Arrival changes are planned estimates for matched assignments, not measured rescue benefits"
+    }
+  },
+  {
+    "stage": 6,
+    "minute": 42,
+    "casualties": {
+      "missing": 13,
+      "injured": 3
+    },
+    "trace": {
+      "id": "26c966aa-c360-402f-9126-ade72f2888b6",
+      "minute": 42,
+      "revision": 82,
+      "triggers": [
+        "secondary_risk N8"
+      ],
+      "environment_mode": "synthetic",
+      "observations": {
+        "displacement": {
+          "value": 22.532,
+          "minute": 0,
+          "unit": "mm"
+        },
+        "rainfall": {
+          "value": 44.719,
+          "minute": 0,
+          "unit": "mm/h"
+        },
+        "soil_moisture": {
+          "value": 75.97,
+          "minute": 0,
+          "unit": "%"
+        },
+        "water_level": {
+          "value": 4.112,
+          "minute": 0,
+          "unit": "m"
+        }
+      },
+      "station_observations": {
+        "S01:displacement": {
+          "value": 22.532,
+          "minute": 0,
+          "unit": "mm"
+        },
+        "S01:rainfall": {
+          "value": 44.719,
+          "minute": 0,
+          "unit": "mm/h"
+        },
+        "S01:soil_moisture": {
+          "value": 75.97,
+          "minute": 0,
+          "unit": "%"
+        },
+        "S01:water_level": {
+          "value": 4.112,
+          "minute": 0,
+          "unit": "m"
+        },
+        "S02:displacement": {
+          "value": 21.638,
+          "minute": 0,
+          "unit": "mm"
+        },
+        "S02:rainfall": {
+          "value": 45.46,
+          "minute": 0,
+          "unit": "mm/h"
+        },
+        "S02:soil_moisture": {
+          "value": 76.374,
+          "minute": 0,
+          "unit": "%"
+        },
+        "S02:water_level": {
+          "value": 3.963,
+          "minute": 0,
+          "unit": "m"
+        },
+        "S03:displacement": {
+          "value": 22.301,
+          "minute": 0,
+          "unit": "mm"
+        },
+        "S03:rainfall": {
+          "value": 43.138,
+          "minute": 0,
+          "unit": "mm/h"
+        },
+        "S03:soil_moisture": {
+          "value": 76.831,
+          "minute": 0,
+          "unit": "%"
+        },
+        "S03:water_level": {
+          "value": 4.018,
+          "minute": 0,
+          "unit": "m"
+        }
+      },
+      "risk_before": 0.9591,
+      "risk_after": 0.957104322790661,
+      "zones": [
+        {
+          "station_id": "S01",
+          "node": "N4",
+          "score": 0.9571,
+          "eligible": false,
+          "forecast_scores": [
+            0.8591022008568647,
+            0.8673694833676172,
+            0.8858011120990871,
+            0.8991051849912961,
+            0.9098365584849788,
+            0.9236473464092522,
+            0.9288015137835564,
+            0.9346624663989752,
+            0.9428732032275116,
+            0.9473323063990815,
+            0.9530653974360114,
+            0.957104322790661
+          ]
+        },
+        {
+          "station_id": "S02",
+          "node": "N5",
+          "score": 0.9567,
+          "eligible": false,
+          "forecast_scores": [
+            0.8635167474809246,
+            0.870597981158848,
+            0.8814932042000444,
+            0.8977131473421869,
+            0.9117637700844853,
+            0.9162207248320547,
+            0.9277089215057279,
+            0.9333303480085108,
+            0.9398281247350536,
+            0.9437140317168764,
+            0.9511434885735959,
+            0.9566519025568104
+          ]
+        },
+        {
+          "station_id": "S03",
+          "node": "N8",
+          "score": 0.95,
+          "eligible": false,
+          "forecast_scores": [
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95
+          ],
+          "score_source": "人工确认的情景排序覆盖，非环境模型预测"
+        }
+      ],
+      "status": "OPTIMAL",
+      "solve_seconds": 0.006735100003425032,
+      "replan_latency_seconds": 0.008856100001139566,
+      "objective_terms": {
+        "unmet": 0,
+        "response": 100,
+        "lateness": 0,
+        "travel": 24,
+        "disruption": 0
+      },
+      "verified_objective": 1024,
+      "objective_mode": "weighted",
+      "lexicographic_levels": [],
+      "risk_overrides": {
+        "N8": {
+          "score": 0.95,
+          "expires": 72,
+          "event": "74ba26aea243a38a-0",
+          "provenance": "human_confirmed_scenario_risk"
+        }
+      },
+      "previous_objective": 0,
+      "objective_delta": null,
+      "objective_note": "Changed tasks/resources/graph or time: objectives are not directly comparable; delta intentionally omitted",
+      "added": [
+        {
+          "resource": "RES04",
+          "task": "EV74ba26aea243a38a-0-0",
+          "node": "N8",
+          "arrival": 62,
+          "provisional": false
+        },
+        {
+          "resource": "DRO02",
+          "task": "EV74ba26aea243a38a-0-0",
+          "node": "N8",
+          "arrival": 62,
+          "provisional": false
+        }
+      ],
+      "withdrawn": [],
+      "matched_arrival_changes": [],
+      "stability": {
+        "reassignments": 0,
+        "withdrawals": 0,
+        "disruption": 0,
+        "details": [],
+        "scope": "Only previous actionable pending task promises; new tasks/completed/locked actions excluded"
+      },
+      "preposition": {
+        "status": "NOT_RUN",
+        "reason": "No valid zone forecast or residual capacity",
+        "assignments": 0
+      },
+      "impact_note": "Arrival changes are planned estimates for matched assignments, not measured rescue benefits"
+    }
+  },
+  {
+    "stage": 7,
+    "minute": 50,
+    "casualties": {
+      "missing": 15,
+      "injured": 3
+    },
+    "trace": {
+      "id": "dbc9ddc6-ee7d-4619-92b8-5b90f43dbb26",
+      "minute": 50,
+      "revision": 84,
+      "triggers": [
+        "information_correction N4",
+        "road_closure RD03"
+      ],
+      "environment_mode": "synthetic",
+      "observations": {
+        "displacement": {
+          "value": 23.139,
+          "minute": 50,
+          "unit": "mm"
+        },
+        "rainfall": {
+          "value": 47.91,
+          "minute": 50,
+          "unit": "mm/h"
+        },
+        "soil_moisture": {
+          "value": 78.202,
+          "minute": 50,
+          "unit": "%"
+        },
+        "water_level": {
+          "value": 4.327,
+          "minute": 50,
+          "unit": "m"
+        }
+      },
+      "station_observations": {
+        "S01:displacement": {
+          "value": 23.139,
+          "minute": 50,
+          "unit": "mm"
+        },
+        "S01:rainfall": {
+          "value": 47.91,
+          "minute": 50,
+          "unit": "mm/h"
+        },
+        "S01:soil_moisture": {
+          "value": 78.202,
+          "minute": 50,
+          "unit": "%"
+        },
+        "S01:water_level": {
+          "value": 4.327,
+          "minute": 50,
+          "unit": "m"
+        },
+        "S02:displacement": {
+          "value": 23.308,
+          "minute": 50,
+          "unit": "mm"
+        },
+        "S02:rainfall": {
+          "value": 43.782,
+          "minute": 50,
+          "unit": "mm/h"
+        },
+        "S02:soil_moisture": {
+          "value": 78.76,
+          "minute": 50,
+          "unit": "%"
+        },
+        "S02:water_level": {
+          "value": 4.346,
+          "minute": 50,
+          "unit": "m"
+        },
+        "S03:displacement": {
+          "value": 24.16,
+          "minute": 50,
+          "unit": "mm"
+        },
+        "S03:rainfall": {
+          "value": 41.822,
+          "minute": 50,
+          "unit": "mm/h"
+        },
+        "S03:soil_moisture": {
+          "value": 79.129,
+          "minute": 50,
+          "unit": "%"
+        },
+        "S03:water_level": {
+          "value": 4.22,
+          "minute": 50,
+          "unit": "m"
+        }
+      },
+      "risk_before": 0.95,
+      "risk_after": 0.95,
+      "zones": [
+        {
+          "station_id": "S01",
+          "node": "N4",
+          "score": 0.8892,
+          "eligible": true,
+          "forecast_scores": [
+            0.8870831048702341,
+            0.8851966467639452,
+            0.8892483928387838,
+            0.8869347693150145,
+            0.8748075172223114,
+            0.8735522279603746,
+            0.8646841396812264,
+            0.8561917622235404,
+            0.8571828837548039,
+            0.8526868430519132,
+            0.8433052537250343,
+            0.834231166904003
+          ]
+        },
+        {
+          "station_id": "S02",
+          "node": "N5",
+          "score": 0.8909,
+          "eligible": true,
+          "forecast_scores": [
+            0.8909207774882563,
+            0.8866487962902794,
+            0.8827980994606761,
+            0.8863953191323042,
+            0.8792339530932924,
+            0.8730555779212095,
+            0.8711309235974123,
+            0.8672908013753383,
+            0.8588360291019077,
+            0.8574202064785701,
+            0.8526291445960354,
+            0.8425200881553967
+          ]
+        },
+        {
+          "station_id": "S03",
+          "node": "N8",
+          "score": 0.95,
+          "eligible": true,
+          "forecast_scores": [
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95
+          ],
+          "score_source": "人工确认的情景排序覆盖，非环境模型预测"
+        }
+      ],
+      "status": "OPTIMAL",
+      "solve_seconds": 0.00044499999785330147,
+      "replan_latency_seconds": 0.022096100001363084,
+      "objective_terms": {
+        "unmet": 0,
+        "response": 0,
+        "lateness": 0,
+        "travel": 0,
+        "disruption": 0
+      },
+      "verified_objective": 0,
+      "objective_mode": "weighted",
+      "lexicographic_levels": [],
+      "risk_overrides": {
+        "N8": {
+          "score": 0.95,
+          "expires": 72,
+          "event": "74ba26aea243a38a-0",
+          "provenance": "human_confirmed_scenario_risk"
+        }
+      },
+      "previous_objective": 1024,
+      "objective_delta": null,
+      "objective_note": "Changed tasks/resources/graph or time: objectives are not directly comparable; delta intentionally omitted",
+      "added": [
+        {
+          "resource": "RES06",
+          "task": "PREPOSITION:RES06:50",
+          "node": "N4",
+          "arrival": 63,
+          "provisional": true
+        }
+      ],
+      "withdrawn": [],
+      "matched_arrival_changes": [],
+      "stability": {
+        "reassignments": 0,
+        "withdrawals": 0,
+        "disruption": 0,
+        "details": [],
+        "scope": "Only previous actionable pending task promises; new tasks/completed/locked actions excluded"
+      },
+      "preposition": {
+        "status": "OPTIMAL",
+        "seconds": 0.015371799992863089,
+        "scenarios": [
+          {
+            "name": "low",
+            "probability": 0.4,
+            "demand_weight": 0,
+            "blocked_roads": []
+          },
+          {
+            "name": "medium",
+            "probability": 0.4,
+            "demand_weight": 1,
+            "blocked_roads": []
+          },
+          {
+            "name": "high",
+            "probability": 0.2,
+            "demand_weight": 2,
+            "blocked_roads": [
+              "RD11"
+            ]
+          }
+        ],
+        "baseline_cost": 4036.0,
+        "score_kind": "normalized risk weights, not probabilities",
+        "opportunity_rule": "Only resources unused by all current horizon tasks; travel penalty 50 per minute",
+        "hypothesis": "Independent candidate-zone compound demand needs one rescue team and one drone; medium weight 1, high P1 weight 2 plus closure; no simultaneous zone capacity recourse; positioning limit 30 minutes",
+        "optimized_cost": 1956.0,
+        "estimated_cost_reduction": 2080.0,
+        "scenario_costs": {
+          "low": 650,
+          "medium": 2235,
+          "high": 4010
+        },
+        "assignments": 1
+      },
+      "impact_note": "Arrival changes are planned estimates for matched assignments, not measured rescue benefits"
+    }
+  },
+  {
+    "stage": 8,
+    "minute": 65,
+    "casualties": {
+      "missing": 15,
+      "injured": 3
+    },
+    "trace": {
+      "id": "1d69e4a0-25d6-46ba-9aaf-f2bb3c65da8e",
+      "minute": 65,
+      "revision": 86,
+      "triggers": [
+        "recovery N7"
+      ],
+      "environment_mode": "synthetic",
+      "observations": {
+        "displacement": {
+          "value": 22.651,
+          "minute": 65,
+          "unit": "mm"
+        },
+        "rainfall": {
+          "value": 46.066,
+          "minute": 65,
+          "unit": "mm/h"
+        },
+        "soil_moisture": {
+          "value": 77.506,
+          "minute": 65,
+          "unit": "%"
+        },
+        "water_level": {
+          "value": 4.309,
+          "minute": 65,
+          "unit": "m"
+        }
+      },
+      "station_observations": {
+        "S01:displacement": {
+          "value": 22.651,
+          "minute": 65,
+          "unit": "mm"
+        },
+        "S01:rainfall": {
+          "value": 46.066,
+          "minute": 65,
+          "unit": "mm/h"
+        },
+        "S01:soil_moisture": {
+          "value": 77.506,
+          "minute": 65,
+          "unit": "%"
+        },
+        "S01:water_level": {
+          "value": 4.309,
+          "minute": 65,
+          "unit": "m"
+        },
+        "S02:displacement": {
+          "value": 22.959,
+          "minute": 65,
+          "unit": "mm"
+        },
+        "S02:rainfall": {
+          "value": 40.119,
+          "minute": 65,
+          "unit": "mm/h"
+        },
+        "S02:soil_moisture": {
+          "value": 78.413,
+          "minute": 65,
+          "unit": "%"
+        },
+        "S02:water_level": {
+          "value": 4.248,
+          "minute": 65,
+          "unit": "m"
+        },
+        "S03:displacement": {
+          "value": 22.998,
+          "minute": 65,
+          "unit": "mm"
+        },
+        "S03:rainfall": {
+          "value": 40.793,
+          "minute": 65,
+          "unit": "mm/h"
+        },
+        "S03:soil_moisture": {
+          "value": 78.941,
+          "minute": 65,
+          "unit": "%"
+        },
+        "S03:water_level": {
+          "value": 4.245,
+          "minute": 65,
+          "unit": "m"
+        }
+      },
+      "risk_before": 0.95,
+      "risk_after": 0.95,
+      "zones": [
+        {
+          "station_id": "S01",
+          "node": "N4",
+          "score": 0.8711,
+          "eligible": true,
+          "forecast_scores": [
+            0.8710927502047805,
+            0.8510049126264425,
+            0.8475088772941176,
+            0.831073697861602,
+            0.8200548128636693,
+            0.8146944894627711,
+            0.8060362440503999,
+            0.7905841137332186,
+            0.7825108520044,
+            0.7704581483840662,
+            0.7615132241833068,
+            0.7440366144223849
+          ]
+        },
+        {
+          "station_id": "S02",
+          "node": "N5",
+          "score": 0.8657,
+          "eligible": true,
+          "forecast_scores": [
+            0.8657189935147356,
+            0.8559963856457853,
+            0.8484288123637158,
+            0.8424267308870497,
+            0.8339977176040904,
+            0.818913043743291,
+            0.8193957927850702,
+            0.8097043551440544,
+            0.798640994337655,
+            0.7849513031769159,
+            0.776512778565311,
+            0.7622183720870801
+          ]
+        },
+        {
+          "station_id": "S03",
+          "node": "N8",
+          "score": 0.95,
+          "eligible": true,
+          "forecast_scores": [
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95,
+            0.95
+          ],
+          "score_source": "人工确认的情景排序覆盖，非环境模型预测"
+        }
+      ],
+      "status": "OPTIMAL",
+      "solve_seconds": 0.003958200002671219,
+      "replan_latency_seconds": 0.015144799996051006,
+      "objective_terms": {
+        "unmet": 0,
+        "response": 69,
+        "lateness": 0,
+        "travel": 23,
+        "disruption": 0
+      },
+      "verified_objective": 713,
+      "objective_mode": "weighted",
+      "lexicographic_levels": [],
+      "risk_overrides": {
+        "N8": {
+          "score": 0.95,
+          "expires": 72,
+          "event": "74ba26aea243a38a-0",
+          "provenance": "human_confirmed_scenario_risk"
+        }
+      },
+      "previous_objective": 0,
+      "objective_delta": null,
+      "objective_note": "Changed tasks/resources/graph or time: objectives are not directly comparable; delta intentionally omitted",
+      "added": [
+        {
+          "resource": "SUP01",
+          "task": "EV8cc3ac8f67e5df3c-0-0",
+          "node": "N7",
+          "arrival": 88,
+          "provisional": false
+        }
+      ],
+      "withdrawn": [],
+      "matched_arrival_changes": [],
+      "stability": {
+        "reassignments": 0,
+        "withdrawals": 0,
+        "disruption": 0,
+        "details": [],
+        "scope": "Only previous actionable pending task promises; new tasks/completed/locked actions excluded"
+      },
+      "preposition": {
+        "status": "OPTIMAL",
+        "seconds": 0.0068076000025030226,
+        "scenarios": [
+          {
+            "name": "low",
+            "probability": 0.4,
+            "demand_weight": 0,
+            "blocked_roads": []
+          },
+          {
+            "name": "medium",
+            "probability": 0.4,
+            "demand_weight": 1,
+            "blocked_roads": []
+          },
+          {
+            "name": "high",
+            "probability": 0.2,
+            "demand_weight": 2,
+            "blocked_roads": [
+              "RD11"
+            ]
+          }
+        ],
+        "baseline_cost": 1260.0,
+        "score_kind": "normalized risk weights, not probabilities",
+        "opportunity_rule": "Only resources unused by all current horizon tasks; travel penalty 50 per minute",
+        "hypothesis": "Independent candidate-zone compound demand needs one rescue team and one drone; medium weight 1, high P1 weight 2 plus closure; no simultaneous zone capacity recourse; positioning limit 30 minutes",
+        "optimized_cost": 1260.0,
+        "estimated_cost_reduction": 0.0,
+        "scenario_costs": {
+          "low": 0,
+          "medium": 1575,
+          "high": 3150
+        }
+      },
+      "impact_note": "Arrival changes are planned estimates for matched assignments, not measured rescue benefits"
+    }
+  }
+]

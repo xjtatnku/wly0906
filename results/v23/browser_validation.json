@@ -1,0 +1,10 @@
+{
+  "errors": [],
+  "stages": 9,
+  "live_extraction": true,
+  "live_explanation": true,
+  "missing_final": 15,
+  "report_versions": 3,
+  "lexicographic_ui": true,
+  "viewport_1280": true
+}

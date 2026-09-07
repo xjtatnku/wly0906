@@ -43,20 +43,44 @@ class Service:
         self.state['events'].append(dict(id=str(uuid.uuid4()),minute=self.state['minute'],text=text,kind=kind))
     def refresh(self):
         self.state['forecast']=self.forecast_result()
+        overrides={node:override for node,override in self.state.get('risk_overrides',{}).items() if override['expires']>self.state['minute']}
+        if overrides:
+            f=self.state['forecast'];f['report_overrides']=overrides
+            for zone in f['zones']:
+                if zone['node'] in overrides:
+                    zone['score']=overrides[zone['node']]['score'];zone['forecast_scores']=[zone['score']]*12
+                    zone['score_source']='人工确认的情景排序覆盖，非环境模型预测'
+            for i,risk in enumerate(f['risk']):risk['score']=max(z['forecast_scores'][i] for z in f['zones'])
+            f['score']=max(r['score'] for r in f['risk']);f['level']='高风险' if f['score']>=.7 else '中风险' if f['score']>=.45 else '低风险'
         if self.state.get('environment_mode')=='historical':self.state['data_health']=self.environment_feed().health(self.state['minute'])
         elif hasattr(self.db,'source_health'):self.state['data_health']=self.db.source_health(self.state['minute'])
+        for station,delay in self.state.get('delayed_sources',{}).items():
+            if delay['expires']<=self.state['minute']:continue
+            for health in self.state.get('data_health',[]):
+                if station not in health['source_id'].split(':'):continue
+                kind=health['source_id'].split(':')[-1]
+                rows=[r for r in self.observations(self.state['minute'],1440) if r['station_id']==station and r['type']==kind]
+                latest=rows[-1] if rows else None
+                cadence=60 if self.state.get('environment_mode')=='historical' else 5
+                age=(self.state['minute']-latest['minute'])*60 if latest else None
+                expected=7 if cadence==60 else 13
+                health.update(observed_at=latest['observed_at'] if latest else None,source_status='STALE',freshness_seconds=age,
+                    heartbeat_age_seconds=age,missing_rate=1-len({r['minute'] for r in rows if r['minute']>=self.state['minute']//cadence*cadence-(expected-1)*cadence})/expected,
+                    scenario_delay=True)
     def environment_feed(self):
         from disaster.v2.environment import HistoricalFeed
         if not hasattr(self,'_historical_feed'):self._historical_feed=HistoricalFeed()
         return self._historical_feed
     def observations(self,minute,limit=1440):
         feed=self.environment_feed() if self.state.get('environment_mode')=='historical' else self.db
-        return feed.observations(minute,limit)
+        delayed={k:v for k,v in self.state.get('delayed_sources',{}).items() if v['expires']>self.state['minute']}
+        return [r for r in feed.observations(minute,limit) if r['station_id'] not in delayed or r['minute']<=delayed[r['station_id']]['cutoff']]
     def forecast_result(self,model='AR'):
         from disaster.v2.joint_forecast import JointForecaster
         mode=self.state.get('environment_mode','synthetic');cadence=60 if mode=='historical' else 5
         rows=[r for r in self.observations(self.state['minute'],1440) if r['station_id'] in ('S01','S02','S03')]
-        training=[r for r in self.observations(-1,999999) if r['station_id'] in ('S01','S02','S03')]
+        training_feed=self.environment_feed() if mode=='historical' else self.db
+        training=[r for r in training_feed.observations(-1,999999) if r['station_id'] in ('S01','S02','S03')]
         engine=JointForecaster(training,cadence)
         result=engine.predict(rows,self.state['minute'],model,self.state.get('risk_mode','rule'))
         result['environment_mode']=mode
@@ -82,6 +106,8 @@ class Service:
             risk_before=traces[-1]['risk_after'] if traces else None,risk_after=forecast['score'],zones=forecast.get('zones',[]),
             status=result.get('status'),solve_seconds=result.get('seconds'),replan_latency_seconds=seconds,
             objective_terms=result.get('objective_terms',{}),verified_objective=result.get('verified_objective'),
+            objective_mode=result.get('objective_mode','weighted'),lexicographic_levels=result.get('lexicographic_levels',[]),
+            risk_overrides=forecast.get('report_overrides',{}),
             previous_objective=before.get('verified_objective'),objective_delta=None,
             objective_note='Changed tasks/resources/graph or time: objectives are not directly comparable; delta intentionally omitted',
             added=added,withdrawn=[dict(resource=a['resource'],task=a['task']) for a in promises if a['resource']+':'+a['task'] not in current],
@@ -98,6 +124,33 @@ class Service:
         self.event('人工拒绝候选：'+text,'rejected')
         self.save()
         return self.view()
+    @atomic_action
+    def confirm_batch(self,payload):
+        from disaster.v2.intake import commit
+        return commit(self,payload)
+    @atomic_action
+    def start_scenario(self):
+        self.reset(routing_mode='simulated',environment_mode='synthetic',risk_mode='rule')
+        self.state['tasks']=[];self.state['scenario_cursor']=0
+        for resource in self.state['resources']:
+            if resource['available_at']>0:resource['available_at']=999
+        self.event('开始康定案例背景下的九阶段模拟事件链；非历史事实回放','scenario')
+        self.save();return self.view()
+    @atomic_action
+    def prepare_stage(self):
+        from disaster.v2.intake import rules
+        stages=read_json(ROOT/'data/v23/event_scenario.json')['stages']
+        cursor=self.state.get('scenario_cursor')
+        if cursor is None:raise ValueError('请先开始事件链')
+        if cursor>=len(stages):raise ValueError('所有阶段已确认')
+        stage=deepcopy(stages[cursor]);delta=stage['minute']-self.state['minute']
+        if delta>0:self.advance(delta)
+        if stage.get('adaptive_resource'):
+            resource=next((r for r in self.state['resources'] if r.get('active')),self.state['resources'][0])
+            stage['text']=resource['id']+'资源故障。'
+        return dict(text=stage['text'],candidate=rules(stage['text'],self.state).model_dump(),revision=self.state['revision'],
+            stage_id=stage['id'],stage_index=cursor,mode='核对过的模拟阶段候选',provenance='reviewed_synthetic_event_stage',
+            clauses=self.retrieve(stage['text']),uncertainty='阶段时间、人数与事件为模拟设定；请审核后确认')
     def save(self):
         self.state['revision']+=1;self.db.save(self.state)
     @atomic_action
@@ -118,7 +171,8 @@ class Service:
         s=deepcopy(state or self.state);now=s['minute'];visible=[t for t in s['tasks'] if t['release']<=now]
         s['tasks']=visible
         feed=self.environment_feed() if s.get('environment_mode')=='historical' else self.db
-        s['observations']=feed.observations(now,180)
+        delayed={k:v for k,v in s.get('delayed_sources',{}).items() if v['expires']>now}
+        s['observations']=[r for r in feed.observations(now,180) if r['station_id'] not in delayed or r['minute']<=delayed[r['station_id']]['cutoff']]
         if 'data_health' not in s:s['data_health']=self.db.source_health(now)
         s['time']=(datetime(2024,8,3,9)+timedelta(minutes=now)).strftime('%Y-%m-%d %H:%M')
         total=len(s['resources']);idle=sum(not r.get('active') and r['available_at']<=now and r.get('status')!='failed' for r in s['resources'])
@@ -225,7 +279,7 @@ class Service:
                 self.replan(['道路中断 '+road_id]);self.save()
             return self.view()
     @atomic_action
-    def fail_resource(self,resource_id):
+    def fail_resource(self,resource_id,replan=True):
         resource=next((r for r in self.state['resources'] if r['id']==resource_id),None)
         if resource is None:raise ValueError('未知资源')
         if resource.get('status')=='failed':return self.view()
@@ -239,7 +293,8 @@ class Service:
                     t['interrupted_at']=self.state['minute']
         resource['status']='failed'
         self.event(f'资源故障 {resource_id}；未完成协同作业需重新完整执行，已耗时保留','failure')
-        self.replan(['资源故障 '+resource_id]);self.save();return self.view()
+        if replan:self.replan(['资源故障 '+resource_id]);self.save()
+        return self.view()
     def retrieve(self,text,mode='hybrid'):
         q=self.vectorizer.transform([text]);s=(self.sparse@q.T).toarray().ravel()
         dq=self.svd.transform(q)[0];d=(self.dense@dq)/(np.linalg.norm(self.dense,axis=1)*np.linalg.norm(dq)+1e-9)

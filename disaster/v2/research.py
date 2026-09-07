@@ -112,6 +112,7 @@ def measure(state, calls, violations, travel):
 def simulate(state, method, budget, stress=None, response_weight=10):
     service = memory_service(state)
     service.state['settings'].update(forecast=method == 'rolling_forecast', response_weight=response_weight)
+    if method=='lexicographic':service.state['settings']['objective_mode']='lexicographic'
     calls = []
     violations = []
     travel = 0
@@ -137,6 +138,10 @@ def simulate(state, method, budget, stress=None, response_weight=10):
         for minute in range(END + 1):
             if minute:
                 service.advance(1)
+            for event in state.get('experiment_events',[]):
+                if minute!=event['minute']:continue
+                if event['kind']=='road':service.block(event['id'])
+                elif event['kind']=='failure':service.fail_resource(event['id'])
             if minute == (17 if stress else 20):
                 started = time.perf_counter()
                 if stress in (None, 'road_closure', 'simultaneous'):
@@ -169,6 +174,9 @@ def simulate(state, method, budget, stress=None, response_weight=10):
             if minute < END:
                 travel += sum(bool(r.get('active')) and r['active']['depart'] <= minute < r['active']['arrival'] for r in service.state['resources'])
     result = measure(service.state, calls, violations, travel)
+    if method=='lexicographic':
+        result['lex_complete_calls']=sum(p.get('lexicographic_complete',False) for p in calls)
+        result['lex_proven_p1_calls']=sum(bool(p.get('lexicographic_levels')) and p['lexicographic_levels'][0]['proven'] for p in calls)
     if stress:
         result.update(latency_ms=latency, event_trace=json.dumps(event_trace, ensure_ascii=False, separators=(',', ':')),
                       forecast_eligible=service.state['forecast']['eligible_for_decision'])

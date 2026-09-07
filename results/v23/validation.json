@@ -1,0 +1,21 @@
+{
+  "tests": 69,
+  "failures": 0,
+  "errors": 0,
+  "browser": {
+    "errors": [],
+    "stages": 9,
+    "live_extraction": true,
+    "live_explanation": true,
+    "missing_final": 15,
+    "report_versions": 3,
+    "lexicographic_ui": true,
+    "viewport_1280": true
+  },
+  "local_service": {
+    "status": "ok",
+    "revision": 87
+  },
+  "experiment_runs": 620,
+  "constraint_violations": 0
+}

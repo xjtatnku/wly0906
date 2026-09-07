@@ -25,6 +25,8 @@ class Retriever:
 
 
 def provider_configured():
+    from disaster.config import load_local_env
+    load_local_env()
     return bool(os.getenv('DISASTER_API_KEY') and os.getenv('DISASTER_MODEL'))
 
 
@@ -32,11 +34,16 @@ def provider_json(system, payload):
     from openai import OpenAI
     if not provider_configured():
         raise ValueError('API_NOT_CONFIGURED')
-    client = OpenAI(api_key=os.environ['DISASTER_API_KEY'],
-                    base_url=os.getenv('DISASTER_BASE_URL','https://api.deepseek.com'), timeout=25, max_retries=0)
-    response = client.chat.completions.create(model=os.environ['DISASTER_MODEL'], temperature=0,
-        response_format={'type':'json_object'},
-        messages=[{'role':'system','content':system}, {'role':'user','content':json.dumps(payload,ensure_ascii=False)}])
+    import httpx
+    base_url=os.getenv('DISASTER_BASE_URL','https://api.deepseek.com')
+    extra={'thinking':{'type':'disabled'}} if 'api.deepseek.com' in base_url else {}
+    # Explicit direct transport avoids a machine proxy accidentally intercepting credentials.
+    with OpenAI(api_key=os.environ['DISASTER_API_KEY'],base_url=base_url,timeout=30,max_retries=0,
+                http_client=httpx.Client(trust_env=False)) as client:
+        response = client.chat.completions.create(model=os.environ['DISASTER_MODEL'],temperature=0,max_tokens=2400,
+            response_format={'type':'json_object'},extra_body=extra,
+            messages=[{'role':'system','content':system}, {'role':'user','content':json.dumps(payload,ensure_ascii=False)}])
+    if response.choices[0].finish_reason!='stop':raise ValueError('MODEL_OUTPUT_INCOMPLETE')
     return json.loads(response.choices[0].message.content)
 
 

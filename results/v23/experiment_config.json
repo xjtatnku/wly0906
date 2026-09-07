@@ -1,0 +1,50 @@
+{
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "budget": 0.3,
+  "workers": 6,
+  "resource_scale": 0.5,
+  "event_rates": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "beta": [
+    0,
+    1,
+    2,
+    5,
+    10,
+    20,
+    50
+  ],
+  "stress_repetitions": 30,
+  "input_hash": "ab45335d80eece5fd6d6ad07e0a66aa457c7ac614ce866bc78abf108a08e6391",
+  "notes": [
+    "New experiment family, not pooled with V2.2 inputs. Additional tasks vary location/type/priority/duration and release.",
+    "Medium/high include RES01 failure at minute32; high adds RD03 closure at minute55. All methods share inputs.",
+    "Lexicographic fixes only proven optimal levels; feasible/time-limited levels stop the sequence.",
+    "Stress timing uses in-memory simulator and includes repeated scenario execution; excludes HTTP/database/network and LLM latency.",
+    "Paired bootstrap uses 10000 seed resamples within each original V2.2 cell; exploratory pointwise intervals."
+  ]
+}

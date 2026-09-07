@@ -1,0 +1,1343 @@
+[
+  {
+    "id": "TXT01",
+    "text": "N4 发生泥石流，失联3人，受伤1人，需要搜救和医疗支援。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "disaster_report",
+          "node": "N4",
+          "missing": 3,
+          "injured": 1,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [
+            "rescue",
+            "medical"
+          ],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "N4 发生泥石流，失联3人，受伤1人，需要搜救和医疗支援。"
+        }
+      ]
+    },
+    "category": "disaster",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT02",
+    "text": "现场通报：N5 失踪4人，伤员2人，请开展搜寻和救治。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "disaster_report",
+          "node": "N5",
+          "missing": 4,
+          "injured": 2,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [
+            "rescue",
+            "medical"
+          ],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "现场通报：N5 失踪4人，伤员2人，请开展搜寻和救治。"
+        }
+      ]
+    },
+    "category": "disaster",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT03",
+    "text": "N8 山洪现场，失联 5 人、受伤 3 人，申请搜救及医疗。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "disaster_report",
+          "node": "N8",
+          "missing": 5,
+          "injured": 3,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [
+            "rescue",
+            "medical"
+          ],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "N8 山洪现场，失联 5 人、受伤 3 人，申请搜救及医疗。"
+        }
+      ]
+    },
+    "category": "disaster",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT04",
+    "text": "请向N4安排搜救与医疗，现场失联6人，受伤4人。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "disaster_report",
+          "node": "N4",
+          "missing": 6,
+          "injured": 4,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [
+            "rescue",
+            "medical"
+          ],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "请向N4安排搜救与医疗，现场失联6人，受伤4人。"
+        }
+      ]
+    },
+    "category": "disaster",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT05",
+    "text": "N5 最新核实：失联7人，受伤5人，需要搜救和医疗支援。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "disaster_report",
+          "node": "N5",
+          "missing": 7,
+          "injured": 5,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [
+            "rescue",
+            "medical"
+          ],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "N5 最新核实：失联7人，受伤5人，需要搜救和医疗支援。"
+        }
+      ]
+    },
+    "category": "disaster",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT06",
+    "text": "N4 新增失联1人，需要搜救。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "casualty_update",
+          "node": "N4",
+          "missing": 1,
+          "injured": null,
+          "count_mode": "delta",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [
+            "rescue"
+          ],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "N4 新增失联1人，需要搜救。"
+        }
+      ]
+    },
+    "category": "delta",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT07",
+    "text": "N5 新增受伤2人，申请医疗支援。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "casualty_update",
+          "node": "N5",
+          "missing": null,
+          "injured": 2,
+          "count_mode": "delta",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [
+            "medical"
+          ],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "N5 新增受伤2人，申请医疗支援。"
+        }
+      ]
+    },
+    "category": "delta",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT08",
+    "text": "N8 报告新增失踪3人。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "casualty_update",
+          "node": "N8",
+          "missing": 3,
+          "injured": null,
+          "count_mode": "delta",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "N8 报告新增失踪3人。"
+        }
+      ]
+    },
+    "category": "delta",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT09",
+    "text": "N4 新增伤员4人，请救治。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "casualty_update",
+          "node": "N4",
+          "missing": null,
+          "injured": 4,
+          "count_mode": "delta",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [
+            "medical"
+          ],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "N4 新增伤员4人，请救治。"
+        }
+      ]
+    },
+    "category": "delta",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT10",
+    "text": "N5 新增失联5人，继续搜寻。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "casualty_update",
+          "node": "N5",
+          "missing": 5,
+          "injured": null,
+          "count_mode": "delta",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [
+            "rescue"
+          ],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "N5 新增失联5人，继续搜寻。"
+        }
+      ]
+    },
+    "category": "delta",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT11",
+    "text": "N4 核实后，失联人数修正为8人。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "information_correction",
+          "node": "N4",
+          "missing": 8,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "N4 核实后，失联人数修正为8人。"
+        }
+      ]
+    },
+    "category": "correction",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT12",
+    "text": "N5 核实后，受伤人数更正为9人。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "information_correction",
+          "node": "N5",
+          "missing": null,
+          "injured": 9,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "N5 核实后，受伤人数更正为9人。"
+        }
+      ]
+    },
+    "category": "correction",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT13",
+    "text": "N8 核实后，失踪人数修正为10人。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "information_correction",
+          "node": "N8",
+          "missing": 10,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "N8 核实后，失踪人数修正为10人。"
+        }
+      ]
+    },
+    "category": "correction",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT14",
+    "text": "N4 核实后，失联修正为11人。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "information_correction",
+          "node": "N4",
+          "missing": 11,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "N4 核实后，失联修正为11人。"
+        }
+      ]
+    },
+    "category": "correction",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT15",
+    "text": "N5 核实后，伤员更正为12人。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "information_correction",
+          "node": "N5",
+          "missing": null,
+          "injured": 12,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "N5 核实后，伤员更正为12人。"
+        }
+      ]
+    },
+    "category": "correction",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT16",
+    "text": "道路RD00已经中断。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "road_closure",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [
+            "RD00"
+          ],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "道路RD00已经中断。"
+        }
+      ]
+    },
+    "category": "road",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT17",
+    "text": "RD01封闭，车辆不通。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "road_closure",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [
+            "RD01"
+          ],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "RD01封闭，车辆不通。"
+        }
+      ]
+    },
+    "category": "road",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT18",
+    "text": "通报：RD02路段无法通行，请标记中断。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "road_closure",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [
+            "RD02"
+          ],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "通报：RD02路段无法通行，请标记中断。"
+        }
+      ]
+    },
+    "category": "road",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT19",
+    "text": "确认RD03道路中断。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "road_closure",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [
+            "RD03"
+          ],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "确认RD03道路中断。"
+        }
+      ]
+    },
+    "category": "road",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT20",
+    "text": "RD04发生二次中断。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "road_closure",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [
+            "RD04"
+          ],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "RD04发生二次中断。"
+        }
+      ]
+    },
+    "category": "road",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT21",
+    "text": "RES01资源故障，无法继续执行。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "resource_failure",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [
+            "RES01"
+          ],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "RES01资源故障，无法继续执行。"
+        }
+      ]
+    },
+    "category": "failure",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT22",
+    "text": "MED01医疗队设备故障。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "resource_failure",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [
+            "MED01"
+          ],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "MED01医疗队设备故障。"
+        }
+      ]
+    },
+    "category": "failure",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT23",
+    "text": "ENG01发生故障，请重新安排。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "resource_failure",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [
+            "ENG01"
+          ],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "ENG01发生故障，请重新安排。"
+        }
+      ]
+    },
+    "category": "failure",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT24",
+    "text": "AMB01救护车故障。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "resource_failure",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [
+            "AMB01"
+          ],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "AMB01救护车故障。"
+        }
+      ]
+    },
+    "category": "failure",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT25",
+    "text": "DRO01报告失效。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "resource_failure",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [
+            "DRO01"
+          ],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "DRO01报告失效。"
+        }
+      ]
+    },
+    "category": "failure",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT26",
+    "text": "增援RES06已经到达。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "reinforcement",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [
+            "RES06"
+          ],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "增援RES06已经到达。"
+        }
+      ]
+    },
+    "category": "reinforcement",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT27",
+    "text": "MED04增援已到，可以使用。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "reinforcement",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [
+            "MED04"
+          ],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "MED04增援已到，可以使用。"
+        }
+      ]
+    },
+    "category": "reinforcement",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT28",
+    "text": "收到ENG03增援到达报告。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "reinforcement",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [
+            "ENG03"
+          ],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "收到ENG03增援到达报告。"
+        }
+      ]
+    },
+    "category": "reinforcement",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT29",
+    "text": "外部增援AMB04到达集结点。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "reinforcement",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [
+            "AMB04"
+          ],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "外部增援AMB04到达集结点。"
+        }
+      ]
+    },
+    "category": "reinforcement",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT30",
+    "text": "DRO03增援到位。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "reinforcement",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [
+            "DRO03"
+          ],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "DRO03增援到位。"
+        }
+      ]
+    },
+    "category": "reinforcement",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT31",
+    "text": "N4 风险上升到高等级。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "risk_change",
+          "node": "N4",
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": "high",
+          "correction_of": null,
+          "evidence": "N4 风险上升到高等级。"
+        }
+      ]
+    },
+    "category": "risk",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT32",
+    "text": "N5 当前风险为中等级。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "risk_change",
+          "node": "N5",
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": "medium",
+          "correction_of": null,
+          "evidence": "N5 当前风险为中等级。"
+        }
+      ]
+    },
+    "category": "risk",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT33",
+    "text": "N8 风险下降到低等级。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "risk_change",
+          "node": "N8",
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": "low",
+          "correction_of": null,
+          "evidence": "N8 风险下降到低等级。"
+        }
+      ]
+    },
+    "category": "risk",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT34",
+    "text": "N4 次生灾害风险升高。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "secondary_risk",
+          "node": "N4",
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": "high",
+          "correction_of": null,
+          "evidence": "N4 次生灾害风险升高。"
+        }
+      ]
+    },
+    "category": "risk",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT35",
+    "text": "N8 出现次生风险，评定高等级。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "secondary_risk",
+          "node": "N8",
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": "high",
+          "correction_of": null,
+          "evidence": "N8 出现次生风险，评定高等级。"
+        }
+      ]
+    },
+    "category": "risk",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT36",
+    "text": "S01数据延迟，尚未收到新观测。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "sensor_delay",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [
+            "S01"
+          ],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "S01数据延迟，尚未收到新观测。"
+        }
+      ]
+    },
+    "category": "delay",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT37",
+    "text": "S02监测数据迟到。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "sensor_delay",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [
+            "S02"
+          ],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "S02监测数据迟到。"
+        }
+      ]
+    },
+    "category": "delay",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT38",
+    "text": "S03传输延迟，请核对时效。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "sensor_delay",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [
+            "S03"
+          ],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "S03传输延迟，请核对时效。"
+        }
+      ]
+    },
+    "category": "delay",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT39",
+    "text": "S01接收延迟。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "sensor_delay",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [
+            "S01"
+          ],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "S01接收延迟。"
+        }
+      ]
+    },
+    "category": "delay",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT40",
+    "text": "S02持续延迟，数据未更新。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "sensor_delay",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [
+            "S02"
+          ],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "S02持续延迟，数据未更新。"
+        }
+      ]
+    },
+    "category": "delay",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT41",
+    "text": "N7 灾情趋稳，需要安置物资。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "recovery",
+          "node": "N7",
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [
+            "supply"
+          ],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "N7 灾情趋稳，需要安置物资。"
+        }
+      ]
+    },
+    "category": "recovery",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT42",
+    "text": "N4 进入恢复阶段，申请物资。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "recovery",
+          "node": "N4",
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [
+            "supply"
+          ],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "N4 进入恢复阶段，申请物资。"
+        }
+      ]
+    },
+    "category": "recovery",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT43",
+    "text": "N5 灾情趋稳，开展安置。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "recovery",
+          "node": "N5",
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [
+            "supply"
+          ],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "N5 灾情趋稳，开展安置。"
+        }
+      ]
+    },
+    "category": "recovery",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT44",
+    "text": "N7 恢复阶段需要补给。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "recovery",
+          "node": "N7",
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [
+            "supply"
+          ],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "N7 恢复阶段需要补给。"
+        }
+      ]
+    },
+    "category": "recovery",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT45",
+    "text": "N8 趋稳，申请安置物资。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "recovery",
+          "node": "N8",
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [
+            "supply"
+          ],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "N8 趋稳，申请安置物资。"
+        }
+      ]
+    },
+    "category": "recovery",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT46",
+    "text": "某地可能有险情，人数和地点均待核实。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "uncertain_report",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "某地可能有险情，人数和地点均待核实。"
+        }
+      ]
+    },
+    "category": "ambiguous",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT47",
+    "text": "信息不明，请等待核查。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "uncertain_report",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "信息不明，请等待核查。"
+        }
+      ]
+    },
+    "category": "ambiguous",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT48",
+    "text": "道路RD00已经中断。；RES01资源故障，无法继续执行。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "road_closure",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [
+            "RD00"
+          ],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "道路RD00已经中断。"
+        },
+        {
+          "event_type": "resource_failure",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [
+            "RES01"
+          ],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "RES01资源故障，无法继续执行。"
+        }
+      ]
+    },
+    "category": "simultaneous",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT49",
+    "text": "增援RES06已经到达。；N4 风险上升到高等级。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "reinforcement",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [
+            "RES06"
+          ],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "增援RES06已经到达。"
+        },
+        {
+          "event_type": "risk_change",
+          "node": "N4",
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": "high",
+          "correction_of": null,
+          "evidence": "N4 风险上升到高等级。"
+        }
+      ]
+    },
+    "category": "simultaneous",
+    "provenance": "human_authored_synthetic_annotation"
+  },
+  {
+    "id": "TXT50",
+    "text": "通报：RD02路段无法通行，请标记中断。；ENG01发生故障，请重新安排。；S02监测数据迟到。",
+    "gold": {
+      "events": [
+        {
+          "event_type": "road_closure",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [
+            "RD02"
+          ],
+          "resource_ids": [],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "通报：RD02路段无法通行，请标记中断。"
+        },
+        {
+          "event_type": "resource_failure",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [
+            "ENG01"
+          ],
+          "station_ids": [],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "ENG01发生故障，请重新安排。"
+        },
+        {
+          "event_type": "sensor_delay",
+          "node": null,
+          "missing": null,
+          "injured": null,
+          "count_mode": "absolute",
+          "road_ids": [],
+          "resource_ids": [],
+          "station_ids": [
+            "S02"
+          ],
+          "needs": [],
+          "risk_level": null,
+          "correction_of": null,
+          "evidence": "S02监测数据迟到。"
+        }
+      ]
+    },
+    "category": "simultaneous",
+    "provenance": "human_authored_synthetic_annotation"
+  }
+]

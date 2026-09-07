@@ -1,0 +1,29 @@
+{
+  "model": "deepseek-v4-flash",
+  "evaluation": "50 human-authored synthetic texts, same inputs, no model tuning on labels",
+  "failure_policy": "Failed live calls get empty predictions in DeepSeek metrics; offline fallback is recorded separately",
+  "results": [
+    {
+      "method": "rules",
+      "samples": 50,
+      "event_type_accuracy": 1.0,
+      "location_accuracy": 0.98,
+      "json_valid_rate": 1,
+      "validated_live_rate": null,
+      "mean_latency_ms": 0.19694200163939968,
+      "casualties_f1": 0.9,
+      "roads_f1": 1.0
+    },
+    {
+      "method": "deepseek",
+      "samples": 50,
+      "event_type_accuracy": 0.74,
+      "location_accuracy": 0.74,
+      "json_valid_rate": 1.0,
+      "validated_live_rate": 0.8,
+      "mean_latency_ms": 1436.044380000385,
+      "casualties_f1": 0.9473684210526315,
+      "roads_f1": 1.0
+    }
+  ]
+}

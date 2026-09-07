@@ -1,0 +1,289 @@
+{
+  "case": "康定8·03案例背景",
+  "boundary": "全部阶段时间、人数、扰动与资源为模拟；不还原真实指挥",
+  "stages": [
+    {
+      "id": "STAGE0",
+      "minute": 0,
+      "title": "灾前环境与风险",
+      "text": "N4 强降雨后风险上升至高等级。",
+      "candidate": {
+        "events": [
+          {
+            "event_type": "risk_change",
+            "node": "N4",
+            "missing": null,
+            "injured": null,
+            "count_mode": "absolute",
+            "road_ids": [],
+            "resource_ids": [],
+            "station_ids": [],
+            "needs": [],
+            "risk_level": "high",
+            "correction_of": null,
+            "evidence": "N4 强降雨后风险上升至高等级。"
+          }
+        ]
+      },
+      "adaptive_resource": false,
+      "provenance": "reviewed_synthetic_event_stage"
+    },
+    {
+      "id": "STAGE1",
+      "minute": 5,
+      "title": "首次灾情与救援需求",
+      "text": "N4 发生泥石流，失联8人，受伤3人，需要搜救和医疗。",
+      "candidate": {
+        "events": [
+          {
+            "event_type": "disaster_report",
+            "node": "N4",
+            "missing": 8,
+            "injured": 3,
+            "count_mode": "absolute",
+            "road_ids": [],
+            "resource_ids": [],
+            "station_ids": [],
+            "needs": [
+              "rescue",
+              "medical"
+            ],
+            "risk_level": null,
+            "correction_of": null,
+            "evidence": "N4 发生泥石流，失联8人，受伤3人，需要搜救和医疗。"
+          }
+        ]
+      },
+      "adaptive_resource": false,
+      "provenance": "reviewed_synthetic_event_stage"
+    },
+    {
+      "id": "STAGE2",
+      "minute": 12,
+      "title": "新增紧急需求",
+      "text": "N4 新增失联5人，需要搜救。",
+      "candidate": {
+        "events": [
+          {
+            "event_type": "casualty_update",
+            "node": "N4",
+            "missing": 5,
+            "injured": null,
+            "count_mode": "delta",
+            "road_ids": [],
+            "resource_ids": [],
+            "station_ids": [],
+            "needs": [
+              "rescue"
+            ],
+            "risk_level": null,
+            "correction_of": null,
+            "evidence": "N4 新增失联5人，需要搜救。"
+          }
+        ]
+      },
+      "adaptive_resource": false,
+      "provenance": "reviewed_synthetic_event_stage"
+    },
+    {
+      "id": "STAGE3",
+      "minute": 20,
+      "title": "封路与数据延迟",
+      "text": "RD00道路中断；S02监测数据延迟。",
+      "candidate": {
+        "events": [
+          {
+            "event_type": "road_closure",
+            "node": null,
+            "missing": null,
+            "injured": null,
+            "count_mode": "absolute",
+            "road_ids": [
+              "RD00"
+            ],
+            "resource_ids": [],
+            "station_ids": [],
+            "needs": [],
+            "risk_level": null,
+            "correction_of": null,
+            "evidence": "RD00道路中断"
+          },
+          {
+            "event_type": "sensor_delay",
+            "node": null,
+            "missing": null,
+            "injured": null,
+            "count_mode": "absolute",
+            "road_ids": [],
+            "resource_ids": [],
+            "station_ids": [
+              "S02"
+            ],
+            "needs": [],
+            "risk_level": null,
+            "correction_of": null,
+            "evidence": "S02监测数据延迟。"
+          }
+        ]
+      },
+      "adaptive_resource": false,
+      "provenance": "reviewed_synthetic_event_stage"
+    },
+    {
+      "id": "STAGE4",
+      "minute": 27,
+      "title": "执行资源故障",
+      "text": "RES01资源故障。",
+      "candidate": {
+        "events": [
+          {
+            "event_type": "resource_failure",
+            "node": null,
+            "missing": null,
+            "injured": null,
+            "count_mode": "absolute",
+            "road_ids": [],
+            "resource_ids": [
+              "RES01"
+            ],
+            "station_ids": [],
+            "needs": [],
+            "risk_level": null,
+            "correction_of": null,
+            "evidence": "RES01资源故障。"
+          }
+        ]
+      },
+      "adaptive_resource": true,
+      "provenance": "reviewed_synthetic_event_stage"
+    },
+    {
+      "id": "STAGE5",
+      "minute": 35,
+      "title": "外部增援到达",
+      "text": "RES06和MED04及DRO03增援到达。",
+      "candidate": {
+        "events": [
+          {
+            "event_type": "reinforcement",
+            "node": null,
+            "missing": null,
+            "injured": null,
+            "count_mode": "absolute",
+            "road_ids": [],
+            "resource_ids": [
+              "RES06",
+              "MED04",
+              "DRO03"
+            ],
+            "station_ids": [],
+            "needs": [],
+            "risk_level": null,
+            "correction_of": null,
+            "evidence": "RES06和MED04及DRO03增援到达。"
+          }
+        ]
+      },
+      "adaptive_resource": false,
+      "provenance": "reviewed_synthetic_event_stage"
+    },
+    {
+      "id": "STAGE6",
+      "minute": 42,
+      "title": "邻区次生风险",
+      "text": "N8 出现次生灾害高风险，需要搜救。",
+      "candidate": {
+        "events": [
+          {
+            "event_type": "secondary_risk",
+            "node": "N8",
+            "missing": null,
+            "injured": null,
+            "count_mode": "absolute",
+            "road_ids": [],
+            "resource_ids": [],
+            "station_ids": [],
+            "needs": [
+              "rescue"
+            ],
+            "risk_level": "high",
+            "correction_of": null,
+            "evidence": "N8 出现次生灾害高风险，需要搜救。"
+          }
+        ]
+      },
+      "adaptive_resource": false,
+      "provenance": "reviewed_synthetic_event_stage"
+    },
+    {
+      "id": "STAGE7",
+      "minute": 50,
+      "title": "信息修正与二次封路",
+      "text": "N4 失联人数修正为15人；RD03发生二次中断。",
+      "candidate": {
+        "events": [
+          {
+            "event_type": "information_correction",
+            "node": "N4",
+            "missing": 15,
+            "injured": null,
+            "count_mode": "absolute",
+            "road_ids": [],
+            "resource_ids": [],
+            "station_ids": [],
+            "needs": [],
+            "risk_level": null,
+            "correction_of": null,
+            "evidence": "N4 失联人数修正为15人"
+          },
+          {
+            "event_type": "road_closure",
+            "node": null,
+            "missing": null,
+            "injured": null,
+            "count_mode": "absolute",
+            "road_ids": [
+              "RD03"
+            ],
+            "resource_ids": [],
+            "station_ids": [],
+            "needs": [],
+            "risk_level": null,
+            "correction_of": null,
+            "evidence": "RD03发生二次中断。"
+          }
+        ]
+      },
+      "adaptive_resource": false,
+      "provenance": "reviewed_synthetic_event_stage"
+    },
+    {
+      "id": "STAGE8",
+      "minute": 65,
+      "title": "趋稳与恢复",
+      "text": "N7 灾情趋稳，需要安置物资。",
+      "candidate": {
+        "events": [
+          {
+            "event_type": "recovery",
+            "node": "N7",
+            "missing": null,
+            "injured": null,
+            "count_mode": "absolute",
+            "road_ids": [],
+            "resource_ids": [],
+            "station_ids": [],
+            "needs": [
+              "supply"
+            ],
+            "risk_level": null,
+            "correction_of": null,
+            "evidence": "N7 灾情趋稳，需要安置物资。"
+          }
+        ]
+      },
+      "adaptive_resource": false,
+      "provenance": "reviewed_synthetic_event_stage"
+    }
+  ]
+}

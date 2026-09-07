@@ -21,6 +21,7 @@ class Settings(BaseModel):
     stability:int=Field(default=20,ge=0,le=200)
     forecast:bool=True
     response_weight:int=Field(default=10,ge=0,le=100)
+    objective_mode:Literal['weighted','lexicographic']='weighted'
 class Text(BaseModel):text:str=Field(min_length=1,max_length=3000);live:bool=False
 class WhatIf(BaseModel):blocked:str|None=None;additional:bool=False
 class Import(BaseModel):rows:list[dict]=Field(max_length=10000)
@@ -87,6 +88,38 @@ def research_export(name:Literal['scheduling','stress','forecast_synthetic','for
 def extract(body:Text):
     try:return service().extract(body.text,body.live)
     except Exception as e:raise HTTPException(422,f'提取失败：{type(e).__name__}，状态未提交')
+@app.post('/api/intake/extract')
+def intake_extract(body:Text):
+    from disaster.v2.intake import extract
+    try:return extract(service(),body.text,body.live)
+    except ValueError as e:raise HTTPException(422,'输入或候选校验失败')
+@app.post('/api/intake/confirm')
+def intake_confirm(body:dict):
+    try:return service().confirm_batch(body)
+    except (ValueError,KeyError,TypeError):raise HTTPException(422,'确认失败：请检查版本、地点、人数基数、修正对象与资源标识')
+@app.get('/api/scenario')
+def scenario_info():return read_json(ROOT/'data/v23/event_scenario.json')
+class ExplanationRequest(BaseModel):live:bool=False
+@app.post('/api/intake/explain')
+def intake_explain(body:ExplanationRequest):
+    from disaster.v2.grounded_explanation import explain
+    return explain(service(),body.live)
+@app.post('/api/scenario/start')
+def scenario_start():return service().start_scenario()
+@app.post('/api/scenario/prepare')
+def scenario_prepare():
+    try:return service().prepare_stage()
+    except ValueError as e:raise HTTPException(422,str(e))
+@app.get('/api/research/current')
+def current_research():
+    folder=ROOT/'results/v23';result={}
+    for name in ('paired_statistics','lexicographic','beta_sensitivity','stress_repeated'):
+        path=folder/(name+'.csv')
+        if path.exists():
+            with path.open(encoding='utf-8-sig') as f:result[name]=list(csv.DictReader(f))
+    path=folder/'intake_summary.json'
+    if path.exists():result['intake']=read_json(path)
+    return result
 @app.post('/api/confirm')
 def confirm(body:dict):
     try:return service().confirm(body)

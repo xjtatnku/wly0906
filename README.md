@@ -1,6 +1,8 @@
 # 动态灾害应急决策与资源调度
 
-**当前 V2.2：真实历史 GPM/ERA5 回放、三站联合预测、响应时间目标、多区域前置与决策追踪。** 启动、实验及真实性边界见 [README-V22.md](README-V22.md)。
+**当前增量：DeepSeek真实接入、九阶段事件链、信息修正、词典序调度及配对统计。** 操作与结果见 [README-V23.md](README-V23.md)。
+
+V2.2真实历史 GPM/ERA5、联合预测、前置模型与边界保留于 [README-V22.md](README-V22.md)。
 
 V2.1原说明与结果保留于 [README-V21.md](README-V21.md)。
 
@@ -43,13 +45,13 @@ Python 3.11；requirements.txt 固定直接依赖，requirements.lock.txt 固定
 ```powershell
 $env:DISASTER_API_KEY = '在本机填写密钥'
 $env:DISASTER_BASE_URL = 'https://api.deepseek.com'
-$env:DISASTER_MODEL = 'deepseek-chat'
+$env:DISASTER_MODEL = 'deepseek-v4-flash'
 .\.venv\Scripts\python.exe -m streamlit run app.py --server.address 127.0.0.1
 ```
 
-界面开启“使用实时模型 API”。其他兼容服务修改地址和模型名即可；要求服务支持 `response_format=json_object`。此接口形状已经用模拟响应测试；没有用户提供的密钥时，不声称已经调用任何真实模型。请求失败不会提交候选事件。
+界面开启“使用实时模型 API”。其他兼容服务修改地址和模型名即可；要求服务支持 `response_format=json_object`。V2.3 已完成真实 DeepSeek 抽取与解释验证，记录见 [当前结果](docs/results-v23.md)。请求失败不会自动提交候选事件。
 
-`.env.example` 只作说明，程序**不会自动读取 .env**。实时分析向所配置提供商发送用户输入的灾情文本、候选节点及检索条款；只发送任务所需数据。
+当前程序自动读取项目根目录 `.env`，格式见 `.env.example`；已有进程环境变量优先。实时分析向所配置提供商发送用户输入的灾情文本、候选节点及检索条款；只发送任务所需数据。
 
 实际评估模型（会调用已配置服务）：
 

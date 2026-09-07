@@ -13,3 +13,5 @@ results/v2/runtime/
 data/cache/live*
 results/v22/tests.xml
 results/v22/*.partial
+results/v23/tests.xml
+results/v23/*.partial
