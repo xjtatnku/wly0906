@@ -15,3 +15,4 @@ results/v22/tests.xml
 results/v22/*.partial
 results/v23/tests.xml
 results/v23/*.partial
+results/v23/final/*.xml

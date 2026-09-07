@@ -1,0 +1,159 @@
+{
+  "full_suite": {
+    "tests": 73,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "post_change_compatibility": {
+    "tests": 26,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "browser": {
+    "errors": [],
+    "measurements": [
+      {
+        "page": "overview",
+        "width": 1680,
+        "navigation_ms": 2135.934799996903,
+        "dom_elements": 466,
+        "horizontal_overflow": false
+      },
+      {
+        "page": "data",
+        "width": 1680,
+        "navigation_ms": 2265.7315999967977,
+        "dom_elements": 878,
+        "horizontal_overflow": false
+      },
+      {
+        "page": "prediction",
+        "width": 1680,
+        "navigation_ms": 2377.436700000544,
+        "dom_elements": 467,
+        "horizontal_overflow": false
+      },
+      {
+        "page": "dispatch",
+        "width": 1680,
+        "navigation_ms": 2093.107799999416,
+        "dom_elements": 723,
+        "horizontal_overflow": false
+      },
+      {
+        "page": "strategy",
+        "width": 1680,
+        "navigation_ms": 1342.673899998772,
+        "dom_elements": 351,
+        "horizontal_overflow": false
+      },
+      {
+        "page": "replay",
+        "width": 1680,
+        "navigation_ms": 4215.930099991965,
+        "dom_elements": 883,
+        "horizontal_overflow": false
+      },
+      {
+        "page": "overview",
+        "width": 1280,
+        "navigation_ms": 685.9063000010792,
+        "dom_elements": 466,
+        "horizontal_overflow": false
+      },
+      {
+        "page": "data",
+        "width": 1280,
+        "navigation_ms": 768.5301000019535,
+        "dom_elements": 878,
+        "horizontal_overflow": false
+      },
+      {
+        "page": "prediction",
+        "width": 1280,
+        "navigation_ms": 968.6674000113271,
+        "dom_elements": 467,
+        "horizontal_overflow": false
+      },
+      {
+        "page": "dispatch",
+        "width": 1280,
+        "navigation_ms": 615.1498999970499,
+        "dom_elements": 723,
+        "horizontal_overflow": false
+      },
+      {
+        "page": "strategy",
+        "width": 1280,
+        "navigation_ms": 622.3939000046812,
+        "dom_elements": 351,
+        "horizontal_overflow": false
+      },
+      {
+        "page": "replay",
+        "width": 1280,
+        "navigation_ms": 2136.675900008413,
+        "dom_elements": 883,
+        "horizontal_overflow": false
+      },
+      {
+        "page": "overview",
+        "width": 390,
+        "navigation_ms": 638.063799997326,
+        "dom_elements": 466,
+        "horizontal_overflow": false
+      },
+      {
+        "page": "data",
+        "width": 390,
+        "navigation_ms": 681.1968000110937,
+        "dom_elements": 878,
+        "horizontal_overflow": false
+      },
+      {
+        "page": "prediction",
+        "width": 390,
+        "navigation_ms": 931.5944000118179,
+        "dom_elements": 467,
+        "horizontal_overflow": false
+      },
+      {
+        "page": "dispatch",
+        "width": 390,
+        "navigation_ms": 633.7310999952024,
+        "dom_elements": 723,
+        "horizontal_overflow": false
+      },
+      {
+        "page": "strategy",
+        "width": 390,
+        "navigation_ms": 609.4156000035582,
+        "dom_elements": 351,
+        "horizontal_overflow": false
+      },
+      {
+        "page": "replay",
+        "width": 390,
+        "navigation_ms": 2680.2478000026895,
+        "dom_elements": 883,
+        "horizontal_overflow": false
+      }
+    ],
+    "external_requests_default": [],
+    "stages": 9,
+    "missing": 15,
+    "report_versions": 3,
+    "real_deepseek_extraction": true,
+    "lexicographic": true,
+    "map_controls": true,
+    "repeat_navigation": true,
+    "note": "Navigation time includes API/state load, rendering, 300ms animation settle, and screenshot on 1680px; not a pure paint benchmark."
+  },
+  "warm_event_runs": 60,
+  "warm_event_violations": 0,
+  "ood_samples": 120,
+  "ood_third_party_annotation": false,
+  "screenshot_snapshot_revision": 112
+}

@@ -1,0 +1,554 @@
+{
+  "cold_start": [
+    {
+      "service_init_ms": 12370.290499995463,
+      "additional_warmup_ms": 2604.350300010992,
+      "total_ready_ms": 14974.640800006455,
+      "panels": [
+        {
+          "environment": "synthetic",
+          "milliseconds": 747.4562999996124,
+          "training_sha256": "c6a7d3e40f731409be6971834897a3f26467b5b4b6ed60309211f3b1dc939c2c"
+        },
+        {
+          "environment": "historical",
+          "milliseconds": 1823.003700003028,
+          "training_sha256": "b6cde905f950a1be39f358cba332440b944153d3819d5f854e22e8b23d8bf95a"
+        }
+      ]
+    },
+    {
+      "service_init_ms": 12573.952099992312,
+      "additional_warmup_ms": 2565.6373999954667,
+      "total_ready_ms": 15139.589499987778,
+      "panels": [
+        {
+          "environment": "synthetic",
+          "milliseconds": 726.2480000063078,
+          "training_sha256": "c6a7d3e40f731409be6971834897a3f26467b5b4b6ed60309211f3b1dc939c2c"
+        },
+        {
+          "environment": "historical",
+          "milliseconds": 1789.9738999985857,
+          "training_sha256": "b6cde905f950a1be39f358cba332440b944153d3819d5f854e22e8b23d8bf95a"
+        }
+      ]
+    },
+    {
+      "service_init_ms": 12205.700200007414,
+      "additional_warmup_ms": 2657.447499994305,
+      "total_ready_ms": 14863.147700001718,
+      "panels": [
+        {
+          "environment": "synthetic",
+          "milliseconds": 811.5762999950675,
+          "training_sha256": "c6a7d3e40f731409be6971834897a3f26467b5b4b6ed60309211f3b1dc939c2c"
+        },
+        {
+          "environment": "historical",
+          "milliseconds": 1811.1839000048349,
+          "training_sha256": "b6cde905f950a1be39f358cba332440b944153d3819d5f854e22e8b23d8bf95a"
+        }
+      ]
+    }
+  ],
+  "warm_records": [
+    {
+      "environment": "synthetic",
+      "repetition": 0,
+      "latency_ms": 676.0803000070155,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 1,
+      "latency_ms": 635.6576999969548,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 2,
+      "latency_ms": 655.0456999975722,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 3,
+      "latency_ms": 749.9526000028709,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 4,
+      "latency_ms": 816.4445000002161,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 5,
+      "latency_ms": 714.516400010325,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 6,
+      "latency_ms": 745.6463999988046,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 7,
+      "latency_ms": 697.2551999933785,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 8,
+      "latency_ms": 623.6722000030568,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 9,
+      "latency_ms": 677.2045999969123,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 10,
+      "latency_ms": 691.2768000038341,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 11,
+      "latency_ms": 652.9912999976659,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 12,
+      "latency_ms": 741.1532999976771,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 13,
+      "latency_ms": 825.8172999921953,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 14,
+      "latency_ms": 688.9350999990711,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 15,
+      "latency_ms": 888.649999993504,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 16,
+      "latency_ms": 789.7421999950893,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 17,
+      "latency_ms": 723.6229999980424,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 18,
+      "latency_ms": 699.4419999973616,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 19,
+      "latency_ms": 667.2369000007166,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 20,
+      "latency_ms": 761.5119999973103,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 21,
+      "latency_ms": 781.8336999916937,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 22,
+      "latency_ms": 675.9106000099564,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 23,
+      "latency_ms": 673.1388000043808,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 24,
+      "latency_ms": 696.7151999997441,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 25,
+      "latency_ms": 855.6237000011606,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 26,
+      "latency_ms": 748.734599997988,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 27,
+      "latency_ms": 841.0621999937575,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 28,
+      "latency_ms": 749.5051000005333,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "synthetic",
+      "repetition": 29,
+      "latency_ms": 760.1070999953663,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 0,
+      "latency_ms": 218.71450000617187,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 1,
+      "latency_ms": 149.43119999952614,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 2,
+      "latency_ms": 157.33149999869056,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 3,
+      "latency_ms": 148.91210000496358,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 4,
+      "latency_ms": 185.97269999736454,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 5,
+      "latency_ms": 149.8064999905182,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 6,
+      "latency_ms": 175.03399999986868,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 7,
+      "latency_ms": 156.62480000173673,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 8,
+      "latency_ms": 189.2200000002049,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 9,
+      "latency_ms": 170.954500004882,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 10,
+      "latency_ms": 144.56840000639204,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 11,
+      "latency_ms": 163.97500000311993,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 12,
+      "latency_ms": 191.21620000805706,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 13,
+      "latency_ms": 161.33709999849088,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 14,
+      "latency_ms": 159.04490000684746,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 15,
+      "latency_ms": 140.93570000841282,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 16,
+      "latency_ms": 170.29500000353437,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 17,
+      "latency_ms": 164.35819999605883,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 18,
+      "latency_ms": 259.0444999950705,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 19,
+      "latency_ms": 181.2420999922324,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 20,
+      "latency_ms": 143.04599999741185,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 21,
+      "latency_ms": 139.2766000062693,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 22,
+      "latency_ms": 155.60090000508353,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 23,
+      "latency_ms": 157.94710000045598,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 24,
+      "latency_ms": 156.93660000397358,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 25,
+      "latency_ms": 185.72999999742024,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 26,
+      "latency_ms": 171.2039999983972,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 27,
+      "latency_ms": 204.2381000064779,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 28,
+      "latency_ms": 151.1764999886509,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    },
+    {
+      "environment": "historical",
+      "repetition": 29,
+      "latency_ms": 146.84000000124797,
+      "violations": 0,
+      "eligible": false,
+      "status": "OPTIMAL"
+    }
+  ],
+  "summary": [
+    {
+      "environment": "synthetic",
+      "repetitions": 30,
+      "p50_ms": 719.0697000041837,
+      "p95_ms": 849.0710249978292,
+      "p99_ms": 879.0723729957244
+    },
+    {
+      "environment": "historical",
+      "repetitions": 30,
+      "p50_ms": 160.19100000266917,
+      "p95_ms": 212.20012000630956,
+      "p99_ms": 247.34879999828993
+    }
+  ],
+  "protocol": "3 isolated-process cold service startups. Warm: 30 identical delayed S02 batch transactions per environment; trained model cache warm, result cache cleared before every event; real SQLite save and view serialization included, HTTP and LLM excluded. Solver budget .3s. Not directly comparable with archived in-memory stress timings."
+}

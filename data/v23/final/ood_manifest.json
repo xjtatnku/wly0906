@@ -1,0 +1,9 @@
+{
+  "samples": 120,
+  "categories": 12,
+  "sha256": "7dc971ec8e2bd3164c58abf0f4d3b155c61ea8e506eed1b66837906b759a953e",
+  "baseline_commit": "5cac2a8",
+  "provenance": "AI-assisted developer-authored held-out challenge texts and explicit labels; not independent third-party annotation",
+  "protocol": "Freeze before any evaluation. Do not tune extractor, provider prompt or grounding on these labels. Report all cases and negative examples.",
+  "annotation": "Explicit current affirmative facts only. Hypothetical, negated, unverified and irrelevant information is uncertain_report; unknown numbers/IDs stay null/empty. Human-independent review remains outstanding."
+}

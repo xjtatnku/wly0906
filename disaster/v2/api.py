@@ -12,7 +12,9 @@ from disaster.v2.service import Service
 @asynccontextmanager
 async def lifespan(app):
     app.state.service=Service()
+    app.state.service.warmup_forecasts()
     yield
+    app.state.service.db.engine.dispose()
 
 app=FastAPI(title='DisasterResponseAI V2',lifespan=lifespan)
 class Step(BaseModel):minutes:int=Field(default=10,ge=1,le=60)
@@ -119,6 +121,11 @@ def current_research():
             with path.open(encoding='utf-8-sig') as f:result[name]=list(csv.DictReader(f))
     path=folder/'intake_summary.json'
     if path.exists():result['intake']=read_json(path)
+    for name in ('ood_summary','warmup_benchmark'):
+        path=folder/'final'/(name+'.json')
+        if path.exists():
+            data=read_json(path)
+            result[name]={k:v for k,v in data.items() if k!='warm_records'}
     return result
 @app.post('/api/confirm')
 def confirm(body:dict):
@@ -147,7 +154,7 @@ def ingest(body:Import):
         service().save()
         return report
 @app.get('/api/health')
-def health():return {'status':'ok','revision':service().state['revision']}
+def health():return {'status':'ok','revision':service().state['revision'],'forecast_warmup':getattr(service(),'warmup_status',{'ready':False})}
 
 frontend=ROOT/'frontend'
 app.mount('/assets',StaticFiles(directory=frontend),name='assets')

@@ -1,3 +1,4 @@
 # Preserve downloaded bytes: manifest SHA-256 must survive Windows checkout.
 data/v2/osm/snapshot.json -text
 data/bronze/environment/*.json -text whitespace=cr-at-eol
+data/v23/final/ood.json text eol=lf

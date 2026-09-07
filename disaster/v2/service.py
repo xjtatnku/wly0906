@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from threading import RLock
 import hashlib, re, uuid
 import time
-from functools import wraps
+from functools import wraps,cached_property
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.decomposition import TruncatedSVD
@@ -26,8 +26,7 @@ def atomic_action(method):
 
 class Service:
     def __init__(self,path=None):
-        self.db=Database(path);self.db.bootstrap();self.lock=RLock();self.forecaster=Forecaster()
-        self.forecaster.fit(self.db.observations(-1,1440))
+        self.db=Database(path);self.db.bootstrap();self.lock=RLock()
         self.state=self.db.load()
         if self.state is not None and 'training_sha256' not in self.state.get('forecast',{}):
             self.refresh();self.event('V2.2 联合预测与决策追踪升级，执行承诺保留','migration');self.save()
@@ -38,6 +37,11 @@ class Service:
         self.clauses=read_json(ROOT/'data/policies.json')
         self.vectorizer=TfidfVectorizer(analyzer='char',ngram_range=(2,4));self.sparse=self.vectorizer.fit_transform([c['text'] for c in self.clauses])
         self.svd=TruncatedSVD(n_components=min(12,len(self.clauses)-1),random_state=906);self.dense=self.svd.fit_transform(self.sparse)
+
+    @cached_property
+    def forecaster(self):
+        """Archived evaluator compatibility; current requests use JointForecaster."""
+        legacy=Forecaster();legacy.fit(self.db.observations(-1,1440));return legacy
 
     def event(self,text,kind='info'):
         self.state['events'].append(dict(id=str(uuid.uuid4()),minute=self.state['minute'],text=text,kind=kind))
@@ -54,12 +58,13 @@ class Service:
             f['score']=max(r['score'] for r in f['risk']);f['level']='高风险' if f['score']>=.7 else '中风险' if f['score']>=.45 else '低风险'
         if self.state.get('environment_mode')=='historical':self.state['data_health']=self.environment_feed().health(self.state['minute'])
         elif hasattr(self.db,'source_health'):self.state['data_health']=self.db.source_health(self.state['minute'])
+        delayed_rows=self.observations(self.state['minute'],1440) if any(v['expires']>self.state['minute'] for v in self.state.get('delayed_sources',{}).values()) else []
         for station,delay in self.state.get('delayed_sources',{}).items():
             if delay['expires']<=self.state['minute']:continue
             for health in self.state.get('data_health',[]):
                 if station not in health['source_id'].split(':'):continue
                 kind=health['source_id'].split(':')[-1]
-                rows=[r for r in self.observations(self.state['minute'],1440) if r['station_id']==station and r['type']==kind]
+                rows=[r for r in delayed_rows if r['station_id']==station and r['type']==kind]
                 latest=rows[-1] if rows else None
                 cadence=60 if self.state.get('environment_mode')=='historical' else 5
                 age=(self.state['minute']-latest['minute'])*60 if latest else None
@@ -85,6 +90,19 @@ class Service:
         result=engine.predict(rows,self.state['minute'],model,self.state.get('risk_mode','rule'))
         result['environment_mode']=mode
         return result
+    def warmup_forecasts(self):
+        """Prepare both causal training panels before the API accepts requests."""
+        from disaster.v2.joint_forecast import JointForecaster
+        timings=[]
+        for mode,feed,cadence in [('synthetic',self.db,5),('historical',self.environment_feed(),60)]:
+            started=time.perf_counter()
+            rows=[r for r in feed.observations(-1,999999) if r['station_id'] in ('S01','S02','S03')]
+            engine=JointForecaster(rows,cadence)
+            for model in ('Persistence','AR','Gradient Boosting'):
+                for risk in ('rule','empirical'):engine.predict(rows,0,model,risk)
+            timings.append(dict(environment=mode,milliseconds=(time.perf_counter()-started)*1000,training_sha256=engine.fingerprint))
+        self.warmup_status=dict(ready=True,panels=timings)
+        return deepcopy(self.warmup_status)
     def replan(self,reasons):
         before=deepcopy(self.state.get('plan',{}));started=time.perf_counter()
         self.state['plan']=plan(self.state,**self.state['settings'])
@@ -171,16 +189,17 @@ class Service:
         s=deepcopy(state or self.state);now=s['minute'];visible=[t for t in s['tasks'] if t['release']<=now]
         s['tasks']=visible
         feed=self.environment_feed() if s.get('environment_mode')=='historical' else self.db
+        recent=feed.observations(now,1440)
         delayed={k:v for k,v in s.get('delayed_sources',{}).items() if v['expires']>now}
-        s['observations']=[r for r in feed.observations(now,180) if r['station_id'] not in delayed or r['minute']<=delayed[r['station_id']]['cutoff']]
+        s['observations']=[r for r in recent if r['minute']>=now-180 and (r['station_id'] not in delayed or r['minute']<=delayed[r['station_id']]['cutoff'])]
         if 'data_health' not in s:s['data_health']=self.db.source_health(now)
         s['time']=(datetime(2024,8,3,9)+timedelta(minutes=now)).strftime('%Y-%m-%d %H:%M')
         total=len(s['resources']);idle=sum(not r.get('active') and r['available_at']<=now and r.get('status')!='failed' for r in s['resources'])
-        rain=[o['value']*o.get('cadence_minutes',5)/60 for o in feed.observations(now,1440) if o['type']=='rainfall' and o['station_id']=='S01' and o['minute']>now-1440]
+        rain=[o['value']*o.get('cadence_minutes',5)/60 for o in recent if o['type']=='rainfall' and o['station_id']=='S01' and o['minute']>now-1440]
         s['metrics']=dict(rainfall=round(sum(rain),1),available=idle,total=total,busy=sum(bool(r.get('active')) for r in s['resources']),
             blocked=sum(e['blocked'] for e in s['roads']),roads=len(s['roads']),pending=sum(t['status']=='pending' for t in visible),
             completed=sum(t['status']=='completed' for t in visible),affected_population=sum(n['population'] for n in s['nodes'] if n['kind']=='village'),
-            observations=len(feed.observations(now)),missing=s['casualties']['missing'],injured=s['casualties']['injured'])
+            observations=len(recent),missing=s['casualties']['missing'],injured=s['casualties']['injured'])
         s['api']=dict(configured=provider_configured(),model=__import__('os').getenv('DISASTER_MODEL','未配置'),mode='实时模型可用' if provider_configured() else '离线规则 / 等待配置')
         s['resource_names']=RESOURCE_NAMES;s['sensor_types']={k:{'label':v[0],'unit':v[1]} for k,v in KINDS.items() if k in s['forecast']['series']}
         with self.db.engine.connect() as conn:

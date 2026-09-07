@@ -152,9 +152,10 @@ class Database:
             for clause in read_json(ROOT/'data/policies.json'):db.merge(Policy(id=clause['id'],payload=clause))
 
     def observations(self,minute,limit=1440):
-        with self.sessions() as db:
-            rows=db.scalars(select(Observation).where(Observation.minute<=minute,Observation.received_minute<=minute,Observation.minute>=minute-limit).order_by(Observation.minute)).all()
-            return [{c.name:getattr(r,c.name) for c in Observation.__table__.columns} for r in rows]
+        # This read-only path needs plain values, not thousands of ORM entities.
+        with self.engine.connect() as connection:
+            rows=connection.execute(select(Observation.__table__).where(Observation.minute<=minute,Observation.received_minute<=minute,Observation.minute>=minute-limit).order_by(Observation.minute)).mappings()
+            return [dict(row) for row in rows]
 
     def source_health(self,minute):
         rows=self.observations(minute,10080);streams={}

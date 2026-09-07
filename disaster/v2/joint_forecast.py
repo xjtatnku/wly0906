@@ -89,4 +89,6 @@ class JointForecaster:
             evaluation=[],multistep_evaluation=self.evaluation,risk_mode=risk_mode,cadence_minutes=self.cadence,
             description='Joint multi-station lag features; risk ordering score, not disaster probability',training_sha256=self.fingerprint)
         self.predictions[key]=deepcopy(result)
+        # Bound process memory during repeated replay; cached results are copies.
+        if len(self.predictions)>256:self.predictions.pop(next(iter(self.predictions)))
         return result

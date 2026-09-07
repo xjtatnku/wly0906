@@ -1,0 +1,1177 @@
+{
+  "manifest": {
+    "samples": 120,
+    "categories": 12,
+    "sha256": "7dc971ec8e2bd3164c58abf0f4d3b155c61ea8e506eed1b66837906b759a953e",
+    "baseline_commit": "5cac2a8",
+    "provenance": "AI-assisted developer-authored held-out challenge texts and explicit labels; not independent third-party annotation",
+    "protocol": "Freeze before any evaluation. Do not tune extractor, provider prompt or grounding on these labels. Report all cases and negative examples.",
+    "annotation": "Explicit current affirmative facts only. Hypothetical, negated, unverified and irrelevant information is uncertain_report; unknown numbers/IDs stay null/empty. Human-independent review remains outstanding."
+  },
+  "model": "deepseek-v4-flash",
+  "results": [
+    {
+      "method": "rules",
+      "samples": 120,
+      "grounded_pass_rate": 0.9916666666666667,
+      "fallback_rate": 0.0,
+      "negative_samples": 27,
+      "false_action_rate": 0.48148148148148145,
+      "latency_p50_ms": 0.19250000332249328,
+      "latency_p95_ms": 0.4640750077669508,
+      "latency_mean_ms": 0.27170666617166717,
+      "event_f1": 0.6808510638297872,
+      "event_counts": {
+        "tp": 64,
+        "fp": 21,
+        "fn": 39
+      },
+      "entity_f1": 0.6016949152542372,
+      "entity_counts": {
+        "tp": 71,
+        "fp": 44,
+        "fn": 50
+      },
+      "numeric_f1": 0.4411764705882353,
+      "numeric_counts": {
+        "tp": 15,
+        "fp": 8,
+        "fn": 30
+      }
+    },
+    {
+      "method": "deepseek_raw",
+      "samples": 120,
+      "grounded_pass_rate": 0.7583333333333333,
+      "fallback_rate": 0.0,
+      "negative_samples": 27,
+      "false_action_rate": 0.2222222222222222,
+      "latency_p50_ms": 1349.3008500008727,
+      "latency_p95_ms": 2567.9665600036965,
+      "latency_mean_ms": 1431.8536749998505,
+      "event_f1": 0.6857142857142857,
+      "event_counts": {
+        "tp": 72,
+        "fp": 35,
+        "fn": 31
+      },
+      "entity_f1": 0.5873015873015873,
+      "entity_counts": {
+        "tp": 74,
+        "fp": 57,
+        "fn": 47
+      },
+      "numeric_f1": 0.5217391304347826,
+      "numeric_counts": {
+        "tp": 24,
+        "fp": 23,
+        "fn": 21
+      }
+    },
+    {
+      "method": "deepseek_grounded",
+      "samples": 120,
+      "grounded_pass_rate": 0.7583333333333333,
+      "fallback_rate": 0.24166666666666667,
+      "negative_samples": 27,
+      "false_action_rate": 0.18518518518518517,
+      "latency_p50_ms": 1349.4191500067245,
+      "latency_p95_ms": 2568.079890002991,
+      "latency_mean_ms": 1431.942531667058,
+      "event_f1": 0.625,
+      "event_counts": {
+        "tp": 60,
+        "fp": 29,
+        "fn": 43
+      },
+      "entity_f1": 0.5803571428571429,
+      "entity_counts": {
+        "tp": 65,
+        "fp": 38,
+        "fn": 56
+      },
+      "numeric_f1": 0.48717948717948717,
+      "numeric_counts": {
+        "tp": 19,
+        "fp": 14,
+        "fn": 26
+      }
+    }
+  ],
+  "categories": {
+    "adversarial": [
+      {
+        "method": "rules",
+        "samples": 10,
+        "grounded_pass_rate": 1.0,
+        "fallback_rate": 0.0,
+        "negative_samples": 2,
+        "false_action_rate": 0.5,
+        "latency_p50_ms": 0.3149999902234413,
+        "latency_p95_ms": 0.5385750031564384,
+        "latency_mean_ms": 0.32809999975143,
+        "event_f1": 0.7058823529411765,
+        "event_counts": {
+          "tp": 6,
+          "fp": 3,
+          "fn": 2
+        },
+        "entity_f1": 0.7777777777777778,
+        "entity_counts": {
+          "tp": 7,
+          "fp": 3,
+          "fn": 1
+        },
+        "numeric_f1": 0.6666666666666666,
+        "numeric_counts": {
+          "tp": 3,
+          "fp": 2,
+          "fn": 1
+        }
+      },
+      {
+        "method": "deepseek_raw",
+        "samples": 10,
+        "grounded_pass_rate": 0.8,
+        "fallback_rate": 0.0,
+        "negative_samples": 2,
+        "false_action_rate": 0.0,
+        "latency_p50_ms": 1391.0617000001366,
+        "latency_p95_ms": 1739.7102549992264,
+        "latency_mean_ms": 1377.9026599993813,
+        "event_f1": 0.23529411764705882,
+        "event_counts": {
+          "tp": 2,
+          "fp": 7,
+          "fn": 6
+        },
+        "entity_f1": 0.23529411764705882,
+        "entity_counts": {
+          "tp": 2,
+          "fp": 7,
+          "fn": 6
+        },
+        "numeric_f1": 0.0,
+        "numeric_counts": {
+          "tp": 0,
+          "fp": 5,
+          "fn": 4
+        }
+      },
+      {
+        "method": "deepseek_grounded",
+        "samples": 10,
+        "grounded_pass_rate": 0.8,
+        "fallback_rate": 0.2,
+        "negative_samples": 2,
+        "false_action_rate": 0.0,
+        "latency_p50_ms": 1391.1776500099222,
+        "latency_p95_ms": 1739.8546999960668,
+        "latency_mean_ms": 1377.9943100002129,
+        "event_f1": 0.25,
+        "event_counts": {
+          "tp": 2,
+          "fp": 6,
+          "fn": 6
+        },
+        "entity_f1": 0.26666666666666666,
+        "entity_counts": {
+          "tp": 2,
+          "fp": 5,
+          "fn": 6
+        },
+        "numeric_f1": 0.0,
+        "numeric_counts": {
+          "tp": 0,
+          "fp": 3,
+          "fn": 4
+        }
+      }
+    ],
+    "ambiguous": [
+      {
+        "method": "rules",
+        "samples": 10,
+        "grounded_pass_rate": 1.0,
+        "fallback_rate": 0.0,
+        "negative_samples": 4,
+        "false_action_rate": 0.25,
+        "latency_p50_ms": 0.1825500003178604,
+        "latency_p95_ms": 0.46301000184030244,
+        "latency_mean_ms": 0.22532000002684072,
+        "event_f1": 0.7272727272727273,
+        "event_counts": {
+          "tp": 4,
+          "fp": 1,
+          "fn": 2
+        },
+        "entity_f1": 1.0,
+        "entity_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
+        "numeric_f1": 1.0,
+        "numeric_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        }
+      },
+      {
+        "method": "deepseek_raw",
+        "samples": 10,
+        "grounded_pass_rate": 0.9,
+        "fallback_rate": 0.0,
+        "negative_samples": 4,
+        "false_action_rate": 0.0,
+        "latency_p50_ms": 1357.744000000821,
+        "latency_p95_ms": 2056.6853549957154,
+        "latency_mean_ms": 1438.9420000006794,
+        "event_f1": 0.6,
+        "event_counts": {
+          "tp": 3,
+          "fp": 1,
+          "fn": 3
+        },
+        "entity_f1": 0.0,
+        "entity_counts": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 1
+        },
+        "numeric_f1": 0.0,
+        "numeric_counts": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 2
+        }
+      },
+      {
+        "method": "deepseek_grounded",
+        "samples": 10,
+        "grounded_pass_rate": 0.9,
+        "fallback_rate": 0.1,
+        "negative_samples": 4,
+        "false_action_rate": 0.0,
+        "latency_p50_ms": 1357.833900001424,
+        "latency_p95_ms": 2056.7426499990684,
+        "latency_mean_ms": 1439.0201600006549,
+        "event_f1": 0.6,
+        "event_counts": {
+          "tp": 3,
+          "fp": 1,
+          "fn": 3
+        },
+        "entity_f1": 0.0,
+        "entity_counts": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 1
+        },
+        "numeric_f1": 0.0,
+        "numeric_counts": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 2
+        }
+      }
+    ],
+    "colloquial": [
+      {
+        "method": "rules",
+        "samples": 10,
+        "grounded_pass_rate": 1.0,
+        "fallback_rate": 0.0,
+        "negative_samples": 0,
+        "false_action_rate": null,
+        "latency_p50_ms": 0.17004999244818464,
+        "latency_p95_ms": 1.9285749978735078,
+        "latency_mean_ms": 0.47062999510671943,
+        "event_f1": 0.3333333333333333,
+        "event_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 8
+        },
+        "entity_f1": 0.2,
+        "entity_counts": {
+          "tp": 2,
+          "fp": 5,
+          "fn": 11
+        },
+        "numeric_f1": 0.0,
+        "numeric_counts": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 4
+        }
+      },
+      {
+        "method": "deepseek_raw",
+        "samples": 10,
+        "grounded_pass_rate": 0.5,
+        "fallback_rate": 0.0,
+        "negative_samples": 0,
+        "false_action_rate": null,
+        "latency_p50_ms": 1214.7908999977517,
+        "latency_p95_ms": 1851.2515599948524,
+        "latency_mean_ms": 1280.9087899979204,
+        "event_f1": 0.8421052631578947,
+        "event_counts": {
+          "tp": 8,
+          "fp": 1,
+          "fn": 2
+        },
+        "entity_f1": 0.5925925925925926,
+        "entity_counts": {
+          "tp": 8,
+          "fp": 6,
+          "fn": 5
+        },
+        "numeric_f1": 0.5,
+        "numeric_counts": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 2
+        }
+      },
+      {
+        "method": "deepseek_grounded",
+        "samples": 10,
+        "grounded_pass_rate": 0.5,
+        "fallback_rate": 0.5,
+        "negative_samples": 0,
+        "false_action_rate": null,
+        "latency_p50_ms": 1214.8422000027495,
+        "latency_p95_ms": 1851.365959992108,
+        "latency_mean_ms": 1280.9891599972616,
+        "event_f1": 0.6666666666666666,
+        "event_counts": {
+          "tp": 5,
+          "fp": 0,
+          "fn": 5
+        },
+        "entity_f1": 0.631578947368421,
+        "entity_counts": {
+          "tp": 6,
+          "fp": 0,
+          "fn": 7
+        },
+        "numeric_f1": 0.4,
+        "numeric_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 3
+        }
+      }
+    ],
+    "correction": [
+      {
+        "method": "rules",
+        "samples": 10,
+        "grounded_pass_rate": 1.0,
+        "fallback_rate": 0.0,
+        "negative_samples": 0,
+        "false_action_rate": null,
+        "latency_p50_ms": 0.1501500009908341,
+        "latency_p95_ms": 0.3312049935630055,
+        "latency_mean_ms": 0.17888999718707055,
+        "event_f1": 0.6666666666666666,
+        "event_counts": {
+          "tp": 6,
+          "fp": 1,
+          "fn": 5
+        },
+        "entity_f1": 0.47619047619047616,
+        "entity_counts": {
+          "tp": 5,
+          "fp": 5,
+          "fn": 6
+        },
+        "numeric_f1": 0.0,
+        "numeric_counts": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 11
+        }
+      },
+      {
+        "method": "deepseek_raw",
+        "samples": 10,
+        "grounded_pass_rate": 0.9,
+        "fallback_rate": 0.0,
+        "negative_samples": 0,
+        "false_action_rate": null,
+        "latency_p50_ms": 1245.5040000058943,
+        "latency_p95_ms": 1573.8438049913382,
+        "latency_mean_ms": 1258.674230001634,
+        "event_f1": 1.0,
+        "event_counts": {
+          "tp": 11,
+          "fp": 0,
+          "fn": 0
+        },
+        "entity_f1": 1.0,
+        "entity_counts": {
+          "tp": 11,
+          "fp": 0,
+          "fn": 0
+        },
+        "numeric_f1": 1.0,
+        "numeric_counts": {
+          "tp": 11,
+          "fp": 0,
+          "fn": 0
+        }
+      },
+      {
+        "method": "deepseek_grounded",
+        "samples": 10,
+        "grounded_pass_rate": 0.9,
+        "fallback_rate": 0.1,
+        "negative_samples": 0,
+        "false_action_rate": null,
+        "latency_p50_ms": 1245.588650002901,
+        "latency_p95_ms": 1573.9796749941886,
+        "latency_mean_ms": 1258.7593199990806,
+        "event_f1": 0.9523809523809523,
+        "event_counts": {
+          "tp": 10,
+          "fp": 0,
+          "fn": 1
+        },
+        "entity_f1": 0.9523809523809523,
+        "entity_counts": {
+          "tp": 10,
+          "fp": 0,
+          "fn": 1
+        },
+        "numeric_f1": 0.9523809523809523,
+        "numeric_counts": {
+          "tp": 10,
+          "fp": 0,
+          "fn": 1
+        }
+      }
+    ],
+    "incomplete": [
+      {
+        "method": "rules",
+        "samples": 10,
+        "grounded_pass_rate": 1.0,
+        "fallback_rate": 0.0,
+        "negative_samples": 3,
+        "false_action_rate": 0.3333333333333333,
+        "latency_p50_ms": 0.2048499954980798,
+        "latency_p95_ms": 0.44982000399613753,
+        "latency_mean_ms": 0.24527999776182696,
+        "event_f1": 0.8571428571428571,
+        "event_counts": {
+          "tp": 6,
+          "fp": 1,
+          "fn": 1
+        },
+        "entity_f1": 0.8,
+        "entity_counts": {
+          "tp": 8,
+          "fp": 2,
+          "fn": 2
+        },
+        "numeric_f1": 1,
+        "numeric_counts": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        }
+      },
+      {
+        "method": "deepseek_raw",
+        "samples": 10,
+        "grounded_pass_rate": 0.9,
+        "fallback_rate": 0.0,
+        "negative_samples": 3,
+        "false_action_rate": 0.0,
+        "latency_p50_ms": 1244.9484000026132,
+        "latency_p95_ms": 2228.815509999548,
+        "latency_mean_ms": 1431.570959999226,
+        "event_f1": 0.8333333333333334,
+        "event_counts": {
+          "tp": 5,
+          "fp": 0,
+          "fn": 2
+        },
+        "entity_f1": 0.6,
+        "entity_counts": {
+          "tp": 6,
+          "fp": 4,
+          "fn": 4
+        },
+        "numeric_f1": 1,
+        "numeric_counts": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        }
+      },
+      {
+        "method": "deepseek_grounded",
+        "samples": 10,
+        "grounded_pass_rate": 0.9,
+        "fallback_rate": 0.1,
+        "negative_samples": 3,
+        "false_action_rate": 0.0,
+        "latency_p50_ms": 1245.0326999969548,
+        "latency_p95_ms": 2228.890125000906,
+        "latency_mean_ms": 1431.6712500018184,
+        "event_f1": 0.7272727272727273,
+        "event_counts": {
+          "tp": 4,
+          "fp": 0,
+          "fn": 3
+        },
+        "entity_f1": 0.631578947368421,
+        "entity_counts": {
+          "tp": 6,
+          "fp": 3,
+          "fn": 4
+        },
+        "numeric_f1": 1,
+        "numeric_counts": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        }
+      }
+    ],
+    "irrelevant": [
+      {
+        "method": "rules",
+        "samples": 10,
+        "grounded_pass_rate": 1.0,
+        "fallback_rate": 0.0,
+        "negative_samples": 10,
+        "false_action_rate": 0.2,
+        "latency_p50_ms": 0.21934999676886946,
+        "latency_p95_ms": 0.38734000190743223,
+        "latency_mean_ms": 0.22249000030569732,
+        "event_f1": 0.0,
+        "event_counts": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 0
+        },
+        "entity_f1": 0.0,
+        "entity_counts": {
+          "tp": 0,
+          "fp": 3,
+          "fn": 0
+        },
+        "numeric_f1": 0.0,
+        "numeric_counts": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 0
+        }
+      },
+      {
+        "method": "deepseek_raw",
+        "samples": 10,
+        "grounded_pass_rate": 0.2,
+        "fallback_rate": 0.0,
+        "negative_samples": 10,
+        "false_action_rate": 0.0,
+        "latency_p50_ms": 1131.901699998707,
+        "latency_p95_ms": 1521.4587300091805,
+        "latency_mean_ms": 1130.5623900028877,
+        "event_f1": 1,
+        "event_counts": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        "entity_f1": 1,
+        "entity_counts": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        "numeric_f1": 1,
+        "numeric_counts": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        }
+      },
+      {
+        "method": "deepseek_grounded",
+        "samples": 10,
+        "grounded_pass_rate": 0.2,
+        "fallback_rate": 0.8,
+        "negative_samples": 10,
+        "false_action_rate": 0.0,
+        "latency_p50_ms": 1131.9443000029423,
+        "latency_p95_ms": 1521.5866650083624,
+        "latency_mean_ms": 1130.6169700037572,
+        "event_f1": 1,
+        "event_counts": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        "entity_f1": 1,
+        "entity_counts": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        "numeric_f1": 1,
+        "numeric_counts": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        }
+      }
+    ],
+    "long": [
+      {
+        "method": "rules",
+        "samples": 10,
+        "grounded_pass_rate": 1.0,
+        "fallback_rate": 0.0,
+        "negative_samples": 0,
+        "false_action_rate": null,
+        "latency_p50_ms": 0.21874999220017344,
+        "latency_p95_ms": 0.36705500097014004,
+        "latency_mean_ms": 0.24163999914890155,
+        "event_f1": 0.5555555555555556,
+        "event_counts": {
+          "tp": 5,
+          "fp": 3,
+          "fn": 5
+        },
+        "entity_f1": 0.5454545454545454,
+        "entity_counts": {
+          "tp": 6,
+          "fp": 4,
+          "fn": 6
+        },
+        "numeric_f1": 0.4,
+        "numeric_counts": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 3
+        }
+      },
+      {
+        "method": "deepseek_raw",
+        "samples": 10,
+        "grounded_pass_rate": 0.7,
+        "fallback_rate": 0.0,
+        "negative_samples": 0,
+        "false_action_rate": null,
+        "latency_p50_ms": 1562.1380000011413,
+        "latency_p95_ms": 1965.962339992984,
+        "latency_mean_ms": 1525.8988899964606,
+        "event_f1": 0.7272727272727273,
+        "event_counts": {
+          "tp": 8,
+          "fp": 4,
+          "fn": 2
+        },
+        "entity_f1": 0.5925925925925926,
+        "entity_counts": {
+          "tp": 8,
+          "fp": 7,
+          "fn": 4
+        },
+        "numeric_f1": 0.5,
+        "numeric_counts": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 2
+        }
+      },
+      {
+        "method": "deepseek_grounded",
+        "samples": 10,
+        "grounded_pass_rate": 0.7,
+        "fallback_rate": 0.3,
+        "negative_samples": 0,
+        "false_action_rate": null,
+        "latency_p50_ms": 1562.2137499958626,
+        "latency_p95_ms": 1966.0629199956018,
+        "latency_mean_ms": 1525.9947799990186,
+        "event_f1": 0.631578947368421,
+        "event_counts": {
+          "tp": 6,
+          "fp": 3,
+          "fn": 4
+        },
+        "entity_f1": 0.5217391304347826,
+        "entity_counts": {
+          "tp": 6,
+          "fp": 5,
+          "fn": 6
+        },
+        "numeric_f1": 0.3333333333333333,
+        "numeric_counts": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 3
+        }
+      }
+    ],
+    "multiple": [
+      {
+        "method": "rules",
+        "samples": 10,
+        "grounded_pass_rate": 1.0,
+        "fallback_rate": 0.0,
+        "negative_samples": 0,
+        "false_action_rate": null,
+        "latency_p50_ms": 0.19159999646944925,
+        "latency_p95_ms": 0.3035850044398103,
+        "latency_mean_ms": 0.21307000133674592,
+        "event_f1": 0.8125,
+        "event_counts": {
+          "tp": 13,
+          "fp": 0,
+          "fn": 6
+        },
+        "entity_f1": 0.7317073170731707,
+        "entity_counts": {
+          "tp": 15,
+          "fp": 3,
+          "fn": 8
+        },
+        "numeric_f1": 0.46153846153846156,
+        "numeric_counts": {
+          "tp": 3,
+          "fp": 3,
+          "fn": 4
+        }
+      },
+      {
+        "method": "deepseek_raw",
+        "samples": 10,
+        "grounded_pass_rate": 1.0,
+        "fallback_rate": 0.0,
+        "negative_samples": 0,
+        "false_action_rate": null,
+        "latency_p50_ms": 1915.1693999956478,
+        "latency_p95_ms": 2469.188759997632,
+        "latency_mean_ms": 1898.5968599969056,
+        "event_f1": 0.6842105263157895,
+        "event_counts": {
+          "tp": 13,
+          "fp": 6,
+          "fn": 6
+        },
+        "entity_f1": 0.6956521739130435,
+        "entity_counts": {
+          "tp": 16,
+          "fp": 7,
+          "fn": 7
+        },
+        "numeric_f1": 0.42857142857142855,
+        "numeric_counts": {
+          "tp": 3,
+          "fp": 4,
+          "fn": 4
+        }
+      },
+      {
+        "method": "deepseek_grounded",
+        "samples": 10,
+        "grounded_pass_rate": 1.0,
+        "fallback_rate": 0.0,
+        "negative_samples": 0,
+        "false_action_rate": null,
+        "latency_p50_ms": 1915.2257000023383,
+        "latency_p95_ms": 2469.247855007415,
+        "latency_mean_ms": 1898.6921500007156,
+        "event_f1": 0.6842105263157895,
+        "event_counts": {
+          "tp": 13,
+          "fp": 6,
+          "fn": 6
+        },
+        "entity_f1": 0.6956521739130435,
+        "entity_counts": {
+          "tp": 16,
+          "fp": 7,
+          "fn": 7
+        },
+        "numeric_f1": 0.42857142857142855,
+        "numeric_counts": {
+          "tp": 3,
+          "fp": 4,
+          "fn": 4
+        }
+      }
+    ],
+    "negation": [
+      {
+        "method": "rules",
+        "samples": 10,
+        "grounded_pass_rate": 1.0,
+        "fallback_rate": 0.0,
+        "negative_samples": 8,
+        "false_action_rate": 1.0,
+        "latency_p50_ms": 0.17815000319387764,
+        "latency_p95_ms": 0.3746699956536757,
+        "latency_mean_ms": 0.21062000014353544,
+        "event_f1": 0.3333333333333333,
+        "event_counts": {
+          "tp": 2,
+          "fp": 8,
+          "fn": 0
+        },
+        "entity_f1": 0.2222222222222222,
+        "entity_counts": {
+          "tp": 2,
+          "fp": 10,
+          "fn": 4
+        },
+        "numeric_f1": 0.0,
+        "numeric_counts": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 1
+        }
+      },
+      {
+        "method": "deepseek_raw",
+        "samples": 10,
+        "grounded_pass_rate": 0.9,
+        "fallback_rate": 0.0,
+        "negative_samples": 8,
+        "false_action_rate": 0.75,
+        "latency_p50_ms": 1355.8260499994503,
+        "latency_p95_ms": 1555.8338800037745,
+        "latency_mean_ms": 1306.1301100009587,
+        "event_f1": 0.0,
+        "event_counts": {
+          "tp": 0,
+          "fp": 8,
+          "fn": 2
+        },
+        "entity_f1": 0.26666666666666666,
+        "entity_counts": {
+          "tp": 2,
+          "fp": 7,
+          "fn": 4
+        },
+        "numeric_f1": 0.0,
+        "numeric_counts": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 1
+        }
+      },
+      {
+        "method": "deepseek_grounded",
+        "samples": 10,
+        "grounded_pass_rate": 0.9,
+        "fallback_rate": 0.1,
+        "negative_samples": 8,
+        "false_action_rate": 0.625,
+        "latency_p50_ms": 1355.9377000055974,
+        "latency_p95_ms": 1555.9057650039904,
+        "latency_mean_ms": 1306.2259700003779,
+        "event_f1": 0.0,
+        "event_counts": {
+          "tp": 0,
+          "fp": 7,
+          "fn": 2
+        },
+        "entity_f1": 0.2857142857142857,
+        "entity_counts": {
+          "tp": 2,
+          "fp": 6,
+          "fn": 4
+        },
+        "numeric_f1": 0.0,
+        "numeric_counts": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 1
+        }
+      }
+    ],
+    "noise": [
+      {
+        "method": "rules",
+        "samples": 10,
+        "grounded_pass_rate": 0.9,
+        "fallback_rate": 0.0,
+        "negative_samples": 0,
+        "false_action_rate": null,
+        "latency_p50_ms": 0.18350000027567148,
+        "latency_p95_ms": 0.3751549964363219,
+        "latency_mean_ms": 0.2122700010659173,
+        "event_f1": 0.9523809523809523,
+        "event_counts": {
+          "tp": 10,
+          "fp": 1,
+          "fn": 0
+        },
+        "entity_f1": 0.9230769230769231,
+        "entity_counts": {
+          "tp": 12,
+          "fp": 2,
+          "fn": 0
+        },
+        "numeric_f1": 0.6666666666666666,
+        "numeric_counts": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 2
+        }
+      },
+      {
+        "method": "deepseek_raw",
+        "samples": 10,
+        "grounded_pass_rate": 0.8,
+        "fallback_rate": 0.0,
+        "negative_samples": 0,
+        "false_action_rate": null,
+        "latency_p50_ms": 1477.353200003563,
+        "latency_p95_ms": 2621.2640250050754,
+        "latency_mean_ms": 1617.4867900001118,
+        "event_f1": 0.7,
+        "event_counts": {
+          "tp": 7,
+          "fp": 3,
+          "fn": 3
+        },
+        "entity_f1": 0.48,
+        "entity_counts": {
+          "tp": 6,
+          "fp": 7,
+          "fn": 6
+        },
+        "numeric_f1": 0.5,
+        "numeric_counts": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 2
+        }
+      },
+      {
+        "method": "deepseek_grounded",
+        "samples": 10,
+        "grounded_pass_rate": 0.8,
+        "fallback_rate": 0.2,
+        "negative_samples": 0,
+        "false_action_rate": null,
+        "latency_p50_ms": 1477.4184000052628,
+        "latency_p95_ms": 2621.3873000000603,
+        "latency_mean_ms": 1617.57523999986,
+        "event_f1": 0.5555555555555556,
+        "event_counts": {
+          "tp": 5,
+          "fp": 3,
+          "fn": 5
+        },
+        "entity_f1": 0.45454545454545453,
+        "entity_counts": {
+          "tp": 5,
+          "fp": 5,
+          "fn": 7
+        },
+        "numeric_f1": 0.5,
+        "numeric_counts": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 2
+        }
+      }
+    ],
+    "simple": [
+      {
+        "method": "rules",
+        "samples": 10,
+        "grounded_pass_rate": 1.0,
+        "fallback_rate": 0.0,
+        "negative_samples": 0,
+        "false_action_rate": null,
+        "latency_p50_ms": 0.189350001164712,
+        "latency_p95_ms": 1.843609999195903,
+        "latency_mean_ms": 0.49395000241929665,
+        "event_f1": 1.0,
+        "event_counts": {
+          "tp": 10,
+          "fp": 0,
+          "fn": 0
+        },
+        "entity_f1": 1.0,
+        "entity_counts": {
+          "tp": 13,
+          "fp": 0,
+          "fn": 0
+        },
+        "numeric_f1": 1.0,
+        "numeric_counts": {
+          "tp": 4,
+          "fp": 0,
+          "fn": 0
+        }
+      },
+      {
+        "method": "deepseek_raw",
+        "samples": 10,
+        "grounded_pass_rate": 0.9,
+        "fallback_rate": 0.0,
+        "negative_samples": 0,
+        "false_action_rate": null,
+        "latency_p50_ms": 934.8861500038765,
+        "latency_p95_ms": 2803.86998500544,
+        "latency_mean_ms": 1461.739170004148,
+        "event_f1": 0.7,
+        "event_counts": {
+          "tp": 7,
+          "fp": 3,
+          "fn": 3
+        },
+        "entity_f1": 0.5185185185185185,
+        "entity_counts": {
+          "tp": 7,
+          "fp": 7,
+          "fn": 6
+        },
+        "numeric_f1": 0.5,
+        "numeric_counts": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 2
+        }
+      },
+      {
+        "method": "deepseek_grounded",
+        "samples": 10,
+        "grounded_pass_rate": 0.9,
+        "fallback_rate": 0.1,
+        "negative_samples": 0,
+        "false_action_rate": null,
+        "latency_p50_ms": 934.9677500067628,
+        "latency_p95_ms": 2803.942265011574,
+        "latency_mean_ms": 1461.8236500042258,
+        "event_f1": 0.631578947368421,
+        "event_counts": {
+          "tp": 6,
+          "fp": 3,
+          "fn": 4
+        },
+        "entity_f1": 0.48,
+        "entity_counts": {
+          "tp": 6,
+          "fp": 6,
+          "fn": 7
+        },
+        "numeric_f1": 0.5,
+        "numeric_counts": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 2
+        }
+      }
+    ],
+    "synonym": [
+      {
+        "method": "rules",
+        "samples": 10,
+        "grounded_pass_rate": 1.0,
+        "fallback_rate": 0.0,
+        "negative_samples": 0,
+        "false_action_rate": null,
+        "latency_p50_ms": 0.18699999782256782,
+        "latency_p95_ms": 0.42156500130658964,
+        "latency_mean_ms": 0.21821999980602413,
+        "event_f1": 0.0,
+        "event_counts": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 10
+        },
+        "entity_f1": 0.0,
+        "entity_counts": {
+          "tp": 0,
+          "fp": 7,
+          "fn": 12
+        },
+        "numeric_f1": 0.0,
+        "numeric_counts": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 4
+        }
+      },
+      {
+        "method": "deepseek_raw",
+        "samples": 10,
+        "grounded_pass_rate": 0.6,
+        "fallback_rate": 0.0,
+        "negative_samples": 0,
+        "false_action_rate": null,
+        "latency_p50_ms": 1444.8216499949922,
+        "latency_p95_ms": 1970.4052199966097,
+        "latency_mean_ms": 1453.8312499978929,
+        "event_f1": 0.8,
+        "event_counts": {
+          "tp": 8,
+          "fp": 2,
+          "fn": 2
+        },
+        "entity_f1": 0.6956521739130435,
+        "entity_counts": {
+          "tp": 8,
+          "fp": 3,
+          "fn": 4
+        },
+        "numeric_f1": 0.5,
+        "numeric_counts": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 2
+        }
+      },
+      {
+        "method": "deepseek_grounded",
+        "samples": 10,
+        "grounded_pass_rate": 0.6,
+        "fallback_rate": 0.4,
+        "negative_samples": 0,
+        "false_action_rate": null,
+        "latency_p50_ms": 1444.9161999946227,
+        "latency_p95_ms": 1970.5504700017625,
+        "latency_mean_ms": 1453.9474199977121,
+        "event_f1": 0.75,
+        "event_counts": {
+          "tp": 6,
+          "fp": 0,
+          "fn": 4
+        },
+        "entity_f1": 0.6666666666666666,
+        "entity_counts": {
+          "tp": 6,
+          "fp": 0,
+          "fn": 6
+        },
+        "numeric_f1": 0.0,
+        "numeric_counts": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 4
+        }
+      }
+    ]
+  },
+  "caveats": [
+    "No independent annotator; this is held-out developer challenge coverage, not evidence of real-world generalization.",
+    "Raw and grounded arms reuse one API output per text. Grounding rejection is scored as abstention, with operational fallback recorded separately.",
+    "Raw latency includes extraction wrapper validation/fallback overhead; grounded latency adds separately measured validation. Network dominates.",
+    "Grounding checks evidence presence, not full semantic entailment or negation; passing does not guarantee correct events."
+  ]
+}
