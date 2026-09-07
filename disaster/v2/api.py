@@ -5,7 +5,9 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 from typing import Literal
-import csv
+import csv,os,logging
+from fastapi.responses import JSONResponse
+from fastapi.exceptions import RequestValidationError
 from disaster.core import ROOT, read_json
 from disaster.v2.service import Service
 
@@ -17,6 +19,27 @@ async def lifespan(app):
     app.state.service.db.engine.dispose()
 
 app=FastAPI(title='DisasterResponseAI V2',lifespan=lifespan)
+from disaster.v2.workspace import router as workspace_router
+app.include_router(workspace_router)
+
+@app.middleware('http')
+async def workspace_boundary(request,call_next):
+    path=request.url.path
+    if path.startswith('/assets/') and not (path.startswith('/assets/vendor/') or path in {f'/assets/{name}' for name in ('app.js','design.js','style.css','china.json','map-context.json')}):
+        return JSONResponse({'detail':'未找到该资源'},status_code=404)
+    if os.getenv('DISASTER_ENABLE_RESEARCH_API')!='1' and ((path.startswith('/api/') and not path.startswith('/api/workspace/')) or path in ('/docs','/redoc','/openapi.json')):
+        return JSONResponse({'detail':'该入口未开放'},status_code=404)
+    try:return await call_next(request)
+    except Exception:
+        logging.getLogger(__name__).exception('Workspace request failed')
+        return JSONResponse({'detail':'操作未完成，请稍后重试或联系维护人员'},status_code=500)
+
+@app.exception_handler(RequestValidationError)
+async def invalid_request(request,exc):
+    if request.url.path.startswith('/api/workspace/'):
+        return JSONResponse({'detail':'请检查填写内容，补齐必要信息后重试'},status_code=422)
+    from fastapi.exception_handlers import request_validation_exception_handler
+    return await request_validation_exception_handler(request,exc)
 class Step(BaseModel):minutes:int=Field(default=10,ge=1,le=60)
 class Settings(BaseModel):
     horizon:int=Field(default=60,ge=30,le=120)

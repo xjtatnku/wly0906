@@ -2,3 +2,4 @@
 data/v2/osm/snapshot.json -text
 data/bronze/environment/*.json -text whitespace=cr-at-eol
 data/v23/final/ood.json text eol=lf
+frontend/china.json -text

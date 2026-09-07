@@ -1,0 +1,15 @@
+{
+  "errors": [],
+  "pages": 6,
+  "widths": [
+    1680,
+    1280,
+    390
+  ],
+  "country_local_toggle": true,
+  "internal_ui_terms": false,
+  "legacy_api_blocked": true,
+  "stages": 9,
+  "missing": 15,
+  "report_versions": 3
+}

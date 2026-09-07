@@ -1,8 +1,10 @@
 # 康定案例 · 动态灾害应急决策与资源调度
 
-V2.3 最终研究工作台：多源环境观测、联合预测、九阶段事件、DeepSeek 辅助理解、人工确认与动态资源调度。本地单机运行，不需要公网部署。
+当前默认入口为面向值守与展示的业务工作台，支持完整全国地图与康定现场切换。技术配置、实验报告和原始诊断不进入日常页面。
 
-![应急总控台](results/v23/final/overview-screen.png)
+V2.3 核心能力：多源环境观测、联合预测、九阶段事件、DeepSeek 辅助理解、人工确认与动态资源调度。本地单机运行，不需要公网部署。
+
+![应急总控台](results/workspace/overview.png)
 
 ## 启动
 
@@ -34,10 +36,10 @@ DISASTER_MODEL=deepseek-v4-flash
 
 ## 五分钟演示
 
-1. **总览 / 数据中心**：查看当前观测、任务和资源。模拟四变量与历史两变量分别展示；历史最终产品不声称当时可实时获得。
-2. **策略决策**：点击“重置并开始事件链”，依次“准备下一阶段候选 → 审核 → 批准”。九阶段包括封路、资源故障、增援、次生风险与人数修正。
-3. **资源调度**：查看路径、协同作业时间轴、资源缺口和 ETA 变化；可切换加权与词典序优化。已执行动作保持锁定。
-4. **风险预测 / 事件复盘**：比较预测模型、读取历史快照和实际实验结果。120条自然语言挑战评测与冷热路径耗时单独报告。
+1. **总览 / 监测数据**：从全国地图切换到康定现场，查看观测、任务、道路和资源。保留演练与历史资料标识。
+2. **灾情处置**：点击“重新开始演练”，依次“准备下一阶段 → 核对表单 → 核实并确认报告”。九阶段包括封路、资源故障、增援、次生风险与人数修正，也可自行录入现场报告。
+3. **资源调度**：查看路径、协同作业时间轴、资源缺口和预计到达变化；可选择兼顾整体响应或优先紧急需求。已执行动作保持锁定。
+4. **风险研判 / 处置记录**：查看趋势与关注区域，读取历史态势和人员统计修正记录。研究实验与技术参数另见研究文档，不进入日常页面。
 
 准备阶段会推进既有执行和模拟时钟；批准才提交候选。人数版本链为 **8 → 13 → 15**，不是重复累加。
 
@@ -57,13 +59,19 @@ DISASTER_MODEL=deepseek-v4-flash
 ```powershell
 $env:OMP_NUM_THREADS='1'
 $env:OPENBLAS_NUM_THREADS='1'
+$env:DISASTER_ENABLE_RESEARCH_API='1' # 仅为旧接口兼容测试开启
 .\.venv\Scripts\python.exe -m pytest -q
+Remove-Item Env:DISASTER_ENABLE_RESEARCH_API
 .\.venv\Scripts\python.exe -m scripts.benchmark_warmup
 # 120次真实模型请求，会产生API用量；文本和标签已冻结
 .\.venv\Scripts\python.exe -m disaster.v2.ood_evaluation
 # 本机服务运行后，系统Python需有Playwright和Chromium
-python scripts/browser_final.py
+python scripts/browser_workspace.py
 .\.venv\Scripts\python.exe scripts/final_report.py
 ```
 
 浏览器脚本会重置演示并完成九阶段；历史快照保留。性能测试应独立运行，避免与完整测试套件争用CPU；启动成本和事件处理耗时分别报告。
+
+## 业务界面与维护边界
+
+[本轮界面说明](docs/workspace.md)。默认只开放 `/api/workspace/` 的业务接口，旧研究接口与接口文档关闭；维护人员如需运行旧评测，可在本机进程设置 `DISASTER_ENABLE_RESEARCH_API=1`，完成后关闭并重启。该开关不是用户权限系统，不作为公网访问控制。旧研究页面源码归档于 `docs/archive/workbench-v23/`，不再由网页加载或通过静态资源入口提供。
